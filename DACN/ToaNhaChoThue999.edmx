@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ToaNhaChoThue88888Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ToaNhaChoThue999Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Chi">
           <Key>
             <PropertyRef Name="MaChi" />
@@ -30,7 +30,6 @@
           <Property Name="MaCSVCP" Type="int" Nullable="false" />
           <Property Name="TenCSVCP" Type="nvarchar" MaxLength="50" />
           <Property Name="Gia" Type="money" />
-          <Property Name="idTang" Type="int" />
         </EntityType>
         <EntityType Name="CoSoHaTangTang">
           <Key>
@@ -39,7 +38,6 @@
           <Property Name="MaCSVCT" Type="int" Nullable="false" />
           <Property Name="TenCSVCT" Type="nvarchar" MaxLength="50" />
           <Property Name="Gia" Type="money" />
-          <Property Name="idTang" Type="int" />
         </EntityType>
         <EntityType Name="CTDV">
           <Key>
@@ -99,7 +97,7 @@
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Matkhau" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaNguoidung" Type="nvarchar" MaxLength="1" />
+          <Property Name="idNhanVien" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Nhanvien">
           <Key>
@@ -113,7 +111,6 @@
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" />
           <Property Name="NgayVaoLam" Type="date" />
           <Property Name="Luong" Type="money" />
-          <Property Name="IDNguoiDung" Type="nvarchar" MaxLength="20" />
           <Property Name="IDChucVu" Type="int" />
         </EntityType>
         <EntityType Name="Phong">
@@ -123,6 +120,8 @@
           <Property Name="MaPhong" Type="int" Nullable="false" />
           <Property Name="TenPhong" Type="nvarchar" MaxLength="50" />
           <Property Name="TrangThaiPhong" Type="nvarchar" MaxLength="50" />
+          <Property Name="idCosohatangphong" Type="int" />
+          <Property Name="idTang" Type="int" />
         </EntityType>
         <EntityType Name="Tang">
           <Key>
@@ -131,7 +130,7 @@
           <Property Name="MaTang" Type="int" Nullable="false" />
           <Property Name="TenTang" Type="nvarchar" MaxLength="50" />
           <Property Name="TrangThaiTang" Type="nvarchar" MaxLength="50" />
-          <Property Name="idPhong" Type="int" />
+          <Property Name="idCosohatangtang" Type="int" />
         </EntityType>
         <EntityType Name="ThanhToanPhongTheoThang">
           <Key>
@@ -150,6 +149,14 @@
           <Property Name="NoiDung" Type="nvarchar" MaxLength="1000" />
           <Property Name="idNhanVien" Type="nvarchar" MaxLength="20" />
           <Property Name="idKhachHang" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ThuePhong">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idPhong" Type="int" />
+          <Property Name="idKhachhang" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ToaNha">
           <Key>
@@ -186,31 +193,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoHaTan__idTan__46E78A0C">
-          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
-          <End Role="CoSoHaTangTang" Type="Self.CoSoHaTangTang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tang">
-              <PropertyRef Name="MaTang" />
-            </Principal>
-            <Dependent Role="CoSoHaTangTang">
-              <PropertyRef Name="idTang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CoSoHaTan__idTan__49C3F6B7">
-          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
-          <End Role="CoSoHaTangPhong" Type="Self.CoSoHaTangPhong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tang">
-              <PropertyRef Name="MaTang" />
-            </Principal>
-            <Dependent Role="CoSoHaTangPhong">
-              <PropertyRef Name="idTang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CTDV__IDDichVu__3B75D760">
+        <Association Name="FK__CTDV__IDDichVu__440B1D61">
           <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
           <End Role="CTDV" Type="Self.CTDV" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTDV__IDDichVu__3C69FB99">
+        <Association Name="FK__CTDV__IDDichVu__44FF419A">
           <End Role="DV" Type="Self.DV" Multiplicity="0..1" />
           <End Role="CTDV" Type="Self.CTDV" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,19 +253,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nhanvien__IDChuc__5070F446">
-          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
-          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="*" />
+        <Association Name="FK__NguoiDung__idNha__5165187F">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NguoiDung">
-              <PropertyRef Name="ID" />
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="IDNVien" />
             </Principal>
-            <Dependent Role="Nhanvien">
-              <PropertyRef Name="IDNguoiDung" />
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="idNhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nhanvien__IDChuc__5165187F">
+        <Association Name="FK__Nhanvien__IDChuc__4E88ABD4">
           <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
           <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,15 +277,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tang__idPhong__3F466844">
-          <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+        <Association Name="FK__Phong__idTang__3E52440B">
+          <End Role="CoSoHaTangPhong" Type="Self.CoSoHaTangPhong" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoSoHaTangPhong">
+              <PropertyRef Name="MaCSVCP" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="idCosohatangphong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phong__idTang__3F466844">
+          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tang">
+              <PropertyRef Name="MaTang" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="idTang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tang__idCosohata__3B75D760">
+          <End Role="CoSoHaTangTang" Type="Self.CoSoHaTangTang" Multiplicity="0..1" />
           <End Role="Tang" Type="Self.Tang" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Phong">
-              <PropertyRef Name="MaPhong" />
+            <Principal Role="CoSoHaTangTang">
+              <PropertyRef Name="MaCSVCT" />
             </Principal>
             <Dependent Role="Tang">
-              <PropertyRef Name="idPhong" />
+              <PropertyRef Name="idCosohatangtang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -342,7 +349,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ToaNha__idTang__4222D4EF">
+        <Association Name="FK__ThuePhong__idKha__656C112C">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+          <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="ThuePhong">
+              <PropertyRef Name="idPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThuePhong__idKha__66603565">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="ThuePhong">
+              <PropertyRef Name="idKhachhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ToaNha__idTang__47DBAE45">
           <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
           <End Role="ToaNha" Type="Self.ToaNha" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +385,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ToaNhaChoThue88888ModelStoreContainer">
+        <EntityContainer Name="ToaNhaChoThue999ModelStoreContainer">
           <EntitySet Name="Chi" EntityType="Self.Chi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoSoHaTangPhong" EntityType="Self.CoSoHaTangPhong" Schema="dbo" store:Type="Tables" />
@@ -370,6 +401,7 @@
           <EntitySet Name="Tang" EntityType="Self.Tang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThanhToanPhongTheoThang" EntityType="Self.ThanhToanPhongTheoThang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Thu" EntityType="Self.Thu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThuePhong" EntityType="Self.ThuePhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ToaNha" EntityType="Self.ToaNha" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Chi__idKhachHang__5EBF139D" Association="Self.FK__Chi__idKhachHang__5EBF139D">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
@@ -379,19 +411,11 @@
             <End Role="Nhanvien" EntitySet="Nhanvien" />
             <End Role="Chi" EntitySet="Chi" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoHaTan__idTan__46E78A0C" Association="Self.FK__CoSoHaTan__idTan__46E78A0C">
-            <End Role="Tang" EntitySet="Tang" />
-            <End Role="CoSoHaTangTang" EntitySet="CoSoHaTangTang" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CoSoHaTan__idTan__49C3F6B7" Association="Self.FK__CoSoHaTan__idTan__49C3F6B7">
-            <End Role="Tang" EntitySet="Tang" />
-            <End Role="CoSoHaTangPhong" EntitySet="CoSoHaTangPhong" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CTDV__IDDichVu__3B75D760" Association="Self.FK__CTDV__IDDichVu__3B75D760">
+          <AssociationSet Name="FK__CTDV__IDDichVu__440B1D61" Association="Self.FK__CTDV__IDDichVu__440B1D61">
             <End Role="Phong" EntitySet="Phong" />
             <End Role="CTDV" EntitySet="CTDV" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTDV__IDDichVu__3C69FB99" Association="Self.FK__CTDV__IDDichVu__3C69FB99">
+          <AssociationSet Name="FK__CTDV__IDDichVu__44FF419A" Association="Self.FK__CTDV__IDDichVu__44FF419A">
             <End Role="DV" EntitySet="DV" />
             <End Role="CTDV" EntitySet="CTDV" />
           </AssociationSet>
@@ -407,16 +431,24 @@
             <End Role="Nhanvien" EntitySet="Nhanvien" />
             <End Role="Luong" EntitySet="Luong" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nhanvien__IDChuc__5070F446" Association="Self.FK__Nhanvien__IDChuc__5070F446">
-            <End Role="NguoiDung" EntitySet="NguoiDung" />
+          <AssociationSet Name="FK__NguoiDung__idNha__5165187F" Association="Self.FK__NguoiDung__idNha__5165187F">
             <End Role="Nhanvien" EntitySet="Nhanvien" />
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nhanvien__IDChuc__5165187F" Association="Self.FK__Nhanvien__IDChuc__5165187F">
+          <AssociationSet Name="FK__Nhanvien__IDChuc__4E88ABD4" Association="Self.FK__Nhanvien__IDChuc__4E88ABD4">
             <End Role="ChucVu" EntitySet="ChucVu" />
             <End Role="Nhanvien" EntitySet="Nhanvien" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tang__idPhong__3F466844" Association="Self.FK__Tang__idPhong__3F466844">
+          <AssociationSet Name="FK__Phong__idTang__3E52440B" Association="Self.FK__Phong__idTang__3E52440B">
+            <End Role="CoSoHaTangPhong" EntitySet="CoSoHaTangPhong" />
             <End Role="Phong" EntitySet="Phong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phong__idTang__3F466844" Association="Self.FK__Phong__idTang__3F466844">
+            <End Role="Tang" EntitySet="Tang" />
+            <End Role="Phong" EntitySet="Phong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tang__idCosohata__3B75D760" Association="Self.FK__Tang__idCosohata__3B75D760">
+            <End Role="CoSoHaTangTang" EntitySet="CoSoHaTangTang" />
             <End Role="Tang" EntitySet="Tang" />
           </AssociationSet>
           <AssociationSet Name="FK__ThanhToan__idHop__628FA481" Association="Self.FK__ThanhToan__idHop__628FA481">
@@ -431,7 +463,15 @@
             <End Role="Nhanvien" EntitySet="Nhanvien" />
             <End Role="Thu" EntitySet="Thu" />
           </AssociationSet>
-          <AssociationSet Name="FK__ToaNha__idTang__4222D4EF" Association="Self.FK__ToaNha__idTang__4222D4EF">
+          <AssociationSet Name="FK__ThuePhong__idKha__656C112C" Association="Self.FK__ThuePhong__idKha__656C112C">
+            <End Role="Phong" EntitySet="Phong" />
+            <End Role="ThuePhong" EntitySet="ThuePhong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThuePhong__idKha__66603565" Association="Self.FK__ThuePhong__idKha__66603565">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="ThuePhong" EntitySet="ThuePhong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ToaNha__idTang__47DBAE45" Association="Self.FK__ToaNha__idTang__47DBAE45">
             <End Role="Tang" EntitySet="Tang" />
             <End Role="ToaNha" EntitySet="ToaNha" />
           </AssociationSet>
@@ -440,7 +480,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ToaNhaChoThue88888Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ToaNhaChoThue999Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Chi">
           <Key>
             <PropertyRef Name="MaChi" />
@@ -460,7 +500,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="TenChucVu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="MaChucVu" Type="Int32" />
-          <NavigationProperty Name="Nhanviens" Relationship="Self.FK__Nhanvien__IDChuc__5165187F" FromRole="ChucVu" ToRole="Nhanvien" />
+          <NavigationProperty Name="Nhanviens" Relationship="Self.FK__Nhanvien__IDChuc__4E88ABD4" FromRole="ChucVu" ToRole="Nhanvien" />
         </EntityType>
         <EntityType Name="CoSoHaTangPhong">
           <Key>
@@ -469,8 +509,7 @@
           <Property Name="MaCSVCP" Type="Int32" Nullable="false" />
           <Property Name="TenCSVCP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="idTang" Type="Int32" />
-          <NavigationProperty Name="Tang" Relationship="Self.FK__CoSoHaTan__idTan__49C3F6B7" FromRole="CoSoHaTangPhong" ToRole="Tang" />
+          <NavigationProperty Name="Phongs" Relationship="Self.FK__Phong__idTang__3E52440B" FromRole="CoSoHaTangPhong" ToRole="Phong" />
         </EntityType>
         <EntityType Name="CoSoHaTangTang">
           <Key>
@@ -479,8 +518,7 @@
           <Property Name="MaCSVCT" Type="Int32" Nullable="false" />
           <Property Name="TenCSVCT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="idTang" Type="Int32" />
-          <NavigationProperty Name="Tang" Relationship="Self.FK__CoSoHaTan__idTan__46E78A0C" FromRole="CoSoHaTangTang" ToRole="Tang" />
+          <NavigationProperty Name="Tangs" Relationship="Self.FK__Tang__idCosohata__3B75D760" FromRole="CoSoHaTangTang" ToRole="Tang" />
         </EntityType>
         <EntityType Name="CTDV">
           <Key>
@@ -490,8 +528,8 @@
           <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="idPhong" Type="Int32" />
           <Property Name="IDDichVu" Type="Int32" />
-          <NavigationProperty Name="Phong" Relationship="Self.FK__CTDV__IDDichVu__3B75D760" FromRole="CTDV" ToRole="Phong" />
-          <NavigationProperty Name="DV" Relationship="Self.FK__CTDV__IDDichVu__3C69FB99" FromRole="CTDV" ToRole="DV" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK__CTDV__IDDichVu__440B1D61" FromRole="CTDV" ToRole="Phong" />
+          <NavigationProperty Name="DV" Relationship="Self.FK__CTDV__IDDichVu__44FF419A" FromRole="CTDV" ToRole="DV" />
         </EntityType>
         <EntityType Name="DV">
           <Key>
@@ -500,7 +538,7 @@
           <Property Name="MaDV" Type="Int32" Nullable="false" />
           <Property Name="TenDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="CTDVs" Relationship="Self.FK__CTDV__IDDichVu__3C69FB99" FromRole="DV" ToRole="CTDV" />
+          <NavigationProperty Name="CTDVs" Relationship="Self.FK__CTDV__IDDichVu__44FF419A" FromRole="DV" ToRole="CTDV" />
         </EntityType>
         <EntityType Name="HopDong">
           <Key>
@@ -534,6 +572,7 @@
           <NavigationProperty Name="Chis" Relationship="Self.FK__Chi__idKhachHang__5EBF139D" FromRole="KHACHHANG" ToRole="Chi" />
           <NavigationProperty Name="HopDongs" Relationship="Self.FK__HopDong__IDKhach__5535A963" FromRole="KHACHHANG" ToRole="HopDong" />
           <NavigationProperty Name="Thus" Relationship="Self.FK__Thu__idKhachHang__5AEE82B9" FromRole="KHACHHANG" ToRole="Thu" />
+          <NavigationProperty Name="ThuePhongs" Relationship="Self.FK__ThuePhong__idKha__66603565" FromRole="KHACHHANG" ToRole="ThuePhong" />
         </EntityType>
         <EntityType Name="Luong">
           <Key>
@@ -550,8 +589,8 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaNguoidung" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Nhanviens" Relationship="Self.FK__Nhanvien__IDChuc__5070F446" FromRole="NguoiDung" ToRole="Nhanvien" />
+          <Property Name="idNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nhanvien" Relationship="Self.FK__NguoiDung__idNha__5165187F" FromRole="NguoiDung" ToRole="Nhanvien" />
         </EntityType>
         <EntityType Name="Nhanvien">
           <Key>
@@ -565,13 +604,12 @@
           <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
           <Property Name="Luong" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="IDNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IDChucVu" Type="Int32" />
           <NavigationProperty Name="Chis" Relationship="Self.FK__Chi__idNhanVien__5FB337D6" FromRole="Nhanvien" ToRole="Chi" />
-          <NavigationProperty Name="ChucVu" Relationship="Self.FK__Nhanvien__IDChuc__5165187F" FromRole="Nhanvien" ToRole="ChucVu" />
+          <NavigationProperty Name="ChucVu" Relationship="Self.FK__Nhanvien__IDChuc__4E88ABD4" FromRole="Nhanvien" ToRole="ChucVu" />
           <NavigationProperty Name="HopDongs" Relationship="Self.FK__HopDong__IDKhach__5441852A" FromRole="Nhanvien" ToRole="HopDong" />
           <NavigationProperty Name="Luongs" Relationship="Self.FK__Luong__idNhanVie__5812160E" FromRole="Nhanvien" ToRole="Luong" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__Nhanvien__IDChuc__5070F446" FromRole="Nhanvien" ToRole="NguoiDung" />
+          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__idNha__5165187F" FromRole="Nhanvien" ToRole="NguoiDung" />
           <NavigationProperty Name="Thus" Relationship="Self.FK__Thu__idNhanVien__5BE2A6F2" FromRole="Nhanvien" ToRole="Thu" />
         </EntityType>
         <EntityType Name="Phong">
@@ -581,8 +619,12 @@
           <Property Name="MaPhong" Type="Int32" Nullable="false" />
           <Property Name="TenPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CTDVs" Relationship="Self.FK__CTDV__IDDichVu__3B75D760" FromRole="Phong" ToRole="CTDV" />
-          <NavigationProperty Name="Tangs" Relationship="Self.FK__Tang__idPhong__3F466844" FromRole="Phong" ToRole="Tang" />
+          <Property Name="idCosohatangphong" Type="Int32" />
+          <Property Name="idTang" Type="Int32" />
+          <NavigationProperty Name="CoSoHaTangPhong" Relationship="Self.FK__Phong__idTang__3E52440B" FromRole="Phong" ToRole="CoSoHaTangPhong" />
+          <NavigationProperty Name="CTDVs" Relationship="Self.FK__CTDV__IDDichVu__440B1D61" FromRole="Phong" ToRole="CTDV" />
+          <NavigationProperty Name="Tang" Relationship="Self.FK__Phong__idTang__3F466844" FromRole="Phong" ToRole="Tang" />
+          <NavigationProperty Name="ThuePhongs" Relationship="Self.FK__ThuePhong__idKha__656C112C" FromRole="Phong" ToRole="ThuePhong" />
         </EntityType>
         <EntityType Name="Tang">
           <Key>
@@ -591,11 +633,10 @@
           <Property Name="MaTang" Type="Int32" Nullable="false" />
           <Property Name="TenTang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiTang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="idPhong" Type="Int32" />
-          <NavigationProperty Name="CoSoHaTangPhongs" Relationship="Self.FK__CoSoHaTan__idTan__49C3F6B7" FromRole="Tang" ToRole="CoSoHaTangPhong" />
-          <NavigationProperty Name="CoSoHaTangTangs" Relationship="Self.FK__CoSoHaTan__idTan__46E78A0C" FromRole="Tang" ToRole="CoSoHaTangTang" />
-          <NavigationProperty Name="Phong" Relationship="Self.FK__Tang__idPhong__3F466844" FromRole="Tang" ToRole="Phong" />
-          <NavigationProperty Name="ToaNhas" Relationship="Self.FK__ToaNha__idTang__4222D4EF" FromRole="Tang" ToRole="ToaNha" />
+          <Property Name="idCosohatangtang" Type="Int32" />
+          <NavigationProperty Name="CoSoHaTangTang" Relationship="Self.FK__Tang__idCosohata__3B75D760" FromRole="Tang" ToRole="CoSoHaTangTang" />
+          <NavigationProperty Name="Phongs" Relationship="Self.FK__Phong__idTang__3F466844" FromRole="Tang" ToRole="Phong" />
+          <NavigationProperty Name="ToaNhas" Relationship="Self.FK__ToaNha__idTang__47DBAE45" FromRole="Tang" ToRole="ToaNha" />
         </EntityType>
         <EntityType Name="ThanhToanPhongTheoThang">
           <Key>
@@ -618,6 +659,16 @@
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__Thu__idKhachHang__5AEE82B9" FromRole="Thu" ToRole="KHACHHANG" />
           <NavigationProperty Name="Nhanvien" Relationship="Self.FK__Thu__idNhanVien__5BE2A6F2" FromRole="Thu" ToRole="Nhanvien" />
         </EntityType>
+        <EntityType Name="ThuePhong">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idPhong" Type="Int32" />
+          <Property Name="idKhachhang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__ThuePhong__idKha__66603565" FromRole="ThuePhong" ToRole="KHACHHANG" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK__ThuePhong__idKha__656C112C" FromRole="ThuePhong" ToRole="Phong" />
+        </EntityType>
         <EntityType Name="ToaNha">
           <Key>
             <PropertyRef Name="MaToaNha" />
@@ -628,7 +679,7 @@
           <Property Name="NamXayDung" Type="Int32" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="idTang" Type="Int32" />
-          <NavigationProperty Name="Tang" Relationship="Self.FK__ToaNha__idTang__4222D4EF" FromRole="ToaNha" ToRole="Tang" />
+          <NavigationProperty Name="Tang" Relationship="Self.FK__ToaNha__idTang__47DBAE45" FromRole="ToaNha" ToRole="Tang" />
         </EntityType>
         <Association Name="FK__Chi__idKhachHang__5EBF139D">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
@@ -654,7 +705,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nhanvien__IDChuc__5165187F">
+        <Association Name="FK__Nhanvien__IDChuc__4E88ABD4">
           <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
           <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -666,31 +717,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoHaTan__idTan__49C3F6B7">
-          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
-          <End Role="CoSoHaTangPhong" Type="Self.CoSoHaTangPhong" Multiplicity="*" />
+        <Association Name="FK__Phong__idTang__3E52440B">
+          <End Role="CoSoHaTangPhong" Type="Self.CoSoHaTangPhong" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tang">
-              <PropertyRef Name="MaTang" />
+            <Principal Role="CoSoHaTangPhong">
+              <PropertyRef Name="MaCSVCP" />
             </Principal>
-            <Dependent Role="CoSoHaTangPhong">
-              <PropertyRef Name="idTang" />
+            <Dependent Role="Phong">
+              <PropertyRef Name="idCosohatangphong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoHaTan__idTan__46E78A0C">
-          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
-          <End Role="CoSoHaTangTang" Type="Self.CoSoHaTangTang" Multiplicity="*" />
+        <Association Name="FK__Tang__idCosohata__3B75D760">
+          <End Role="CoSoHaTangTang" Type="Self.CoSoHaTangTang" Multiplicity="0..1" />
+          <End Role="Tang" Type="Self.Tang" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tang">
-              <PropertyRef Name="MaTang" />
+            <Principal Role="CoSoHaTangTang">
+              <PropertyRef Name="MaCSVCT" />
             </Principal>
-            <Dependent Role="CoSoHaTangTang">
-              <PropertyRef Name="idTang" />
+            <Dependent Role="Tang">
+              <PropertyRef Name="idCosohatangtang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTDV__IDDichVu__3B75D760">
+        <Association Name="FK__CTDV__IDDichVu__440B1D61">
           <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
           <End Role="CTDV" Type="Self.CTDV" Multiplicity="*" />
           <ReferentialConstraint>
@@ -702,7 +753,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTDV__IDDichVu__3C69FB99">
+        <Association Name="FK__CTDV__IDDichVu__44FF419A">
           <End Role="DV" Type="Self.DV" Multiplicity="0..1" />
           <End Role="CTDV" Type="Self.CTDV" Multiplicity="*" />
           <ReferentialConstraint>
@@ -762,6 +813,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ThuePhong__idKha__66603565">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="ThuePhong">
+              <PropertyRef Name="idKhachhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Luong__idNhanVie__5812160E">
           <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="0..1" />
           <End Role="Luong" Type="Self.Luong" Multiplicity="*" />
@@ -774,15 +837,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nhanvien__IDChuc__5070F446">
-          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
-          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="*" />
+        <Association Name="FK__NguoiDung__idNha__5165187F">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NguoiDung">
-              <PropertyRef Name="ID" />
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="IDNVien" />
             </Principal>
-            <Dependent Role="Nhanvien">
-              <PropertyRef Name="IDNguoiDung" />
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="idNhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -798,19 +861,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tang__idPhong__3F466844">
+        <Association Name="FK__Phong__idTang__3F466844">
+          <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tang">
+              <PropertyRef Name="MaTang" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="idTang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThuePhong__idKha__656C112C">
           <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
-          <End Role="Tang" Type="Self.Tang" Multiplicity="*" />
+          <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Phong">
               <PropertyRef Name="MaPhong" />
             </Principal>
-            <Dependent Role="Tang">
+            <Dependent Role="ThuePhong">
               <PropertyRef Name="idPhong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ToaNha__idTang__4222D4EF">
+        <Association Name="FK__ToaNha__idTang__47DBAE45">
           <End Role="Tang" Type="Self.Tang" Multiplicity="0..1" />
           <End Role="ToaNha" Type="Self.ToaNha" Multiplicity="*" />
           <ReferentialConstraint>
@@ -822,7 +897,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ToaNhaChoThue88888Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ToaNhaChoThue999Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Chis" EntityType="Self.Chi" />
           <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
           <EntitySet Name="CoSoHaTangPhongs" EntityType="Self.CoSoHaTangPhong" />
@@ -838,6 +913,7 @@
           <EntitySet Name="Tangs" EntityType="Self.Tang" />
           <EntitySet Name="ThanhToanPhongTheoThangs" EntityType="Self.ThanhToanPhongTheoThang" />
           <EntitySet Name="Thus" EntityType="Self.Thu" />
+          <EntitySet Name="ThuePhongs" EntityType="Self.ThuePhong" />
           <EntitySet Name="ToaNhas" EntityType="Self.ToaNha" />
           <AssociationSet Name="FK__Chi__idKhachHang__5EBF139D" Association="Self.FK__Chi__idKhachHang__5EBF139D">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
@@ -847,23 +923,23 @@
             <End Role="Nhanvien" EntitySet="Nhanviens" />
             <End Role="Chi" EntitySet="Chis" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nhanvien__IDChuc__5165187F" Association="Self.FK__Nhanvien__IDChuc__5165187F">
+          <AssociationSet Name="FK__Nhanvien__IDChuc__4E88ABD4" Association="Self.FK__Nhanvien__IDChuc__4E88ABD4">
             <End Role="ChucVu" EntitySet="ChucVus" />
             <End Role="Nhanvien" EntitySet="Nhanviens" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoHaTan__idTan__49C3F6B7" Association="Self.FK__CoSoHaTan__idTan__49C3F6B7">
-            <End Role="Tang" EntitySet="Tangs" />
+          <AssociationSet Name="FK__Phong__idTang__3E52440B" Association="Self.FK__Phong__idTang__3E52440B">
             <End Role="CoSoHaTangPhong" EntitySet="CoSoHaTangPhongs" />
+            <End Role="Phong" EntitySet="Phongs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoHaTan__idTan__46E78A0C" Association="Self.FK__CoSoHaTan__idTan__46E78A0C">
-            <End Role="Tang" EntitySet="Tangs" />
+          <AssociationSet Name="FK__Tang__idCosohata__3B75D760" Association="Self.FK__Tang__idCosohata__3B75D760">
             <End Role="CoSoHaTangTang" EntitySet="CoSoHaTangTangs" />
+            <End Role="Tang" EntitySet="Tangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTDV__IDDichVu__3B75D760" Association="Self.FK__CTDV__IDDichVu__3B75D760">
+          <AssociationSet Name="FK__CTDV__IDDichVu__440B1D61" Association="Self.FK__CTDV__IDDichVu__440B1D61">
             <End Role="Phong" EntitySet="Phongs" />
             <End Role="CTDV" EntitySet="CTDVs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTDV__IDDichVu__3C69FB99" Association="Self.FK__CTDV__IDDichVu__3C69FB99">
+          <AssociationSet Name="FK__CTDV__IDDichVu__44FF419A" Association="Self.FK__CTDV__IDDichVu__44FF419A">
             <End Role="DV" EntitySet="DVs" />
             <End Role="CTDV" EntitySet="CTDVs" />
           </AssociationSet>
@@ -883,23 +959,31 @@
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="Thu" EntitySet="Thus" />
           </AssociationSet>
+          <AssociationSet Name="FK__ThuePhong__idKha__66603565" Association="Self.FK__ThuePhong__idKha__66603565">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="ThuePhong" EntitySet="ThuePhongs" />
+          </AssociationSet>
           <AssociationSet Name="FK__Luong__idNhanVie__5812160E" Association="Self.FK__Luong__idNhanVie__5812160E">
             <End Role="Nhanvien" EntitySet="Nhanviens" />
             <End Role="Luong" EntitySet="Luongs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nhanvien__IDChuc__5070F446" Association="Self.FK__Nhanvien__IDChuc__5070F446">
-            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+          <AssociationSet Name="FK__NguoiDung__idNha__5165187F" Association="Self.FK__NguoiDung__idNha__5165187F">
             <End Role="Nhanvien" EntitySet="Nhanviens" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
           </AssociationSet>
           <AssociationSet Name="FK__Thu__idNhanVien__5BE2A6F2" Association="Self.FK__Thu__idNhanVien__5BE2A6F2">
             <End Role="Nhanvien" EntitySet="Nhanviens" />
             <End Role="Thu" EntitySet="Thus" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tang__idPhong__3F466844" Association="Self.FK__Tang__idPhong__3F466844">
-            <End Role="Phong" EntitySet="Phongs" />
+          <AssociationSet Name="FK__Phong__idTang__3F466844" Association="Self.FK__Phong__idTang__3F466844">
             <End Role="Tang" EntitySet="Tangs" />
+            <End Role="Phong" EntitySet="Phongs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ToaNha__idTang__4222D4EF" Association="Self.FK__ToaNha__idTang__4222D4EF">
+          <AssociationSet Name="FK__ThuePhong__idKha__656C112C" Association="Self.FK__ThuePhong__idKha__656C112C">
+            <End Role="Phong" EntitySet="Phongs" />
+            <End Role="ThuePhong" EntitySet="ThuePhongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ToaNha__idTang__47DBAE45" Association="Self.FK__ToaNha__idTang__47DBAE45">
             <End Role="Tang" EntitySet="Tangs" />
             <End Role="ToaNha" EntitySet="ToaNhas" />
           </AssociationSet>
@@ -909,9 +993,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ToaNhaChoThue88888ModelStoreContainer" CdmEntityContainer="ToaNhaChoThue88888Entities">
+        <EntityContainerMapping StorageEntityContainer="ToaNhaChoThue999ModelStoreContainer" CdmEntityContainer="ToaNhaChoThue999Entities">
           <EntitySetMapping Name="Chis">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Chi">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Chi">
               <MappingFragment StoreEntitySet="Chi">
                 <ScalarProperty Name="MaChi" ColumnName="MaChi" />
                 <ScalarProperty Name="SoTien" ColumnName="SoTien" />
@@ -922,7 +1006,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChucVus">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.ChucVu">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.ChucVu">
               <MappingFragment StoreEntitySet="ChucVu">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
@@ -931,27 +1015,25 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoSoHaTangPhongs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.CoSoHaTangPhong">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.CoSoHaTangPhong">
               <MappingFragment StoreEntitySet="CoSoHaTangPhong">
                 <ScalarProperty Name="MaCSVCP" ColumnName="MaCSVCP" />
                 <ScalarProperty Name="TenCSVCP" ColumnName="TenCSVCP" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="idTang" ColumnName="idTang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoSoHaTangTangs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.CoSoHaTangTang">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.CoSoHaTangTang">
               <MappingFragment StoreEntitySet="CoSoHaTangTang">
                 <ScalarProperty Name="MaCSVCT" ColumnName="MaCSVCT" />
                 <ScalarProperty Name="TenCSVCT" ColumnName="TenCSVCT" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="idTang" ColumnName="idTang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTDVs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.CTDV">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.CTDV">
               <MappingFragment StoreEntitySet="CTDV">
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
@@ -961,7 +1043,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DVs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.DV">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.DV">
               <MappingFragment StoreEntitySet="DV">
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="TenDV" ColumnName="TenDV" />
@@ -970,7 +1052,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HopDongs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.HopDong">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.HopDong">
               <MappingFragment StoreEntitySet="HopDong">
                 <ScalarProperty Name="IDHD" ColumnName="IDHD" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -986,7 +1068,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.KHACHHANG">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
                 <ScalarProperty Name="IDKH" ColumnName="IDKH" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
@@ -999,7 +1081,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Luongs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Luong">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Luong">
               <MappingFragment StoreEntitySet="Luong">
                 <ScalarProperty Name="MaLuong" ColumnName="MaLuong" />
                 <ScalarProperty Name="SoTien" ColumnName="SoTien" />
@@ -1008,16 +1090,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.NguoiDung">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
-                <ScalarProperty Name="MaNguoidung" ColumnName="MaNguoidung" />
+                <ScalarProperty Name="idNhanVien" ColumnName="idNhanVien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nhanviens">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Nhanvien">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Nhanvien">
               <MappingFragment StoreEntitySet="Nhanvien">
                 <ScalarProperty Name="IDNVien" ColumnName="IDNVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
@@ -1027,32 +1109,33 @@
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="NgayVaoLam" ColumnName="NgayVaoLam" />
                 <ScalarProperty Name="Luong" ColumnName="Luong" />
-                <ScalarProperty Name="IDNguoiDung" ColumnName="IDNguoiDung" />
                 <ScalarProperty Name="IDChucVu" ColumnName="IDChucVu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Phongs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Phong">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Phong">
               <MappingFragment StoreEntitySet="Phong">
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
                 <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
                 <ScalarProperty Name="TrangThaiPhong" ColumnName="TrangThaiPhong" />
+                <ScalarProperty Name="idCosohatangphong" ColumnName="idCosohatangphong" />
+                <ScalarProperty Name="idTang" ColumnName="idTang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tangs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Tang">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Tang">
               <MappingFragment StoreEntitySet="Tang">
                 <ScalarProperty Name="MaTang" ColumnName="MaTang" />
                 <ScalarProperty Name="TenTang" ColumnName="TenTang" />
                 <ScalarProperty Name="TrangThaiTang" ColumnName="TrangThaiTang" />
-                <ScalarProperty Name="idPhong" ColumnName="idPhong" />
+                <ScalarProperty Name="idCosohatangtang" ColumnName="idCosohatangtang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThanhToanPhongTheoThangs">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.ThanhToanPhongTheoThang">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.ThanhToanPhongTheoThang">
               <MappingFragment StoreEntitySet="ThanhToanPhongTheoThang">
                 <ScalarProperty Name="MaTT" ColumnName="MaTT" />
                 <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
@@ -1061,7 +1144,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Thus">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.Thu">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Thu">
               <MappingFragment StoreEntitySet="Thu">
                 <ScalarProperty Name="MaThu" ColumnName="MaThu" />
                 <ScalarProperty Name="SoTien" ColumnName="SoTien" />
@@ -1071,8 +1154,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ThuePhongs">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.ThuePhong">
+              <MappingFragment StoreEntitySet="ThuePhong">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPhong" ColumnName="idPhong" />
+                <ScalarProperty Name="idKhachhang" ColumnName="idKhachhang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ToaNhas">
-            <EntityTypeMapping TypeName="ToaNhaChoThue88888Model.ToaNha">
+            <EntityTypeMapping TypeName="ToaNhaChoThue999Model.ToaNha">
               <MappingFragment StoreEntitySet="ToaNha">
                 <ScalarProperty Name="MaToaNha" ColumnName="MaToaNha" />
                 <ScalarProperty Name="TenToaNha" ColumnName="TenToaNha" />

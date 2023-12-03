@@ -76,7 +76,7 @@ namespace DACN
             int Machucvu = (int )Cons.Machucvu.TiepTan ;
 
 
-            using (ToaNhaChoThue88888Entities db = new ToaNhaChoThue88888Entities())
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
                 var t = db.NguoiDungs.Where(p => p.ID.Equals(id) && p.Matkhau.Equals(pass));
 
@@ -91,7 +91,7 @@ namespace DACN
                 }
                 else
                 {
-                    MessageBox.Show("Tên đăng nhập or Mật khẩu của bạn chưa đúng");
+                    MessageBox.Show("Tên đăng nhập hoặc Mật khẩu của bạn chưa đúng");
                     return null;
                 }
             }
@@ -103,7 +103,7 @@ namespace DACN
             switch(Machucvu)
             {
                 case (int)Cons.Machucvu.TiepTan :
-                    f = new frmQuanLyThuePhong();
+                    f = new frmQuanLyToaNha();
                     break;
 
                 case (int)Cons.Machucvu.KeToan:
@@ -122,14 +122,23 @@ namespace DACN
 
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
 
         private void frmDangnhap_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+               
+                this.Close();
+                
+
+            }
+            
         }
     }
 }

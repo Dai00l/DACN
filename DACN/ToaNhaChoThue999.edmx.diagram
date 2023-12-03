@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d68e14f0a114cb5b32b398169b65702" Name="Diagram1">
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Chi" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.ChucVu" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.CoSoHaTangPhong" Width="1.5" PointX="13" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.CoSoHaTangTang" Width="1.5" PointX="10.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.CTDV" Width="1.5" PointX="17.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.DV" Width="1.5" PointX="15.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.HopDong" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.KHACHHANG" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Luong" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.NguoiDung" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Nhanvien" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Phong" Width="1.5" PointX="15.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Tang" Width="1.5" PointX="13" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.ThanhToanPhongTheoThang" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.Thu" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.ThuePhong" Width="1.5" PointX="17.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToaNhaChoThue999Model.ToaNha" Width="1.5" PointX="15.25" PointY="17.5" IsExpanded="true" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Chi__idKhachHang__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Chi__idNhanVien__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Nhanvien__IDChuc__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Phong__idTang__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Tang__idCosohata__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__CTDV__IDDichVu__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__CTDV__IDDichVu__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__HopDong__IDKhach__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__HopDong__IDKhach__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__ThanhToan__idHop__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Thu__idKhachHang__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__ThuePhong__idKha__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Luong__idNhanVie__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__NguoiDung__idNha__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Thu__idNhanVien__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__Phong__idTang__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__ThuePhong__idKha__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="ToaNhaChoThue999Model.FK__ToaNha__idTang__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

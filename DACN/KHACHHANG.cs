@@ -20,6 +20,7 @@ namespace DACN
             this.Chis = new HashSet<Chi>();
             this.HopDongs = new HashSet<HopDong>();
             this.Thus = new HashSet<Thu>();
+            this.ThuePhongs = new HashSet<ThuePhong>();
         }
     
         public string IDKH { get; set; }
@@ -36,5 +37,7 @@ namespace DACN
         public virtual ICollection<HopDong> HopDongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Thu> Thus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuePhong> ThuePhongs { get; set; }
     }
 }

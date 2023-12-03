@@ -13,10 +13,10 @@ namespace DACN
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ToaNhaChoThue88888Entities : DbContext
+    public partial class ToaNhaChoThue999Entities : DbContext
     {
-        public ToaNhaChoThue88888Entities()
-            : base("name=ToaNhaChoThue88888Entities")
+        public ToaNhaChoThue999Entities()
+            : base("name=ToaNhaChoThue999Entities")
         {
         }
     
@@ -40,6 +40,7 @@ namespace DACN
         public virtual DbSet<Tang> Tangs { get; set; }
         public virtual DbSet<ThanhToanPhongTheoThang> ThanhToanPhongTheoThangs { get; set; }
         public virtual DbSet<Thu> Thus { get; set; }
+        public virtual DbSet<ThuePhong> ThuePhongs { get; set; }
         public virtual DbSet<ToaNha> ToaNhas { get; set; }
     }
 }

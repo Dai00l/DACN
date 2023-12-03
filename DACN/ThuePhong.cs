@@ -12,12 +12,13 @@ namespace DACN
     using System;
     using System.Collections.Generic;
     
-    public partial class NguoiDung
+    public partial class ThuePhong
     {
-        public string ID { get; set; }
-        public string Matkhau { get; set; }
-        public string idNhanVien { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idPhong { get; set; }
+        public string idKhachhang { get; set; }
     
-        public virtual Nhanvien Nhanvien { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual Phong Phong { get; set; }
     }
 }

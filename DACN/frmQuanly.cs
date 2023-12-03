@@ -30,11 +30,21 @@ namespace DACN
 
         private void quảnLýThuêToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmQuanLyThuePhong f = new frmQuanLyThuePhong();
+            frmQuanLyToaNha f = new frmQuanLyToaNha();
             f.ShowDialog();
         }
 
         private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

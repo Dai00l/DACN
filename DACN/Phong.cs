@@ -18,16 +18,20 @@ namespace DACN
         public Phong()
         {
             this.CTDVs = new HashSet<CTDV>();
-            this.Tangs = new HashSet<Tang>();
+            this.ThuePhongs = new HashSet<ThuePhong>();
         }
     
         public int MaPhong { get; set; }
         public string TenPhong { get; set; }
         public string TrangThaiPhong { get; set; }
+        public Nullable<int> idCosohatangphong { get; set; }
+        public Nullable<int> idTang { get; set; }
     
+        public virtual CoSoHaTangPhong CoSoHaTangPhong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDV> CTDVs { get; set; }
+        public virtual Tang Tang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tang> Tangs { get; set; }
+        public virtual ICollection<ThuePhong> ThuePhongs { get; set; }
     }
 }

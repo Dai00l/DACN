@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace DACN
 {
-    public partial class frmQuanLyThuePhong : Form
+    public partial class frmQuanLyToaNha : Form
     {
-        public frmQuanLyThuePhong()
+        public frmQuanLyToaNha()
         {
             InitializeComponent();
             tmiTenNhanVien.Text = Cons.Cons.LoginNhanVien.HoTen;
-            LoadPhong(dtgvTang);
+           // LoadPhong(dtgvTang);
         }
 
         private void thôngTinNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,11 +58,18 @@ namespace DACN
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cons.Cons.LoginNhanVien = null;
-            this.Close();
+            
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất ?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                frmDangnhap frm = new frmDangnhap();
+                this.Close();
+                frm.ShowDialog();
+
+            }
         }
-        void LoadPhong(DataGridView dtgv)
+       /* void LoadPhong(DataGridView dtgv)
         {
-            using (ToaNhaChoThue88888Entities db = new ToaNhaChoThue88888Entities())
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
                 var source = from t in db.Tangs
                              select new
@@ -78,6 +85,6 @@ namespace DACN
             
 
 
-        }
+        }*/
     }
 }

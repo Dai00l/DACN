@@ -20,6 +20,7 @@ namespace DACN
             this.Chis = new HashSet<Chi>();
             this.HopDongs = new HashSet<HopDong>();
             this.Luongs = new HashSet<Luong>();
+            this.NguoiDungs = new HashSet<NguoiDung>();
             this.Thus = new HashSet<Thu>();
         }
     
@@ -31,7 +32,6 @@ namespace DACN
         public string SoDienThoai { get; set; }
         public Nullable<System.DateTime> NgayVaoLam { get; set; }
         public Nullable<decimal> Luong { get; set; }
-        public string IDNguoiDung { get; set; }
         public Nullable<int> IDChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -41,7 +41,8 @@ namespace DACN
         public virtual ICollection<HopDong> HopDongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Luong> Luongs { get; set; }
-        public virtual NguoiDung NguoiDung { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NguoiDung> NguoiDungs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Thu> Thus { get; set; }
     }

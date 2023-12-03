@@ -21,7 +21,6 @@ E:\DAJAVA\DACN\DACN\obj\Debug\DACN.csproj.AssemblyReference.cache
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.csproj.SuggestedBindingRedirects.cache
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmQuanly.resources
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmThongKe.resources
-E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmQuanLyThuePhong.resources
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmDangnhap.resources
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.Properties.Resources.resources
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.csproj.GenerateResource.cache
@@ -36,3 +35,4 @@ E:\DAJAVA\DACN\DACN\bin\Debug\EntityFramework.SqlServer.dll
 E:\DAJAVA\DACN\DACN\bin\Debug\EntityFramework.xml
 E:\DAJAVA\DACN\DACN\bin\Debug\EntityFramework.SqlServer.xml
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.csproj.CopyComplete
+E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmQuanLyToaNha.resources

@@ -17,21 +17,18 @@ namespace DACN
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tang()
         {
-            this.CoSoHaTangPhongs = new HashSet<CoSoHaTangPhong>();
-            this.CoSoHaTangTangs = new HashSet<CoSoHaTangTang>();
+            this.Phongs = new HashSet<Phong>();
             this.ToaNhas = new HashSet<ToaNha>();
         }
     
         public int MaTang { get; set; }
         public string TenTang { get; set; }
         public string TrangThaiTang { get; set; }
-        public Nullable<int> idPhong { get; set; }
+        public Nullable<int> idCosohatangtang { get; set; }
     
+        public virtual CoSoHaTangTang CoSoHaTangTang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CoSoHaTangPhong> CoSoHaTangPhongs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CoSoHaTangTang> CoSoHaTangTangs { get; set; }
-        public virtual Phong Phong { get; set; }
+        public virtual ICollection<Phong> Phongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToaNha> ToaNhas { get; set; }
     }

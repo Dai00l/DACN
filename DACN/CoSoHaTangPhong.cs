@@ -14,11 +14,17 @@ namespace DACN
     
     public partial class CoSoHaTangPhong
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CoSoHaTangPhong()
+        {
+            this.Phongs = new HashSet<Phong>();
+        }
+    
         public int MaCSVCP { get; set; }
         public string TenCSVCP { get; set; }
         public Nullable<decimal> Gia { get; set; }
-        public Nullable<int> idTang { get; set; }
     
-        public virtual Tang Tang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Phong> Phongs { get; set; }
     }
 }
