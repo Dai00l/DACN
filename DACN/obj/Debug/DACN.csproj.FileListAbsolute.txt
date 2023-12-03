@@ -36,3 +36,63 @@ E:\DAJAVA\DACN\DACN\bin\Debug\EntityFramework.xml
 E:\DAJAVA\DACN\DACN\bin\Debug\EntityFramework.SqlServer.xml
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.csproj.CopyComplete
 E:\DAJAVA\DACN\DACN\obj\Debug\DACN.frmQuanLyToaNha.resources
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\DACN.exe.config
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\DACN.exe
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\DACN.pdb
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\EntityFramework.dll
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.dll
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\EntityFramework.xml
+C:\DA Cơ Sở\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.xml
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.csproj.AssemblyReference.cache
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.csproj.SuggestedBindingRedirects.cache
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.frmQuanly.resources
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.frmThongKe.resources
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.frmQuanLyToaNha.resources
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.frmDangnhap.resources
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.Properties.Resources.resources
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.csproj.GenerateResource.cache
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.csproj.CoreCompileInputs.cache
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.csproj.CopyComplete
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.exe
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.pdb
+C:\DA Cơ Sở\DACN2\DACN\obj\Debug\DACN.frmThemNhanVien.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\DACN.exe.config
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\DACN.exe
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\DACN.pdb
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\EntityFramework.dll
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.dll
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\EntityFramework.xml
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.xml
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.csproj.AssemblyReference.cache
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.csproj.SuggestedBindingRedirects.cache
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.frmQuanly.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.frmThemNhanVien.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.frmThongKe.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.frmQuanLyToaNha.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.frmDangnhap.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.Properties.Resources.resources
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.csproj.GenerateResource.cache
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.csproj.CoreCompileInputs.cache
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.csproj.CopyComplete
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.exe
+C:\DA Cơ Sở\DACN2 (2)\DACN2\DACN\obj\Debug\DACN.pdb
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\DACN.exe.config
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\DACN.exe
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\DACN.pdb
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\EntityFramework.dll
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\EntityFramework.xml
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.csproj.AssemblyReference.cache
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.csproj.SuggestedBindingRedirects.cache
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.frmQuanly.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.frmThemNhanVien.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.frmThongKe.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.frmQuanLyToaNha.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.frmDangnhap.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.Properties.Resources.resources
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.csproj.GenerateResource.cache
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.csproj.CoreCompileInputs.cache
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.csproj.CopyComplete
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.exe
+C:\Users\vinhb\Desktop\DACN2\DACN2\DACN\obj\Debug\DACN.pdb

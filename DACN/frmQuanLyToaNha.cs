@@ -51,8 +51,22 @@ namespace DACN
 
         private void frmQuanLyThuePhong_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet3_Phong.Phong' table. You can move, or remove it, as needed.
+            this.phongTableAdapter.Fill(this.toaNhaChoThue999DataSet3_Phong.Phong);
+            // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet1.CoSoHaTangTang' table. You can move, or remove it, as needed.
+            this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
+            // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet.Tang' table. You can move, or remove it, as needed.
+            this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
             // Binding bd = new Binding("Text", Cons.Cons.LoginNhanVien, "Ten", true,DataSourceUpdateMode.OnPropertyChanged);
-           
+
+
+
+
+
+
+
+
+
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,29 +76,21 @@ namespace DACN
             if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất ?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 frmDangnhap frm = new frmDangnhap();
+                
+                //frm.ShowDialog();
                 this.Close();
-                frm.ShowDialog();
 
             }
         }
-       /* void LoadPhong(DataGridView dtgv)
+
+        private void tpPhong_Click(object sender, EventArgs e)
         {
-            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
-            {
-                var source = from t in db.Tangs
-                             select new
-                             {
-                                 Tầng = t.TenTang,
-                                 Trạng_Thái_Tầng = t.TrangThaiTang,
-                                 Cơ_Sở_Hạ_Tầng = t.CoSoHaTangTangs
 
-                             };
+        }
 
-                        dtgv.DataSource = source.ToList();
-            }
-            
+        private void ToaA_Click(object sender, EventArgs e)
+        {
 
-
-        }*/
+        }
     }
 }

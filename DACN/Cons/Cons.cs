@@ -13,7 +13,7 @@ namespace DACN.Cons
     public enum Machucvu
     {
         TiepTan =1,
-        Quanly,
-        KeToan,
+        Quanly =2,
+        KeToan =3 ,
     }
 }
