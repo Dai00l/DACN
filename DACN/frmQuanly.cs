@@ -252,9 +252,9 @@ namespace DACN
         }
         public void load_data()
         {
-            string sqlt = "select * from Nhanvien";
 
 
+            //Todo
             //List<Nhanvien> listEmployees = db.Nhanviens.ToList();
             List<Nhanvien> lstNhanVien = db.Nhanviens.ToList();
             dgvNhanVien.DataSource = null;
