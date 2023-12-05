@@ -92,5 +92,17 @@ namespace DACN
         {
 
         }
+
+        private void QLKH_Click(object sender, EventArgs e)
+        {
+            frmQuanlykhachhang f = new frmQuanlykhachhang();
+            f.ShowDialog();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmThongKe f = new frmThongKe();     
+            f.ShowDialog();
+        }
     }
 }

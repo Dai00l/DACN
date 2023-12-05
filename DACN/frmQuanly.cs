@@ -167,6 +167,8 @@ namespace DACN
 
         private void frmQuanly_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet4_DichVu.DV' table. You can move, or remove it, as needed.
+            this.dVTableAdapter.Fill(this.toaNhaChoThue999DataSet4_DichVu.DV);
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet2.Nhanvien' table. You can move, or remove it, as needed.
             this.nhanvienTableAdapter.Fill(this.toaNhaChoThue999DataSet2.Nhanvien);
 
@@ -195,7 +197,7 @@ namespace DACN
 
             if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin");
                 return;
             }
 
