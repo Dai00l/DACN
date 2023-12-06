@@ -1,0 +1,9 @@
+D:\GitHub\DACN\DAL\bin\Debug\DAL.exe.config
+D:\GitHub\DACN\DAL\bin\Debug\DAL.exe
+D:\GitHub\DACN\DAL\bin\Debug\DAL.pdb
+D:\GitHub\DACN\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\GitHub\DACN\DAL\obj\Debug\DAL.Properties.Resources.resources
+D:\GitHub\DACN\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+D:\GitHub\DACN\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\GitHub\DACN\DAL\obj\Debug\DAL.exe
+D:\GitHub\DACN\DAL\obj\Debug\DAL.pdb
