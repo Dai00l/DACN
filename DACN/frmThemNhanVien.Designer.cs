@@ -197,7 +197,7 @@
             this.btnCapNhatNV.Name = "btnCapNhatNV";
             this.btnCapNhatNV.Size = new System.Drawing.Size(114, 55);
             this.btnCapNhatNV.TabIndex = 127;
-            this.btnCapNhatNV.Text = "Cập Nhật";
+            this.btnCapNhatNV.Text = "Thêm";
             this.btnCapNhatNV.UseVisualStyleBackColor = true;
             this.btnCapNhatNV.Click += new System.EventHandler(this.btnCapNhatNV_Click_1);
             // 

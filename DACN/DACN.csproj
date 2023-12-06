@@ -74,11 +74,23 @@
     <Compile Include="DV.cs">
       <DependentUpon>ToaNhaChoThue999.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmThemKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemKhachHang.Designer.cs">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuanly.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmQuanly.Designer.cs">
       <DependentUpon>frmQuanly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanlykhachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanlykhachhang.Designer.cs">
+      <DependentUpon>frmQuanlykhachhang.cs</DependentUpon>
     </Compile>
     <Compile Include="frmThemNhanVien.cs">
       <SubType>Form</SubType>
@@ -175,6 +187,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ToaNhaChoThue999DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ToaNhaChoThue999DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToaNhaChoThue999DataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ToaNhaChoThue999DataSet3_Phong.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,6 +199,12 @@
     </Compile>
     <EmbeddedResource Include="frmQuanly.resx">
       <DependentUpon>frmQuanly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanlykhachhang.resx">
+      <DependentUpon>frmQuanlykhachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemKhachHang.resx">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThemNhanVien.resx">
       <DependentUpon>frmThemNhanVien.cs</DependentUpon>
@@ -253,6 +276,17 @@
     </None>
     <None Include="ToaNhaChoThue999DataSet2.xss">
       <DependentUpon>ToaNhaChoThue999DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet3.xsc">
+      <DependentUpon>ToaNhaChoThue999DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToaNhaChoThue999DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet3.xss">
+      <DependentUpon>ToaNhaChoThue999DataSet3.xsd</DependentUpon>
     </None>
     <None Include="ToaNhaChoThue999DataSet3_Phong.xsc">
       <DependentUpon>ToaNhaChoThue999DataSet3_Phong.xsd</DependentUpon>

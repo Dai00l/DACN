@@ -1,20 +1,15 @@
-﻿using DACN.Cons;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Data.Entity.Migrations;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DACN
 {
@@ -22,14 +17,52 @@ namespace DACN
     {
         private ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities();
         DataGridViewRow row = new DataGridViewRow();
-        SqlConnection conn = new SqlConnection("Data Source=VJNKDUCKBUILD\\SQLEXPRESS;Initial Catalog=ToaNhaChoThue88888;Integrated Security=True");
+
         public frmQuanly()
         {
             InitializeComponent();
             load_data();
         }
 
-        private void XoaNv(int idChucVu, string idNv)
+
+
+
+        public void load_data()
+        {
+            var lstNhanVien = db.Nhanviens.ToList();
+            dgvNhanVien.DataSource = null;
+            dgvNhanVien.Rows.Clear();
+
+
+
+
+            foreach (var item in lstNhanVien)
+            {
+                int index = dgvNhanVien.Rows.Add();
+                dgvNhanVien.Rows[index].Cells[0].Value = item.IDNVien;
+
+                dgvNhanVien.Rows[index].Cells[1].Value = item.HoTen;
+                dgvNhanVien.Rows[index].Cells[2].Value = item.DiaChi;
+                dgvNhanVien.Rows[index].Cells[3].Value = item.Email;
+                // dgvNhanVien.Rows[index].Cells[].Value = item.NgaySinh.Value.ToShortDateString();
+                if (item.GioiTinh == "1") // So sánh với chuỗi "1"
+                {
+                    dgvNhanVien.Rows[index].Cells[4].Value = "Nam";
+                }
+                else
+                {
+                    dgvNhanVien.Rows[index].Cells[4].Value = "Nữ";
+                }
+
+                dgvNhanVien.Rows[index].Cells[5].Value = item.SoDienThoai;
+                dgvNhanVien.Rows[index].Cells[8].Value = item.IDChucVu;
+                dgvNhanVien.Rows[index].Cells[7].Value = item.Luong;
+                dgvNhanVien.Rows[index].Cells[6].Value = item.NgayVaoLam.Value.ToShortDateString();
+                // dgvNhanVien.Rows[index].Cells[1].Value = item.TaiKhoan;
+            }
+        }
+
+        private void XoaNv(string hoTen, string eMail, string gioiTinh, string sDt, string diaChi, int idChucVu, DateTime ngayVaolam, string idNv,string luong)
         {
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
@@ -77,11 +110,9 @@ namespace DACN
                     nv.Luong = Convert.ToDecimal(luong);
 
                     // Lưu thay đổi vào cơ sở dữ liệu
-
-                    db.Nhanviens.AddOrUpdate(nv);
-                    db.SaveChangesAsync();
+                    
+                    db.SaveChanges();
                     load_data();
-                    //load_data();
 
                     // Thông báo thành công
                     MessageBox.Show("Cập nhật nhân viên thành công");
@@ -136,6 +167,8 @@ namespace DACN
 
         private void frmQuanly_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet4_DichVu.DV' table. You can move, or remove it, as needed.
+            this.dVTableAdapter.Fill(this.toaNhaChoThue999DataSet4_DichVu.DV);
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet2.Nhanvien' table. You can move, or remove it, as needed.
             this.nhanvienTableAdapter.Fill(this.toaNhaChoThue999DataSet2.Nhanvien);
 
@@ -148,15 +181,28 @@ namespace DACN
 
         private void btnXoaNv_Click(object sender, EventArgs e)
         {
-
+            string hoTen = txtName.Text;
+            string eMail = txtEmail.Text;
+            string gioiTinh = txtGioitinh.Text;
+            string sDt = txtSDT.Text;
+            string diaChi = txtAddress.Text;
+            string luong = txtLuong.Text;
+            DateTime ngayVaolam = dtpNgayvaolam.Value;
             string idNv = txtIDNv.Text;
 
             // Lấy IDChucVu từ combobox hoặc từ nguồn dữ liệu khác
             int idChucVu = GetSelectedChucVuID(); // Hàm này cần được triển khai
 
+            // Kiểm tra thông tin có hợp lệ không
+
+            if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi))
+            {
+                MessageBox.Show("Vui lòng chọn đầy đủ thông tin");
+                return;
+            }
 
             // Thêm nhân viên vào cơ sở dữ liệu
-            XoaNv(idChucVu, idNv);
+            XoaNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
 
             // Thông báo thành công
             MessageBox.Show("Xóa nhân viên thành công");
@@ -165,7 +211,7 @@ namespace DACN
             //this.Close();
         }
 
-
+    
 
         private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -184,7 +230,7 @@ namespace DACN
                 txtGioitinh.Text = dgvNhanVien.Rows[e.RowIndex].Cells["genderEmployee"].Value?.ToString();
                 txtSDT.Text = dgvNhanVien.Rows[e.RowIndex].Cells["phoneEmployee"].Value?.ToString();
                 dtpNgayvaolam.Text = dgvNhanVien.Rows[e.RowIndex].Cells["dateStart"].Value?.ToString();
-                txtLuong.Text = dgvNhanVien.Rows[e.RowIndex].Cells["salary"].Value?.ToString();
+                txtLuong.Text = dgvNhanVien.Rows[e.RowIndex].Cells["salary"].Value?.ToString();         
                 txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["postitionEmployee"].Value?.ToString();
             }
 
@@ -243,45 +289,9 @@ namespace DACN
             }
 
             // Cập nhật nhân viên trong cơ sở dữ liệu
-
             CapNhatNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
-            load_data();
-            dgvNhanVien.Update();
+
             dgvNhanVien.Refresh();
-
-        }
-        public void load_data()
-        {
-
-
-            //Todo
-            //List<Nhanvien> listEmployees = db.Nhanviens.ToList();
-            List<Nhanvien> lstNhanVien = db.Nhanviens.ToList();
-            dgvNhanVien.DataSource = null;
-            dgvNhanVien.Rows.Clear();
-            foreach (var item in lstNhanVien)
-            {
-                int index = dgvNhanVien.Rows.Add();
-                dgvNhanVien.Rows[index].Cells[0].Value = item.IDNVien;
-                dgvNhanVien.Rows[index].Cells[1].Value = item.HoTen;
-                dgvNhanVien.Rows[index].Cells[2].Value = item.DiaChi;
-                dgvNhanVien.Rows[index].Cells[3].Value = item.Email;
-                // dgvNhanVien.Rows[index].Cells[].Value = item.NgaySinh.Value.ToShortDateString();
-                if (item.GioiTinh == "1") // So sánh với chuỗi "1"
-                {
-                    dgvNhanVien.Rows[index].Cells[4].Value = "Nam";
-                }
-                else
-                {
-                    dgvNhanVien.Rows[index].Cells[4].Value = "Nữ";
-                }
-
-                dgvNhanVien.Rows[index].Cells[5].Value = item.SoDienThoai;
-                dgvNhanVien.Rows[index].Cells[8].Value = item.IDChucVu;
-                dgvNhanVien.Rows[index].Cells[7].Value = item.Luong;
-                dgvNhanVien.Rows[index].Cells[6].Value = item.NgayVaoLam.Value.ToShortDateString();
-                // dgvNhanVien.Rows[index].Cells[1].Value = item.TaiKhoan;
-            }
         }
 
         private void txtGioitinh_TextChanged(object sender, EventArgs e)
@@ -290,6 +300,6 @@ namespace DACN
         }
     }
 }
-
+    
 
 
