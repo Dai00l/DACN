@@ -20,10 +20,36 @@ namespace DACN
 
         public frmQuanly()
         {
+         
             InitializeComponent();
             load_data();
         }
 
+        private int GetSelectedRow(string nhanVienId)
+        {
+            for (int i = 0; i < dgvNhanVien.Rows.Count; i++)
+            {
+                if (dgvNhanVien.Rows[i].Cells[0].Value.ToString() == nhanVienId)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private void InsertUpdate(int selectedRow)
+        {
+            dgvNhanVien.Rows[selectedRow].Cells[0].Value = txtIDNv.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[1].Value = txtName.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[2].Value = txtAddress.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[3].Value = txtEmail.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[4].Value = txtGioitinh.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[8].Value = txtSDT.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[5].Value = dtpNgayvaolam.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[6].Value = txtLuong.Text;
+            dgvNhanVien.Rows[selectedRow].Cells[7].Value = txtChucvu.Text;
+            
+        }
 
 
 
@@ -60,6 +86,7 @@ namespace DACN
                 dgvNhanVien.Rows[index].Cells[6].Value = item.NgayVaoLam.Value.ToShortDateString();
                 // dgvNhanVien.Rows[index].Cells[1].Value = item.TaiKhoan;
             }
+            dgvNhanVien.DataSource = lstNhanVien;
         }
 
         private void XoaNv(string hoTen, string eMail, string gioiTinh, string sDt, string diaChi, int idChucVu, DateTime ngayVaolam, string idNv,string luong)
@@ -115,6 +142,8 @@ namespace DACN
                     load_data();
 
                     // Thông báo thành công
+                    int selectedRow = GetSelectedRow(txtIDNv.Text);
+                    InsertUpdate(selectedRow);
                     MessageBox.Show("Cập nhật nhân viên thành công");
                 }
                 else
@@ -292,6 +321,7 @@ namespace DACN
             CapNhatNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
 
             dgvNhanVien.Refresh();
+           
         }
 
         private void txtGioitinh_TextChanged(object sender, EventArgs e)

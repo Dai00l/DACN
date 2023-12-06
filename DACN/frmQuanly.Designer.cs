@@ -94,14 +94,14 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toaNhaChoThue88888DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nhanvienTableAdapter = new DACN.ToaNhaChoThue999DataSet2TableAdapters.NhanvienTableAdapter();
-            this.toaNhaChoThue999DataSet4_DichVu = new DACN.ToaNhaChoThue999DataSet4_DichVu();
-            this.dVBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dVTableAdapter = new DACN.ToaNhaChoThue999DataSet4_DichVuTableAdapters.DVTableAdapter();
             this.maDVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenDVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dVBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toaNhaChoThue999DataSet4_DichVu = new DACN.ToaNhaChoThue999DataSet4_DichVu();
+            this.toaNhaChoThue88888DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nhanvienTableAdapter = new DACN.ToaNhaChoThue999DataSet2TableAdapters.NhanvienTableAdapter();
+            this.dVTableAdapter = new DACN.ToaNhaChoThue999DataSet4_DichVuTableAdapters.DVTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbNhansu.SuspendLayout();
@@ -114,9 +114,9 @@
             this.tbDichvu.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue88888DataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet4_DichVu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dVBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet4_DichVu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue88888DataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -132,7 +132,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1220, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1220, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -140,33 +140,33 @@
             // tổngQuanToolStripMenuItem
             // 
             this.tổngQuanToolStripMenuItem.Name = "tổngQuanToolStripMenuItem";
-            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
             this.tổngQuanToolStripMenuItem.Text = "Tổng quan";
             // 
             // quảnLýNhânViênToolStripMenuItem
             // 
             this.quảnLýNhânViênToolStripMenuItem.Name = "quảnLýNhânViênToolStripMenuItem";
-            this.quảnLýNhânViênToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.quảnLýNhânViênToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.quảnLýNhânViênToolStripMenuItem.Text = "Quản lý nhân viên";
             // 
             // thốngKêBáoCáoToolStripMenuItem
             // 
             this.thốngKêBáoCáoToolStripMenuItem.Name = "thốngKêBáoCáoToolStripMenuItem";
-            this.thốngKêBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.thốngKêBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.thốngKêBáoCáoToolStripMenuItem.Text = "Thống kê báo cáo";
             this.thốngKêBáoCáoToolStripMenuItem.Click += new System.EventHandler(this.thốngKêBáoCáoToolStripMenuItem_Click);
             // 
             // quảnLýThuêToolStripMenuItem
             // 
             this.quảnLýThuêToolStripMenuItem.Name = "quảnLýThuêToolStripMenuItem";
-            this.quảnLýThuêToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.quảnLýThuêToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.quảnLýThuêToolStripMenuItem.Text = "Quản lý thuê phòng";
             this.quảnLýThuêToolStripMenuItem.Click += new System.EventHandler(this.quảnLýThuêToolStripMenuItem_Click);
             // 
             // dịchVụToolStripMenuItem
             // 
             this.dịchVụToolStripMenuItem.Name = "dịchVụToolStripMenuItem";
-            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.dịchVụToolStripMenuItem.Text = "Dịch vụ";
             // 
             // tabControl1
@@ -446,7 +446,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(1137, 503);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(44, 39);
             this.pictureBox4.TabIndex = 13;
@@ -505,6 +505,7 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowHeadersWidth = 51;
             this.dgvNhanVien.RowTemplate.Height = 24;
+            this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(1175, 238);
             this.dgvNhanVien.TabIndex = 18;
             this.dgvNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
@@ -782,24 +783,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(426, 368);
             this.dataGridView1.TabIndex = 23;
             // 
-            // nhanvienTableAdapter
-            // 
-            this.nhanvienTableAdapter.ClearBeforeFill = true;
-            // 
-            // toaNhaChoThue999DataSet4_DichVu
-            // 
-            this.toaNhaChoThue999DataSet4_DichVu.DataSetName = "ToaNhaChoThue999DataSet4_DichVu";
-            this.toaNhaChoThue999DataSet4_DichVu.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dVBindingSource
-            // 
-            this.dVBindingSource.DataMember = "DV";
-            this.dVBindingSource.DataSource = this.toaNhaChoThue999DataSet4_DichVu;
-            // 
-            // dVTableAdapter
-            // 
-            this.dVTableAdapter.ClearBeforeFill = true;
-            // 
             // maDVDataGridViewTextBoxColumn
             // 
             this.maDVDataGridViewTextBoxColumn.DataPropertyName = "MaDV";
@@ -823,6 +806,24 @@
             this.giaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.giaDataGridViewTextBoxColumn.Name = "giaDataGridViewTextBoxColumn";
             this.giaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dVBindingSource
+            // 
+            this.dVBindingSource.DataMember = "DV";
+            this.dVBindingSource.DataSource = this.toaNhaChoThue999DataSet4_DichVu;
+            // 
+            // toaNhaChoThue999DataSet4_DichVu
+            // 
+            this.toaNhaChoThue999DataSet4_DichVu.DataSetName = "ToaNhaChoThue999DataSet4_DichVu";
+            this.toaNhaChoThue999DataSet4_DichVu.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // nhanvienTableAdapter
+            // 
+            this.nhanvienTableAdapter.ClearBeforeFill = true;
+            // 
+            // dVTableAdapter
+            // 
+            this.dVTableAdapter.ClearBeforeFill = true;
             // 
             // frmQuanly
             // 
@@ -857,9 +858,9 @@
             this.tbDichvu.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue88888DataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet4_DichVu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dVBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet4_DichVu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue88888DataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
