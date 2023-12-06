@@ -118,6 +118,13 @@ C:\Users\my LAP\Source\Repos\Dai00l\DACN\DACN\obj\Debug\DACN.exe
 C:\Users\my LAP\Source\Repos\Dai00l\DACN\DACN\obj\Debug\DACN.pdb
 C:\Users\my LAP\source\repos\Dai00l\DACN\DACN\obj\Debug\DACN.frmQuanlykhachhang.resources
 C:\Users\my LAP\source\repos\Dai00l\DACN\DACN\obj\Debug\DACN.frmThemKhachHang.resources
+D:\GitHub\DACN\DACN\bin\Debug\DACN.exe.config
+D:\GitHub\DACN\DACN\bin\Debug\DACN.exe
+D:\GitHub\DACN\DACN\bin\Debug\DACN.pdb
+D:\GitHub\DACN\DACN\bin\Debug\EntityFramework.dll
+D:\GitHub\DACN\DACN\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\DACN\DACN\bin\Debug\EntityFramework.xml
+D:\GitHub\DACN\DACN\bin\Debug\EntityFramework.SqlServer.xml
 D:\GitHub\DACN\DACN\obj\Debug\DACN.csproj.AssemblyReference.cache
 D:\GitHub\DACN\DACN\obj\Debug\DACN.frmQuanly.resources
 D:\GitHub\DACN\DACN\obj\Debug\DACN.frmQuanlykhachhang.resources
@@ -129,5 +136,6 @@ D:\GitHub\DACN\DACN\obj\Debug\DACN.frmDangnhap.resources
 D:\GitHub\DACN\DACN\obj\Debug\DACN.Properties.Resources.resources
 D:\GitHub\DACN\DACN\obj\Debug\DACN.csproj.GenerateResource.cache
 D:\GitHub\DACN\DACN\obj\Debug\DACN.csproj.CoreCompileInputs.cache
+D:\GitHub\DACN\DACN\obj\Debug\DACN.csproj.CopyComplete
 D:\GitHub\DACN\DACN\obj\Debug\DACN.exe
 D:\GitHub\DACN\DACN\obj\Debug\DACN.pdb

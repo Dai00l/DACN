@@ -197,6 +197,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ToaNhaChoThue999DataSet3_Phong.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ToaNhaChoThue999DataSet4_DichVu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToaNhaChoThue999DataSet4_DichVu.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmQuanly.resx">
       <DependentUpon>frmQuanly.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +303,17 @@
     </None>
     <None Include="ToaNhaChoThue999DataSet3_Phong.xss">
       <DependentUpon>ToaNhaChoThue999DataSet3_Phong.xsd</DependentUpon>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet4_DichVu.xsc">
+      <DependentUpon>ToaNhaChoThue999DataSet4_DichVu.xsd</DependentUpon>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet4_DichVu.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToaNhaChoThue999DataSet4_DichVu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ToaNhaChoThue999DataSet4_DichVu.xss">
+      <DependentUpon>ToaNhaChoThue999DataSet4_DichVu.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
