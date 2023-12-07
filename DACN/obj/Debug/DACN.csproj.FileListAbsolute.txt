@@ -162,3 +162,4 @@ C:\Users\PC\Desktop\DACN\DACN\obj\Debug\DACN.csproj.CopyComplete
 C:\Users\PC\Desktop\DACN\DACN\obj\Debug\DACN.exe
 C:\Users\PC\Desktop\DACN\DACN\obj\Debug\DACN.pdb
 C:\Users\PC\Desktop\DACN\DACN\obj\Debug\DACN.frmDoiMatKhau.resources
+D:\GitHub\DACN\DACN\obj\Debug\DACN.frmDoiMatKhau.resources

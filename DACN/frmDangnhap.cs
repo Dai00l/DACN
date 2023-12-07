@@ -103,7 +103,7 @@ namespace DACN
             switch(Machucvu)
             {
                 case (int)Cons.Machucvu.TiepTan :
-                    f = new frmQuanLyToaNha();
+                    f = new frmQuanLyToaNha(id);
                     break;
 
                 case (int)Cons.Machucvu.KeToan:
@@ -111,7 +111,7 @@ namespace DACN
                     break;
 
                 case (int)Cons.Machucvu.Quanly:
-                    f = new frmQuanly();
+                    f = new frmQuanly(id);
                     break;
             }
             return f;

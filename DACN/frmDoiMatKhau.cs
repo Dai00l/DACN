@@ -14,10 +14,10 @@ namespace DACN
     public partial class frmDoiMatKhau : Form
     {
         private string ID;
-        public frmDoiMatKhau()
+        public frmDoiMatKhau(string nhanvienId)
         {
             InitializeComponent();
-            this.ID = ID;
+            this.ID = nhanvienId;
         }
 
         private void frmDoiMatKhau_Load(object sender, EventArgs e)
@@ -37,6 +37,36 @@ namespace DACN
             string nhapLaiMatKhau = txtNL.Text;
             // Kiểm tra mật khẩu cũ và mật khẩu mới có hợp lệ không
            
+            if (txtMKC.Text.Equals("") || txtMKM.Text.Equals("") || txtNL.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng không bỏ trống các trường", "Lưu ý" );
+            }    
+            else if(matKhauCu.Equals(matKhauMoi))
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu mới không trùng mật khẩu cũ", "Lưu ý");
+            }
+            else if (matKhauMoi != nhapLaiMatKhau)
+            {
+                MessageBox.Show("Hai mật khẩu mới chưa khớp nhau", "Lưu ý");
+            }
+            else
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    //MessageBox.Show("Id của nhân viên hiện tại: ", ID);
+                    var nv = db.NguoiDungs.FirstOrDefault(n => n.idNhanVien == ID);
+                    if (nv != null)
+                    {
+                        nv.Matkhau = matKhauMoi;
+                        db.SaveChanges();
+                        MessageBox.Show("Đổi mật khẩu thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đổi mật khẩu thất bại!");
+                    }
+                }
+            }
         }
         private bool KiemTraMatKhauCu(string username, string matKhauCu)
     {
@@ -81,5 +111,15 @@ namespace DACN
             return false;
         }
     }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pibBack2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

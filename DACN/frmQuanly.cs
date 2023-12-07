@@ -17,10 +17,10 @@ namespace DACN
     {
         private ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities();
         DataGridViewRow row = new DataGridViewRow();
-
-        public frmQuanly()
+        string idNV;
+        public frmQuanly(string idNhanVien)
         {
-         
+            this.idNV = idNhanVien;
             InitializeComponent();
             load_data();
         }
@@ -175,7 +175,7 @@ namespace DACN
 
         private void quảnLýThuêToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmQuanLyToaNha f = new frmQuanLyToaNha();
+            frmQuanLyToaNha f = new frmQuanLyToaNha(idNV);
             f.ShowDialog();
         }
 

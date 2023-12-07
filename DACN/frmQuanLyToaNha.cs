@@ -12,10 +12,12 @@ namespace DACN
 {
     public partial class frmQuanLyToaNha : Form
     {
-        public frmQuanLyToaNha()
+        string idNV;
+        public frmQuanLyToaNha(string idNhanVien)
         {
             InitializeComponent();
             tmiTenNhanVien.Text = Cons.Cons.LoginNhanVien.HoTen;
+            this.idNV = idNhanVien;
            // LoadPhong(dtgvTang);
         }
 
@@ -107,7 +109,7 @@ namespace DACN
 
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDoiMatKhau f = new frmDoiMatKhau();
+            frmDoiMatKhau f = new frmDoiMatKhau(idNV);
             f.ShowDialog();
         }
     }
