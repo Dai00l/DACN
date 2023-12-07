@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DACN
 {
@@ -111,6 +113,142 @@ namespace DACN
         {
             frmDoiMatKhau f = new frmDoiMatKhau(idNV);
             f.ShowDialog();
+        }
+
+        private void dtgvTang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgvTang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dtgvTang.Rows.Count)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dtgvTang.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                if (cellValue != null)
+                {
+                    // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
+                    textBox2.Text = dtgvTang.Rows[e.RowIndex].Cells["tenTangDataGridViewTextBoxColumn"].Value?.ToString();
+                    comboBox1.Text = dtgvTang.Rows[e.RowIndex].Cells["trangThaiTangDataGridViewTextBoxColumn"].Value?.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá trị ô không hợp lệ.");
+                }
+            }
+        }
+
+        private void btnTimtang_Click(object sender, EventArgs e)
+        {
+            string tenTang = textBox2.Text;
+            string trangThaiTuan = comboBox1.SelectedItem?.ToString();
+
+            TimKiemVaCapNhatDataGridView(tenTang, trangThaiTuan);
+        }
+
+        private void TimKiemVaCapNhatDataGridView(string tenTang, string trangThaiTuan)
+        {
+            // Lấy nguồn dữ liệu ban đầu (DataSource) của DataGridView
+            ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities();
+            var nguonDuLieu = db.Tangs;
+            
+
+            // Thực hiện truy vấn LINQ để lọc dữ liệu
+            var ketQuaTimKiem = nguonDuLieu.Where(t =>
+                (string.IsNullOrEmpty(tenTang) || t.TenTang.Contains(tenTang)) &&
+                (string.IsNullOrEmpty(trangThaiTuan) || t.TrangThaiTang == trangThaiTuan)
+            ).ToList();
+
+            // Gán kết quả tìm kiếm vào DataGridView
+            dtgvTang.DataSource = ketQuaTimKiem;
+        }
+
+        private void btnSuatang_Click(object sender, EventArgs e)
+        {
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            {
+                int maTangCanSua = (int)dtgvTang.CurrentRow.Cells["maTangDataGridViewTextBoxColumn"].Value;
+                var nguonDuLieu = db.Tangs;
+
+                Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
+
+                tangCanSua.TenTang = textBox2.Text;
+                tangCanSua.TrangThaiTang = comboBox1.SelectedItem?.ToString();
+
+                // Cập nhật thông tin vào cơ sở dữ liệu
+                db.Entry(tangCanSua).State = EntityState.Modified;
+                db.SaveChanges();
+
+                dtgvTang.DataSource = nguonDuLieu.ToList();
+            }
+            dtgvTang.Refresh();
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dtgvTang.Rows.Count)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                if (cellValue != null)
+                {
+                    // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
+                    textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn7"].Value?.ToString();
+                    comboBox2.Text = dataGridView2.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn8"].Value?.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá trị ô không hợp lệ.");
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string tenTang = textBox3.Text;
+            string trangThaiTuan = comboBox2.SelectedItem?.ToString();
+
+            TimKiemVaCapNhatDataGridView2(tenTang, trangThaiTuan);
+        }
+        private void TimKiemVaCapNhatDataGridView2(string tenTang, string trangThaiTuan)
+        {
+            // Lấy nguồn dữ liệu ban đầu (DataSource) của DataGridView
+            ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities();
+            var nguonDuLieu = db.Tangs;
+
+
+            // Thực hiện truy vấn LINQ để lọc dữ liệu
+            var ketQuaTimKiem = nguonDuLieu.Where(t =>
+                (string.IsNullOrEmpty(tenTang) || t.TenTang.Contains(tenTang)) &&
+                (string.IsNullOrEmpty(trangThaiTuan) || t.TrangThaiTang == trangThaiTuan)
+            ).ToList();
+
+            // Gán kết quả tìm kiếm vào DataGridView
+            dataGridView2.DataSource = ketQuaTimKiem;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            {
+                int maTangCanSua = (int)dataGridView2.CurrentRow.Cells["dataGridViewTextBoxColumn6"].Value;
+                var nguonDuLieu = db.Tangs;
+
+                Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
+
+                tangCanSua.TenTang = textBox3.Text;
+                tangCanSua.TrangThaiTang = comboBox2.SelectedItem?.ToString();
+
+                // Cập nhật thông tin vào cơ sở dữ liệu
+                db.Entry(tangCanSua).State = EntityState.Modified;
+                db.SaveChanges();
+
+                dataGridView2.DataSource = nguonDuLieu.ToList();
+            }
+            dataGridView2.Refresh();
         }
     }
 }
