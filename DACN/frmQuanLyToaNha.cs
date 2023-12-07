@@ -104,5 +104,11 @@ namespace DACN
             frmThongKe f = new frmThongKe();     
             f.ShowDialog();
         }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDoiMatKhau f = new frmDoiMatKhau();
+            f.ShowDialog();
+        }
     }
 }

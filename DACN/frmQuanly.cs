@@ -39,6 +39,7 @@ namespace DACN
 
         private void InsertUpdate(int selectedRow)
         {
+           
             dgvNhanVien.Rows[selectedRow].Cells[0].Value = txtIDNv.Text;
             dgvNhanVien.Rows[selectedRow].Cells[1].Value = txtName.Text;
             dgvNhanVien.Rows[selectedRow].Cells[2].Value = txtAddress.Text;

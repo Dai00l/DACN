@@ -104,6 +104,10 @@ namespace DACN
             return 1; // 1 là một giả định, bạn cần thay đổi nó để phù hợp với ứng dụng của bạn
         }
 
+        private void frmThemNhanVien_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
