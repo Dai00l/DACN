@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dtpNgaydangky = new System.Windows.Forms.DateTimePicker();
-            this.txtGioitinhKh = new System.Windows.Forms.TextBox();
             this.btnThemKH = new System.Windows.Forms.Button();
             this.txtIDKh = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtGioitinhKh = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // dtpNgaydangky
@@ -55,13 +55,6 @@
             this.dtpNgaydangky.Name = "dtpNgaydangky";
             this.dtpNgaydangky.Size = new System.Drawing.Size(367, 22);
             this.dtpNgaydangky.TabIndex = 152;
-            // 
-            // txtGioitinhKh
-            // 
-            this.txtGioitinhKh.Location = new System.Drawing.Point(170, 184);
-            this.txtGioitinhKh.Name = "txtGioitinhKh";
-            this.txtGioitinhKh.Size = new System.Drawing.Size(367, 22);
-            this.txtGioitinhKh.TabIndex = 150;
             // 
             // btnThemKH
             // 
@@ -205,14 +198,26 @@
             this.label1.TabIndex = 133;
             this.label1.Text = "Thông Tin Khách Hàng";
             // 
+            // txtGioitinhKh
+            // 
+            this.txtGioitinhKh.FormattingEnabled = true;
+            this.txtGioitinhKh.Items.AddRange(new object[] {
+            "Nam\t",
+            "Nữ",
+            "Khác"});
+            this.txtGioitinhKh.Location = new System.Drawing.Point(170, 181);
+            this.txtGioitinhKh.Name = "txtGioitinhKh";
+            this.txtGioitinhKh.Size = new System.Drawing.Size(121, 24);
+            this.txtGioitinhKh.TabIndex = 153;
+            // 
             // frmThemKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dtpNgaydangky);
             this.Controls.Add(this.txtGioitinhKh);
+            this.Controls.Add(this.dtpNgaydangky);
             this.Controls.Add(this.btnThemKH);
             this.Controls.Add(this.txtIDKh);
             this.Controls.Add(this.label10);
@@ -238,7 +243,6 @@
 
         #endregion
         private System.Windows.Forms.DateTimePicker dtpNgaydangky;
-        private System.Windows.Forms.TextBox txtGioitinhKh;
         private System.Windows.Forms.Button btnThemKH;
         private System.Windows.Forms.TextBox txtIDKh;
         private System.Windows.Forms.Label label10;
@@ -255,5 +259,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox txtGioitinhKh;
     }
 }

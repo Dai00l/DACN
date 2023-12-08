@@ -250,5 +250,25 @@ namespace DACN
             }
             dataGridView2.Refresh();
         }
+
+        private void dgvPhong_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dgvPhong.CurrentRow.Index;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dgvPhong.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                // Hiển thị giá trị của ô trong TextBox tương ứng
+                txtIdphong.Text = dgvPhong.Rows[e.RowIndex].Cells["maPhongDataGridViewTextBoxColumn"].Value?.ToString();
+                txtTrangthai.Text = dgvPhong.Rows[e.RowIndex].Cells["trangThaiPhongDataGridViewTextBoxColumn"].Value?.ToString();
+                txtTenphong.Text = dgvPhong.Rows[e.RowIndex].Cells["tenPhongDataGridViewTextBoxColumn"].Value?.ToString();
+                txtIdCSHT.Text = dgvPhong.Rows[e.RowIndex].Cells["idCosohatangphongDataGridViewTextBoxColumn"].Value?.ToString();
+                txtGia.Text = dgvPhong.Rows[e.RowIndex].Cells["GiaToaA"].Value?.ToString();
+                txtIdTang.Text = dgvPhong.Rows[e.RowIndex].Cells["idTangDataGridViewTextBoxColumn"].Value?.ToString();
+
+            }
+        }
     }
 }

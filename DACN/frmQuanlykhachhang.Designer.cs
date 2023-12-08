@@ -46,7 +46,6 @@
             this.btnThemKH = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtpNgaydangky = new System.Windows.Forms.DateTimePicker();
-            this.txtGioitinhKH = new System.Windows.Forms.TextBox();
             this.txtID_KH = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtEmailKH = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.txtGioitinhKH = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kHACHHANGBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet3)).BeginInit();
@@ -84,8 +84,10 @@
             this.dgvKH.Name = "dgvKH";
             this.dgvKH.RowHeadersWidth = 51;
             this.dgvKH.RowTemplate.Height = 24;
+            this.dgvKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKH.Size = new System.Drawing.Size(927, 227);
             this.dgvKH.TabIndex = 0;
+            this.dgvKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKH_CellClick);
             this.dgvKH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKH_CellContentClick);
             // 
             // idKH
@@ -196,8 +198,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dtpNgaydangky);
             this.panel1.Controls.Add(this.txtGioitinhKH);
+            this.panel1.Controls.Add(this.dtpNgaydangky);
             this.panel1.Controls.Add(this.txtID_KH);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtEmailKH);
@@ -223,14 +225,6 @@
             this.dtpNgaydangky.Name = "dtpNgaydangky";
             this.dtpNgaydangky.Size = new System.Drawing.Size(269, 22);
             this.dtpNgaydangky.TabIndex = 165;
-            // 
-            // txtGioitinhKH
-            // 
-            this.txtGioitinhKH.Location = new System.Drawing.Point(147, 118);
-            this.txtGioitinhKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtGioitinhKH.Name = "txtGioitinhKH";
-            this.txtGioitinhKH.Size = new System.Drawing.Size(128, 22);
-            this.txtGioitinhKH.TabIndex = 163;
             // 
             // txtID_KH
             // 
@@ -355,6 +349,18 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
+            // txtGioitinhKH
+            // 
+            this.txtGioitinhKH.FormattingEnabled = true;
+            this.txtGioitinhKH.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ",
+            "Khác"});
+            this.txtGioitinhKH.Location = new System.Drawing.Point(147, 117);
+            this.txtGioitinhKH.Name = "txtGioitinhKH";
+            this.txtGioitinhKH.Size = new System.Drawing.Size(121, 24);
+            this.txtGioitinhKH.TabIndex = 166;
+            // 
             // frmQuanlykhachhang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,7 +403,6 @@
         private System.Windows.Forms.Button btnThemKH;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpNgaydangky;
-        private System.Windows.Forms.TextBox txtGioitinhKH;
         private System.Windows.Forms.TextBox txtID_KH;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtEmailKH;
@@ -411,5 +416,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.ComboBox txtGioitinhKH;
     }
 }

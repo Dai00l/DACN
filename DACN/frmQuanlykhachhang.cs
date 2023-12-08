@@ -47,14 +47,15 @@ namespace DACN
                 dgvKH.Rows[index].Cells[2].Value = item.DiaChi;
                 dgvKH.Rows[index].Cells[3].Value = item.Email;
                 // dgvNhanVien.Rows[index].Cells[].Value = item.NgaySinh.Value.ToShortDateString();
-                if (item.GioiTinh == "1") // So sánh với chuỗi "1"
-                {
-                    dgvKH.Rows[index].Cells[5].Value = "Nam";
-                }
-                else
-                {
-                    dgvKH.Rows[index].Cells[5].Value = "Nữ";
-                }
+                //if (item.GioiTinh == "1") // So sánh với chuỗi "1"
+                //{
+                //    dgvKH.Rows[index].Cells[5].Value = "Nam";
+                //}
+                //else
+                //{
+                //    dgvKH.Rows[index].Cells[5].Value = "Nữ";
+                //}
+                dgvKH.Rows[index].Cells[5].Value = item.GioiTinh;
 
                 dgvKH.Rows[index].Cells[4].Value = item.SoDienThoai;
 
@@ -76,6 +77,8 @@ namespace DACN
                     db.KHACHHANGs.Remove(kh);
                     db.SaveChanges();
                     load_data2();
+                    // Thông báo thành công
+                    MessageBox.Show("Xóa nhân viên thành công");
                 }
                 else
                 {
@@ -88,6 +91,8 @@ namespace DACN
         {
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
+                
+                var nguonDuLieu = db.KHACHHANGs;
                 // Tìm nhân viên trong cơ sở dữ liệu
                 var kh = db.KHACHHANGs.FirstOrDefault(n => n.IDKH == idKh);
 
@@ -103,7 +108,9 @@ namespace DACN
                     kh.IDKH = idKh;
 
                     db.SaveChanges();
+                    
                     load_data2();
+                    dgvKH.DataSource = nguonDuLieu.ToList();
                     MessageBox.Show("Cập nhật nhân viên thành công");
                 }
                 else
@@ -131,19 +138,26 @@ namespace DACN
 
         private void btnXoaKH_Click(object sender, EventArgs e)
         {
-            string hoTen = txtNameKH.Text;
-            string eMail = txtEmailKH.Text;
-            string gioiTinh = txtGioitinhKH.Text;
-            string sDt = txtSDTKH.Text;
-            string diaChi = txtAddressKH.Text;
+            try
+            {
+                string hoTen = txtNameKH.Text;
+                string eMail = txtEmailKH.Text;
+                string gioiTinh = txtGioitinhKH.Text;
+                string sDt = txtSDTKH.Text;
+                string diaChi = txtAddressKH.Text;
 
 
-            DateTime ngaydangky = dtpNgaydangky.Value;
-            string idKh = txtID_KH.Text;
-            XoaKh(hoTen, eMail, gioiTinh, sDt, diaChi, idKh, ngaydangky);
+                DateTime ngaydangky = dtpNgaydangky.Value;
+                string idKh = txtID_KH.Text;
+                XoaKh(hoTen, eMail, gioiTinh, sDt, diaChi, idKh, ngaydangky);
 
-            // Thông báo thành công
-            MessageBox.Show("Xóa nhân viên thành công");
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: "+ex.Message);
+            }
+            
 
         }
 
@@ -174,6 +188,27 @@ namespace DACN
         }
 
         private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dgvKH.CurrentRow.Index;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dgvKH.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                // Hiển thị giá trị của ô trong TextBox tương ứng
+                txtID_KH.Text = dgvKH.Rows[e.RowIndex].Cells["idKH"].Value?.ToString();
+                txtNameKH.Text = dgvKH.Rows[e.RowIndex].Cells["nameKH"].Value?.ToString();
+                txtAddressKH.Text = dgvKH.Rows[e.RowIndex].Cells["diachiKH"].Value?.ToString();
+                txtEmailKH.Text = dgvKH.Rows[e.RowIndex].Cells["emailKH"].Value?.ToString();
+                txtGioitinhKH.Text = dgvKH.Rows[e.RowIndex].Cells["sexKH"].Value?.ToString();
+                txtSDTKH.Text = dgvKH.Rows[e.RowIndex].Cells["sdtKH"].Value?.ToString();
+                dtpNgaydangky.Text = dgvKH.Rows[e.RowIndex].Cells["ngayDK"].Value?.ToString();
+
+            }
+        }
+
+        private void dgvKH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dgvKH.CurrentRow.Index;
