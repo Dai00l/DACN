@@ -270,5 +270,25 @@ namespace DACN
 
             }
         }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dataGridView3.CurrentRow.Index;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dataGridView3.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                // Hiển thị giá trị của ô trong TextBox tương ứng
+                textBox8.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn1"].Value?.ToString();
+                textBox6.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn3"].Value?.ToString();
+                textBox7.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn2"].Value?.ToString();
+                textBox5.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn4"].Value?.ToString();
+                txtGiaPhong.Text = dataGridView3.Rows[e.RowIndex].Cells["GiaToaB"].Value?.ToString();
+                textBox4.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn5"].Value?.ToString();
+
+            }
+        }
     }
 }
