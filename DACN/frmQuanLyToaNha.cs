@@ -93,6 +93,14 @@ namespace DACN
                 cmbTenTang.DataSource = listTenTang.ToList();
                 cmbTenTang.DisplayMember = "TenTang"; // Tên trường chứa tên
                 cmbTenTang.ValueMember = "MaTang"; // Tên trường chứa ID
+
+                textBox5.DataSource = listTenCSHTP.ToList();
+                textBox5.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
+                textBox5.ValueMember = "MaCSVCP"; // Tên trường chứa ID
+
+                textBox4.DataSource = listTenTang.ToList();
+                textBox4.DisplayMember = "TenTang"; // Tên trường chứa tên
+                textBox4.ValueMember = "MaTang"; // Tên trường chứa ID
             }
 
 
@@ -292,9 +300,9 @@ namespace DACN
                 txtIdphong.Text = dgvPhong.Rows[e.RowIndex].Cells["maPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTrangthai.Text = dgvPhong.Rows[e.RowIndex].Cells["trangThaiPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTenphong.Text = dgvPhong.Rows[e.RowIndex].Cells["tenPhongDataGridViewTextBoxColumn"].Value?.ToString();
-                cmbTenCSHTP.Text = dgvPhong.Rows[e.RowIndex].Cells["idCosohatangphongDataGridViewTextBoxColumn"].Value?.ToString();
+                cmbTenCSHTP.Text = dgvPhong.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn10"].Value?.ToString();
                 txtGia.Text = dgvPhong.Rows[e.RowIndex].Cells["GiaToaA"].Value?.ToString();
-                cmbTenTang.Text = dgvPhong.Rows[e.RowIndex].Cells["idTangDataGridViewTextBoxColumn"].Value?.ToString();
+                cmbTenTang.Text = dgvPhong.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn11"].Value?.ToString();
 
             }
         }
@@ -312,9 +320,9 @@ namespace DACN
                 textBox8.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn1"].Value?.ToString();
                 textBox6.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn3"].Value?.ToString();
                 textBox7.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn2"].Value?.ToString();
-                textBox5.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn4"].Value?.ToString();
+                textBox5.Text = dataGridView3.Rows[e.RowIndex].Cells["idCosohatangphong"].Value?.ToString();
                 txtGiaPhong.Text = dataGridView3.Rows[e.RowIndex].Cells["GiaToaB"].Value?.ToString();
-                textBox4.Text = dataGridView3.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn5"].Value?.ToString();
+                textBox4.Text = dataGridView3.Rows[e.RowIndex].Cells["idTang"].Value?.ToString();
 
             }
         }

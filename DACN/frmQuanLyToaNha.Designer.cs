@@ -64,6 +64,9 @@
             this.btnCapnhatphong = new System.Windows.Forms.Button();
             this.btnthemphong = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbTenTang = new System.Windows.Forms.ComboBox();
+            this.cmbTenCSHTP = new System.Windows.Forms.ComboBox();
+            this.txtTrangthai = new System.Windows.Forms.ComboBox();
             this.txtGia = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -110,9 +113,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtGiaPhong = new System.Windows.Forms.TextBox();
             this.lblGia = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -126,34 +127,21 @@
             this.tangTableAdapter = new DACN.ToaNhaChoThue999DataSetTableAdapters.TangTableAdapter();
             this.coSoHaTangTangTableAdapter = new DACN.ToaNhaChoThue999DataSet1TableAdapters.CoSoHaTangTangTableAdapter();
             this.phongTableAdapter = new DACN.ToaNhaChoThue999DataSet3_PhongTableAdapters.PhongTableAdapter();
+            this.textBox6 = new System.Windows.Forms.ComboBox();
+            this.textBox5 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.ComboBox();
             this.maPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangThaiPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCosohatangphongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaToaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCosohatangphong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaToaB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txtTrangthai = new System.Windows.Forms.ComboBox();
-            this.cmbTenCSHTP = new System.Windows.Forms.ComboBox();
-            this.cmbTenTang = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ToaA.SuspendLayout();
@@ -531,6 +519,33 @@
             this.panel1.Size = new System.Drawing.Size(925, 268);
             this.panel1.TabIndex = 21;
             // 
+            // cmbTenTang
+            // 
+            this.cmbTenTang.FormattingEnabled = true;
+            this.cmbTenTang.Location = new System.Drawing.Point(415, 127);
+            this.cmbTenTang.Name = "cmbTenTang";
+            this.cmbTenTang.Size = new System.Drawing.Size(121, 24);
+            this.cmbTenTang.TabIndex = 14;
+            // 
+            // cmbTenCSHTP
+            // 
+            this.cmbTenCSHTP.FormattingEnabled = true;
+            this.cmbTenCSHTP.Location = new System.Drawing.Point(457, 82);
+            this.cmbTenCSHTP.Name = "cmbTenCSHTP";
+            this.cmbTenCSHTP.Size = new System.Drawing.Size(191, 24);
+            this.cmbTenCSHTP.TabIndex = 13;
+            // 
+            // txtTrangthai
+            // 
+            this.txtTrangthai.FormattingEnabled = true;
+            this.txtTrangthai.Items.AddRange(new object[] {
+            "Trống",
+            "Đang Thuê"});
+            this.txtTrangthai.Location = new System.Drawing.Point(421, 33);
+            this.txtTrangthai.Name = "txtTrangthai";
+            this.txtTrangthai.Size = new System.Drawing.Size(121, 24);
+            this.txtTrangthai.TabIndex = 12;
+            // 
             // txtGia
             // 
             this.txtGia.Location = new System.Drawing.Point(117, 127);
@@ -597,7 +612,6 @@
             this.txtIdphong.Location = new System.Drawing.Point(117, 27);
             this.txtIdphong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtIdphong.Name = "txtIdphong";
-            this.txtIdphong.ReadOnly = true;
             this.txtIdphong.Size = new System.Drawing.Size(171, 22);
             this.txtIdphong.TabIndex = 1;
             // 
@@ -618,8 +632,8 @@
             this.maPhongDataGridViewTextBoxColumn,
             this.tenPhongDataGridViewTextBoxColumn,
             this.trangThaiPhongDataGridViewTextBoxColumn,
-            this.idCosohatangphongDataGridViewTextBoxColumn,
-            this.idTangDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
             this.GiaToaA});
             this.dgvPhong.DataSource = this.phongBindingSource;
             this.dgvPhong.Location = new System.Drawing.Point(5, 16);
@@ -975,25 +989,13 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.comboBox4);
-            this.panel2.Controls.Add(this.comboBox5);
-            this.panel2.Controls.Add(this.textBox9);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.textBox10);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.label22);
+            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.textBox5);
+            this.panel2.Controls.Add(this.textBox6);
             this.panel2.Controls.Add(this.txtGiaPhong);
             this.panel2.Controls.Add(this.lblGia);
-            this.panel2.Controls.Add(this.textBox4);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.textBox5);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.textBox6);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.textBox7);
             this.panel2.Controls.Add(this.label14);
@@ -1021,39 +1023,23 @@
             this.lblGia.TabIndex = 10;
             this.lblGia.Text = "Giá phòng:";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(117, 242);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(171, 22);
-            this.textBox4.TabIndex = 9;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(29, 246);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 16);
+            this.label11.Size = new System.Drawing.Size(66, 16);
             this.label11.TabIndex = 8;
-            this.label11.Text = "Mã Tầng :";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(151, 198);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(171, 22);
-            this.textBox5.TabIndex = 7;
+            this.label11.Text = "Tên Tầng";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(29, 201);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(115, 16);
+            this.label12.Size = new System.Drawing.Size(169, 16);
             this.label12.TabIndex = 6;
-            this.label12.Text = "Mã cơ sở hạ tầng :";
+            this.label12.Text = "Tên Cơ Sở Hạ Tầng Phòng";
             // 
             // label13
             // 
@@ -1106,11 +1092,11 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
+            this.idCosohatangphong,
+            this.idTang,
             this.GiaToaB});
             this.dataGridView3.DataSource = this.phongBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(7, 6);
+            this.dataGridView3.Location = new System.Drawing.Point(29, 6);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
@@ -1162,6 +1148,33 @@
             // 
             this.phongTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox6
+            // 
+            this.textBox6.FormattingEnabled = true;
+            this.textBox6.Items.AddRange(new object[] {
+            "Trống",
+            "Đang Thuê"});
+            this.textBox6.Location = new System.Drawing.Point(117, 148);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(121, 24);
+            this.textBox6.TabIndex = 12;
+            // 
+            // textBox5
+            // 
+            this.textBox5.FormattingEnabled = true;
+            this.textBox5.Location = new System.Drawing.Point(204, 198);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(151, 24);
+            this.textBox5.TabIndex = 13;
+            // 
+            // textBox4
+            // 
+            this.textBox4.FormattingEnabled = true;
+            this.textBox4.Location = new System.Drawing.Point(101, 243);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(187, 24);
+            this.textBox4.TabIndex = 14;
+            // 
             // maPhongDataGridViewTextBoxColumn
             // 
             this.maPhongDataGridViewTextBoxColumn.DataPropertyName = "MaPhong";
@@ -1186,21 +1199,21 @@
             this.trangThaiPhongDataGridViewTextBoxColumn.Name = "trangThaiPhongDataGridViewTextBoxColumn";
             this.trangThaiPhongDataGridViewTextBoxColumn.Width = 125;
             // 
-            // idCosohatangphongDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn10
             // 
-            this.idCosohatangphongDataGridViewTextBoxColumn.DataPropertyName = "TenCSVCP";
-            this.idCosohatangphongDataGridViewTextBoxColumn.HeaderText = "Tên Cơ Sở Hạ Tầng Phòng";
-            this.idCosohatangphongDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idCosohatangphongDataGridViewTextBoxColumn.Name = "idCosohatangphongDataGridViewTextBoxColumn";
-            this.idCosohatangphongDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "TenCSVCP";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Tên CSHTP";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 125;
             // 
-            // idTangDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn11
             // 
-            this.idTangDataGridViewTextBoxColumn.DataPropertyName = "TenTang";
-            this.idTangDataGridViewTextBoxColumn.HeaderText = "Tên Tầng";
-            this.idTangDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idTangDataGridViewTextBoxColumn.Name = "idTangDataGridViewTextBoxColumn";
-            this.idTangDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "TenTang";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Tên Tầng";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Width = 125;
             // 
             // GiaToaA
             // 
@@ -1234,21 +1247,21 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 125;
             // 
-            // dataGridViewTextBoxColumn4
+            // idCosohatangphong
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "TenCSVCP";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Tên Cơ Sở Hạ Tầng Phòng";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 125;
+            this.idCosohatangphong.DataPropertyName = "TenCSVCP";
+            this.idCosohatangphong.HeaderText = "Tên CSVCP";
+            this.idCosohatangphong.MinimumWidth = 6;
+            this.idCosohatangphong.Name = "idCosohatangphong";
+            this.idCosohatangphong.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // idTang
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "TenTang";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tên Tầng";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            this.idTang.DataPropertyName = "TenTang";
+            this.idTang.HeaderText = "Tên Tầng";
+            this.idTang.MinimumWidth = 6;
+            this.idTang.Name = "idTang";
+            this.idTang.Width = 125;
             // 
             // GiaToaB
             // 
@@ -1257,147 +1270,6 @@
             this.GiaToaB.MinimumWidth = 6;
             this.GiaToaB.Name = "GiaToaB";
             this.GiaToaB.Width = 125;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(117, 145);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(171, 22);
-            this.textBox6.TabIndex = 5;
-            // 
-            // txtTrangthai
-            // 
-            this.txtTrangthai.FormattingEnabled = true;
-            this.txtTrangthai.Items.AddRange(new object[] {
-            "Trống",
-            "Đang Thuê"});
-            this.txtTrangthai.Location = new System.Drawing.Point(421, 33);
-            this.txtTrangthai.Name = "txtTrangthai";
-            this.txtTrangthai.Size = new System.Drawing.Size(121, 24);
-            this.txtTrangthai.TabIndex = 12;
-            // 
-            // cmbTenCSHTP
-            // 
-            this.cmbTenCSHTP.FormattingEnabled = true;
-            this.cmbTenCSHTP.Location = new System.Drawing.Point(457, 82);
-            this.cmbTenCSHTP.Name = "cmbTenCSHTP";
-            this.cmbTenCSHTP.Size = new System.Drawing.Size(191, 24);
-            this.cmbTenCSHTP.TabIndex = 13;
-            // 
-            // cmbTenTang
-            // 
-            this.cmbTenTang.FormattingEnabled = true;
-            this.cmbTenTang.Location = new System.Drawing.Point(415, 127);
-            this.cmbTenTang.Name = "cmbTenTang";
-            this.cmbTenTang.Size = new System.Drawing.Size(121, 24);
-            this.cmbTenTang.TabIndex = 14;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(680, 159);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 26;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(722, 114);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(191, 24);
-            this.comboBox4.TabIndex = 25;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "Trống",
-            "Đang Thuê"});
-            this.comboBox5.Location = new System.Drawing.Point(686, 65);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 24);
-            this.comboBox5.TabIndex = 24;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(382, 159);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(171, 22);
-            this.textBox9.TabIndex = 23;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(294, 161);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 16);
-            this.label17.TabIndex = 22;
-            this.label17.Text = "Giá Thuê";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(601, 162);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 16);
-            this.label18.TabIndex = 21;
-            this.label18.Text = "Tên Tầng :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(601, 117);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(120, 16);
-            this.label19.TabIndex = 20;
-            this.label19.Text = "Tên cơ sở hạ tầng :";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(601, 68);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(79, 16);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Trạng Thái :";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(382, 121);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(171, 22);
-            this.textBox10.TabIndex = 18;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(294, 123);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(73, 16);
-            this.label21.TabIndex = 17;
-            this.label21.Text = "Tên Phòng";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(382, 59);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(171, 22);
-            this.textBox11.TabIndex = 16;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(294, 62);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(73, 16);
-            this.label22.TabIndex = 15;
-            this.label22.Text = "Mã phòng :";
             // 
             // frmQuanLyToaNha
             // 
@@ -1524,9 +1396,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox7;
@@ -1549,33 +1419,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.TextBox txtGiaPhong;
         private System.Windows.Forms.Label lblGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCosohatangphongDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idTangDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.ComboBox cmbTenCSHTP;
+        private System.Windows.Forms.ComboBox txtTrangthai;
+        private System.Windows.Forms.ComboBox cmbTenTang;
+        private System.Windows.Forms.ComboBox textBox5;
+        private System.Windows.Forms.ComboBox textBox6;
+        private System.Windows.Forms.ComboBox textBox4;
         private System.Windows.Forms.DataGridViewTextBoxColumn maPhongDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiPhongDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCosohatangphongDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTangDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaToaA;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCosohatangphong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idTang;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaToaB;
-        private System.Windows.Forms.ComboBox cmbTenCSHTP;
-        private System.Windows.Forms.ComboBox txtTrangthai;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox cmbTenTang;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label22;
     }
 }
