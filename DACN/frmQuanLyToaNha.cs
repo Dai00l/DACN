@@ -24,6 +24,26 @@ namespace DACN
            // LoadPhong(dtgvTang);
         }
 
+        public void ReloadDgvPhong()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cp.TenCSVCP, t.TenTang, p.Gia\r\n" +
+                "from Phong p \r\n" +
+                "left join CoSoHaTangPhong cp on p.idCosohatangphong = cp.MaCSVCP\r\n" +
+                "left join Tang t on p.idTang = t.MaTang", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dgvPhong.DataSource = dt;
+            dataGridView3.DataSource = dt;
+        }
+
         private void thôngTinNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -64,22 +84,24 @@ namespace DACN
             this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
             // Binding bd = new Binding("Text", Cons.Cons.LoginNhanVien, "Ten", true,DataSourceUpdateMode.OnPropertyChanged);
 
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cp.TenCSVCP, t.TenTang, p.Gia\r\n" +
-                "from Phong p \r\n" +
-                "left join CoSoHaTangPhong cp on p.idCosohatangphong = cp.MaCSVCP\r\n" +
-                "left join Tang t on p.idTang = t.MaTang", conn);
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-            da.SelectCommand = cmd1;
-            dt.Clear();
-            da.Fill(dt);
-            dgvPhong.DataSource = dt;
-            dataGridView3.DataSource = dt;
+            ReloadDgvPhong();
+
+            //SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            //if (conn.State == ConnectionState.Closed)
+            //{
+            //    conn.Open();
+            //}
+            //SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cp.TenCSVCP, t.TenTang, p.Gia\r\n" +
+            //    "from Phong p \r\n" +
+            //    "left join CoSoHaTangPhong cp on p.idCosohatangphong = cp.MaCSVCP\r\n" +
+            //    "left join Tang t on p.idTang = t.MaTang", conn);
+            //SqlDataAdapter da = new SqlDataAdapter();
+            //DataTable dt = new DataTable();
+            //da.SelectCommand = cmd1;
+            //dt.Clear();
+            //da.Fill(dt);
+            //dgvPhong.DataSource = dt;
+            //dataGridView3.DataSource = dt;
 
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
@@ -324,6 +346,73 @@ namespace DACN
                 txtGiaPhong.Text = dataGridView3.Rows[e.RowIndex].Cells["GiaToaB"].Value?.ToString();
                 textBox4.Text = dataGridView3.Rows[e.RowIndex].Cells["idTang"].Value?.ToString();
 
+            }
+        }
+
+        private void btnCapnhatphong_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maPhong = (int)dgvPhong.CurrentRow.Cells["maPhongDataGridViewTextBoxColumn"].Value;
+                    var nguonDuLieu = db.Phongs;
+
+                    Phong updatingPhong = nguonDuLieu.Single(t => t.MaPhong == maPhong);
+
+                    updatingPhong.TenPhong = txtTenphong.Text;
+                    updatingPhong.Gia = Convert.ToInt32(txtGia.Text);
+                    updatingPhong.TrangThaiPhong = txtTrangthai.Text;
+                    updatingPhong.idCosohatangphong = Convert.ToInt32(cmbTenCSHTP.SelectedValue);
+                    updatingPhong.idTang = Convert.ToInt32(cmbTenTang.SelectedValue);
+
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(updatingPhong).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    dgvPhong.Refresh();
+
+                    ReloadDgvPhong();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+
+            //Console.WriteLine("Mã cơ sở hạ tầng: "+cmbTenCSHTP.SelectedValue);
+            //Console.WriteLine("Mã tầng: " + cmbTenTang.SelectedValue);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maPhong = (int)dataGridView3.CurrentRow.Cells["dataGridViewTextBoxColumn1"].Value;
+                    var nguonDuLieu = db.Phongs;
+
+                    Phong updatingPhong = nguonDuLieu.Single(t => t.MaPhong == maPhong);
+
+                    updatingPhong.TenPhong = textBox7.Text;
+                    updatingPhong.Gia = Convert.ToInt32(txtGiaPhong.Text);
+                    updatingPhong.TrangThaiPhong = textBox6.Text;
+                    updatingPhong.idCosohatangphong = Convert.ToInt32(textBox5.SelectedValue);
+                    updatingPhong.idTang = Convert.ToInt32(textBox4.SelectedValue);
+
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(updatingPhong).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    dataGridView3.Refresh();
+
+                    ReloadDgvPhong();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
     }

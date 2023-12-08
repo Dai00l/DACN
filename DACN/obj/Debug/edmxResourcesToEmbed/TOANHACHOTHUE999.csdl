@@ -144,6 +144,7 @@
     <NavigationProperty Name="CTDVs" Relationship="Self.FK__CTDV__IDDichVu__440B1D61" FromRole="Phong" ToRole="CTDV" />
     <NavigationProperty Name="Tang" Relationship="Self.FK__Phong__idTang__3F466844" FromRole="Phong" ToRole="Tang" />
     <NavigationProperty Name="ThuePhongs" Relationship="Self.FK__ThuePhong__idKha__656C112C" FromRole="Phong" ToRole="ThuePhong" />
+    <Property Name="Gia" Type="Int32" />
   </EntityType>
   <EntityType Name="Tang">
     <Key>
@@ -506,5 +507,16 @@
       <End Role="Tang" EntitySet="Tangs" />
       <End Role="ToaNha" EntitySet="ToaNhas" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="ToaNhaChoThue999Model.sysdiagram" />
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

@@ -42,5 +42,6 @@ namespace DACN
         public virtual DbSet<Thu> Thus { get; set; }
         public virtual DbSet<ThuePhong> ThuePhongs { get; set; }
         public virtual DbSet<ToaNha> ToaNhas { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

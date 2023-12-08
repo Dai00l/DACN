@@ -148,6 +148,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ToaNhaChoThue999.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tang.cs">
       <DependentUpon>ToaNhaChoThue999.tt</DependentUpon>
     </Compile>
