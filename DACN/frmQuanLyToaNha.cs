@@ -300,9 +300,9 @@ namespace DACN
                 txtIdphong.Text = dgvPhong.Rows[e.RowIndex].Cells["maPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTrangthai.Text = dgvPhong.Rows[e.RowIndex].Cells["trangThaiPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTenphong.Text = dgvPhong.Rows[e.RowIndex].Cells["tenPhongDataGridViewTextBoxColumn"].Value?.ToString();
-                cmbTenCSHTP.Text = dgvPhong.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn10"].Value?.ToString();
+                cmbTenCSHTP.Text = dgvPhong.Rows[e.RowIndex].Cells["TenCSVCP"].Value?.ToString();
                 txtGia.Text = dgvPhong.Rows[e.RowIndex].Cells["GiaToaA"].Value?.ToString();
-                cmbTenTang.Text = dgvPhong.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn11"].Value?.ToString();
+                cmbTenTang.Text = dgvPhong.Rows[e.RowIndex].Cells["TenTang"].Value?.ToString();
 
             }
         }

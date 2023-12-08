@@ -111,6 +111,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox4 = new System.Windows.Forms.ComboBox();
+            this.textBox5 = new System.Windows.Forms.ComboBox();
+            this.textBox6 = new System.Windows.Forms.ComboBox();
             this.txtGiaPhong = new System.Windows.Forms.TextBox();
             this.lblGia = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -121,27 +124,24 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.ptCosohatangB = new System.Windows.Forms.TabPage();
-            this.ptHatangphongB = new System.Windows.Forms.TabPage();
-            this.tpThongtintoaB = new System.Windows.Forms.TabPage();
-            this.tangTableAdapter = new DACN.ToaNhaChoThue999DataSetTableAdapters.TangTableAdapter();
-            this.coSoHaTangTangTableAdapter = new DACN.ToaNhaChoThue999DataSet1TableAdapters.CoSoHaTangTangTableAdapter();
-            this.phongTableAdapter = new DACN.ToaNhaChoThue999DataSet3_PhongTableAdapters.PhongTableAdapter();
-            this.textBox6 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.ComboBox();
-            this.maPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trangThaiPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaToaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idCosohatangphong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idTang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaToaB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ptCosohatangB = new System.Windows.Forms.TabPage();
+            this.ptHatangphongB = new System.Windows.Forms.TabPage();
+            this.tpThongtintoaB = new System.Windows.Forms.TabPage();
+            this.tangTableAdapter = new DACN.ToaNhaChoThue999DataSetTableAdapters.TangTableAdapter();
+            this.coSoHaTangTangTableAdapter = new DACN.ToaNhaChoThue999DataSet1TableAdapters.CoSoHaTangTangTableAdapter();
+            this.phongTableAdapter = new DACN.ToaNhaChoThue999DataSet3_PhongTableAdapters.PhongTableAdapter();
+            this.maPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trangThaiPhongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenCSVCP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaToaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ToaA.SuspendLayout();
@@ -632,8 +632,8 @@
             this.maPhongDataGridViewTextBoxColumn,
             this.tenPhongDataGridViewTextBoxColumn,
             this.trangThaiPhongDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
+            this.TenCSVCP,
+            this.TenTang,
             this.GiaToaA});
             this.dgvPhong.DataSource = this.phongBindingSource;
             this.dgvPhong.Location = new System.Drawing.Point(5, 16);
@@ -1007,6 +1007,33 @@
             this.panel2.Size = new System.Drawing.Size(925, 284);
             this.panel2.TabIndex = 26;
             // 
+            // textBox4
+            // 
+            this.textBox4.FormattingEnabled = true;
+            this.textBox4.Location = new System.Drawing.Point(101, 243);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(187, 24);
+            this.textBox4.TabIndex = 14;
+            // 
+            // textBox5
+            // 
+            this.textBox5.FormattingEnabled = true;
+            this.textBox5.Location = new System.Drawing.Point(204, 198);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(151, 24);
+            this.textBox5.TabIndex = 13;
+            // 
+            // textBox6
+            // 
+            this.textBox6.FormattingEnabled = true;
+            this.textBox6.Items.AddRange(new object[] {
+            "Trống",
+            "Đang Thuê"});
+            this.textBox6.Location = new System.Drawing.Point(117, 148);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(121, 24);
+            this.textBox6.TabIndex = 12;
+            // 
             // txtGiaPhong
             // 
             this.txtGiaPhong.Location = new System.Drawing.Point(512, 27);
@@ -1106,123 +1133,6 @@
             this.dataGridView3.TabIndex = 25;
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             // 
-            // ptCosohatangB
-            // 
-            this.ptCosohatangB.Location = new System.Drawing.Point(4, 25);
-            this.ptCosohatangB.Margin = new System.Windows.Forms.Padding(4);
-            this.ptCosohatangB.Name = "ptCosohatangB";
-            this.ptCosohatangB.Size = new System.Drawing.Size(936, 593);
-            this.ptCosohatangB.TabIndex = 2;
-            this.ptCosohatangB.Text = "Cơ sở hạ tầng";
-            this.ptCosohatangB.UseVisualStyleBackColor = true;
-            // 
-            // ptHatangphongB
-            // 
-            this.ptHatangphongB.Location = new System.Drawing.Point(4, 25);
-            this.ptHatangphongB.Margin = new System.Windows.Forms.Padding(4);
-            this.ptHatangphongB.Name = "ptHatangphongB";
-            this.ptHatangphongB.Size = new System.Drawing.Size(936, 593);
-            this.ptHatangphongB.TabIndex = 3;
-            this.ptHatangphongB.Text = "Hạ tầng phòng";
-            this.ptHatangphongB.UseVisualStyleBackColor = true;
-            // 
-            // tpThongtintoaB
-            // 
-            this.tpThongtintoaB.Location = new System.Drawing.Point(4, 25);
-            this.tpThongtintoaB.Margin = new System.Windows.Forms.Padding(4);
-            this.tpThongtintoaB.Name = "tpThongtintoaB";
-            this.tpThongtintoaB.Size = new System.Drawing.Size(936, 593);
-            this.tpThongtintoaB.TabIndex = 4;
-            this.tpThongtintoaB.Text = "Thông tin ";
-            this.tpThongtintoaB.UseVisualStyleBackColor = true;
-            // 
-            // tangTableAdapter
-            // 
-            this.tangTableAdapter.ClearBeforeFill = true;
-            // 
-            // coSoHaTangTangTableAdapter
-            // 
-            this.coSoHaTangTangTableAdapter.ClearBeforeFill = true;
-            // 
-            // phongTableAdapter
-            // 
-            this.phongTableAdapter.ClearBeforeFill = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.FormattingEnabled = true;
-            this.textBox6.Items.AddRange(new object[] {
-            "Trống",
-            "Đang Thuê"});
-            this.textBox6.Location = new System.Drawing.Point(117, 148);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 24);
-            this.textBox6.TabIndex = 12;
-            // 
-            // textBox5
-            // 
-            this.textBox5.FormattingEnabled = true;
-            this.textBox5.Location = new System.Drawing.Point(204, 198);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(151, 24);
-            this.textBox5.TabIndex = 13;
-            // 
-            // textBox4
-            // 
-            this.textBox4.FormattingEnabled = true;
-            this.textBox4.Location = new System.Drawing.Point(101, 243);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 24);
-            this.textBox4.TabIndex = 14;
-            // 
-            // maPhongDataGridViewTextBoxColumn
-            // 
-            this.maPhongDataGridViewTextBoxColumn.DataPropertyName = "MaPhong";
-            this.maPhongDataGridViewTextBoxColumn.HeaderText = "Mã Phòng";
-            this.maPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.maPhongDataGridViewTextBoxColumn.Name = "maPhongDataGridViewTextBoxColumn";
-            this.maPhongDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tenPhongDataGridViewTextBoxColumn
-            // 
-            this.tenPhongDataGridViewTextBoxColumn.DataPropertyName = "TenPhong";
-            this.tenPhongDataGridViewTextBoxColumn.HeaderText = "Tên Phòng";
-            this.tenPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tenPhongDataGridViewTextBoxColumn.Name = "tenPhongDataGridViewTextBoxColumn";
-            this.tenPhongDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // trangThaiPhongDataGridViewTextBoxColumn
-            // 
-            this.trangThaiPhongDataGridViewTextBoxColumn.DataPropertyName = "TrangThaiPhong";
-            this.trangThaiPhongDataGridViewTextBoxColumn.HeaderText = "Trạng Thái Phòng";
-            this.trangThaiPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.trangThaiPhongDataGridViewTextBoxColumn.Name = "trangThaiPhongDataGridViewTextBoxColumn";
-            this.trangThaiPhongDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "TenCSVCP";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Tên CSHTP";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "TenTang";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Tên Tầng";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Width = 125;
-            // 
-            // GiaToaA
-            // 
-            this.GiaToaA.DataPropertyName = "Gia";
-            this.GiaToaA.HeaderText = "Giá";
-            this.GiaToaA.MinimumWidth = 6;
-            this.GiaToaA.Name = "GiaToaA";
-            this.GiaToaA.Width = 125;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "MaPhong";
@@ -1270,6 +1180,96 @@
             this.GiaToaB.MinimumWidth = 6;
             this.GiaToaB.Name = "GiaToaB";
             this.GiaToaB.Width = 125;
+            // 
+            // ptCosohatangB
+            // 
+            this.ptCosohatangB.Location = new System.Drawing.Point(4, 25);
+            this.ptCosohatangB.Margin = new System.Windows.Forms.Padding(4);
+            this.ptCosohatangB.Name = "ptCosohatangB";
+            this.ptCosohatangB.Size = new System.Drawing.Size(936, 593);
+            this.ptCosohatangB.TabIndex = 2;
+            this.ptCosohatangB.Text = "Cơ sở hạ tầng";
+            this.ptCosohatangB.UseVisualStyleBackColor = true;
+            // 
+            // ptHatangphongB
+            // 
+            this.ptHatangphongB.Location = new System.Drawing.Point(4, 25);
+            this.ptHatangphongB.Margin = new System.Windows.Forms.Padding(4);
+            this.ptHatangphongB.Name = "ptHatangphongB";
+            this.ptHatangphongB.Size = new System.Drawing.Size(936, 593);
+            this.ptHatangphongB.TabIndex = 3;
+            this.ptHatangphongB.Text = "Hạ tầng phòng";
+            this.ptHatangphongB.UseVisualStyleBackColor = true;
+            // 
+            // tpThongtintoaB
+            // 
+            this.tpThongtintoaB.Location = new System.Drawing.Point(4, 25);
+            this.tpThongtintoaB.Margin = new System.Windows.Forms.Padding(4);
+            this.tpThongtintoaB.Name = "tpThongtintoaB";
+            this.tpThongtintoaB.Size = new System.Drawing.Size(936, 593);
+            this.tpThongtintoaB.TabIndex = 4;
+            this.tpThongtintoaB.Text = "Thông tin ";
+            this.tpThongtintoaB.UseVisualStyleBackColor = true;
+            // 
+            // tangTableAdapter
+            // 
+            this.tangTableAdapter.ClearBeforeFill = true;
+            // 
+            // coSoHaTangTangTableAdapter
+            // 
+            this.coSoHaTangTangTableAdapter.ClearBeforeFill = true;
+            // 
+            // phongTableAdapter
+            // 
+            this.phongTableAdapter.ClearBeforeFill = true;
+            // 
+            // maPhongDataGridViewTextBoxColumn
+            // 
+            this.maPhongDataGridViewTextBoxColumn.DataPropertyName = "MaPhong";
+            this.maPhongDataGridViewTextBoxColumn.HeaderText = "Mã Phòng";
+            this.maPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maPhongDataGridViewTextBoxColumn.Name = "maPhongDataGridViewTextBoxColumn";
+            this.maPhongDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tenPhongDataGridViewTextBoxColumn
+            // 
+            this.tenPhongDataGridViewTextBoxColumn.DataPropertyName = "TenPhong";
+            this.tenPhongDataGridViewTextBoxColumn.HeaderText = "Tên Phòng";
+            this.tenPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tenPhongDataGridViewTextBoxColumn.Name = "tenPhongDataGridViewTextBoxColumn";
+            this.tenPhongDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // trangThaiPhongDataGridViewTextBoxColumn
+            // 
+            this.trangThaiPhongDataGridViewTextBoxColumn.DataPropertyName = "TrangThaiPhong";
+            this.trangThaiPhongDataGridViewTextBoxColumn.HeaderText = "Trạng Thái Phòng";
+            this.trangThaiPhongDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.trangThaiPhongDataGridViewTextBoxColumn.Name = "trangThaiPhongDataGridViewTextBoxColumn";
+            this.trangThaiPhongDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // TenCSVCP
+            // 
+            this.TenCSVCP.DataPropertyName = "TenCSVCP";
+            this.TenCSVCP.HeaderText = "Tên CSVCP";
+            this.TenCSVCP.MinimumWidth = 6;
+            this.TenCSVCP.Name = "TenCSVCP";
+            this.TenCSVCP.Width = 125;
+            // 
+            // TenTang
+            // 
+            this.TenTang.DataPropertyName = "TenTang";
+            this.TenTang.HeaderText = "Tên Tầng";
+            this.TenTang.MinimumWidth = 6;
+            this.TenTang.Name = "TenTang";
+            this.TenTang.Width = 125;
+            // 
+            // GiaToaA
+            // 
+            this.GiaToaA.DataPropertyName = "Gia";
+            this.GiaToaA.HeaderText = "Giá";
+            this.GiaToaA.MinimumWidth = 6;
+            this.GiaToaA.Name = "GiaToaA";
+            this.GiaToaA.Width = 125;
             // 
             // frmQuanLyToaNha
             // 
@@ -1429,17 +1429,21 @@
         private System.Windows.Forms.ComboBox textBox5;
         private System.Windows.Forms.ComboBox textBox6;
         private System.Windows.Forms.ComboBox textBox4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maPhongDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiPhongDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaToaA;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCosohatangphong;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTang;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaToaB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maPhongDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trangThaiPhongDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenCSVCP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaToaA;
     }
 }
