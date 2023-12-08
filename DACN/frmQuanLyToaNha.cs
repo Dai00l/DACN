@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -56,22 +57,49 @@ namespace DACN
         private void frmQuanLyThuePhong_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet3_Phong.Phong' table. You can move, or remove it, as needed.
-            this.phongTableAdapter.Fill(this.toaNhaChoThue999DataSet3_Phong.Phong);
+            //this.phongTableAdapter.Fill(this.toaNhaChoThue999DataSet3_Phong.Phong);
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet1.CoSoHaTangTang' table. You can move, or remove it, as needed.
             this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet.Tang' table. You can move, or remove it, as needed.
             this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
             // Binding bd = new Binding("Text", Cons.Cons.LoginNhanVien, "Ten", true,DataSourceUpdateMode.OnPropertyChanged);
 
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cp.TenCSVCP, t.TenTang, p.Gia\r\n" +
+                "from Phong p \r\n" +
+                "left join CoSoHaTangPhong cp on p.idCosohatangphong = cp.MaCSVCP\r\n" +
+                "left join Tang t on p.idTang = t.MaTang", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dgvPhong.DataSource = dt;
+            dataGridView3.DataSource = dt;
+
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            {
+                var listTenCSHTP = db.CoSoHaTangPhongs;
+                var listTenTang = db.Tangs;
+
+                cmbTenCSHTP.DataSource = listTenCSHTP.ToList();
+                cmbTenCSHTP.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
+                cmbTenCSHTP.ValueMember = "MaCSVCP"; // Tên trường chứa ID
+
+                cmbTenTang.DataSource = listTenTang.ToList();
+                cmbTenTang.DisplayMember = "TenTang"; // Tên trường chứa tên
+                cmbTenTang.ValueMember = "MaTang"; // Tên trường chứa ID
+            }
 
 
 
 
 
-
-
-
-        }
+            }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -264,9 +292,9 @@ namespace DACN
                 txtIdphong.Text = dgvPhong.Rows[e.RowIndex].Cells["maPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTrangthai.Text = dgvPhong.Rows[e.RowIndex].Cells["trangThaiPhongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtTenphong.Text = dgvPhong.Rows[e.RowIndex].Cells["tenPhongDataGridViewTextBoxColumn"].Value?.ToString();
-                txtIdCSHT.Text = dgvPhong.Rows[e.RowIndex].Cells["idCosohatangphongDataGridViewTextBoxColumn"].Value?.ToString();
+                cmbTenCSHTP.Text = dgvPhong.Rows[e.RowIndex].Cells["idCosohatangphongDataGridViewTextBoxColumn"].Value?.ToString();
                 txtGia.Text = dgvPhong.Rows[e.RowIndex].Cells["GiaToaA"].Value?.ToString();
-                txtIdTang.Text = dgvPhong.Rows[e.RowIndex].Cells["idTangDataGridViewTextBoxColumn"].Value?.ToString();
+                cmbTenTang.Text = dgvPhong.Rows[e.RowIndex].Cells["idTangDataGridViewTextBoxColumn"].Value?.ToString();
 
             }
         }
