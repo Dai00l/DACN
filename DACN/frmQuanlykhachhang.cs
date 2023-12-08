@@ -155,7 +155,7 @@ namespace DACN
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: "+ex.Message);
+                MessageBox.Show("Không thể xóa khách hàng:\n " + ex.Message, "Lỗi");
             }
             
 
