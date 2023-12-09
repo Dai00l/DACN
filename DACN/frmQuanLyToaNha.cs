@@ -551,9 +551,62 @@ namespace DACN
             }
         }
 
+        private void btnXoaphong_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtIdphong.Text.Equals(""))
+                {
+                    {
+                        MessageBox.Show("Hãy chọn mã phòng cần xóa", "Lưu ý");
+                    }
+                }
+                else
+                {
+                    int maPhongCanXoa = Convert.ToInt32(txtIdphong.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var p = db.Phongs.FirstOrDefault(a => a.MaPhong == maPhongCanXoa);
+                        db.Phongs.Remove(p);
+                        db.SaveChanges();
+                        ReloadDgvPhong();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thực thi xóa: " + ex.Message, "Lỗi");
+            }
+        }
+
         private void btnXoa01_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (textBox8.Text.Equals(""))
+                {
+                    {
+                        MessageBox.Show("Hãy chọn mã phòng cần xóa", "Lưu ý");
+                    }
+                }
+                else
+                {
+                    int maPhongCanXoa = Convert.ToInt32(textBox8.Text);
 
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var p = db.Phongs.FirstOrDefault(a => a.MaPhong == maPhongCanXoa);
+                        db.Phongs.Remove(p);
+                        db.SaveChanges();
+                        ReloadDgvPhong();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thực thi xóa: " + ex.Message, "Lỗi");
+            }
         }
     }
 }
