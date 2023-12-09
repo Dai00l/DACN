@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="IDHD" />
     </Key>
-    <Property Name="IDHD" Type="int" Nullable="false" />
+    <Property Name="IDHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKH" Type="int" />
     <Property Name="MaNV" Type="int" />
     <Property Name="MaToaNha" Type="int" />
@@ -150,7 +150,7 @@
     <Key>
       <PropertyRef Name="MaThu" />
     </Key>
-    <Property Name="MaThu" Type="int" Nullable="false" />
+    <Property Name="MaThu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoTien" Type="money" />
     <Property Name="NoiDung" Type="nvarchar" MaxLength="1000" />
     <Property Name="idNhanVien" Type="nvarchar" MaxLength="20" />
@@ -160,7 +160,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idPhong" Type="int" />
     <Property Name="idKhachhang" Type="nvarchar" MaxLength="20" />
   </EntityType>

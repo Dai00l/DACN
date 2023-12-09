@@ -608,5 +608,67 @@ namespace DACN
                 MessageBox.Show("Lỗi khi thực thi xóa: " + ex.Message, "Lỗi");
             }
         }
+
+        private void btnThuePhong1_Click(object sender, EventArgs e)
+        {
+            if (dgvPhong.CurrentRow == null)
+            {
+                MessageBox.Show("Bạn chưa chọn phòng để thuê", "Thông báo");
+            }
+            else
+            {
+                string trangThaiPhong = (string)dgvPhong.CurrentRow.Cells["trangThaiPhongDataGridViewTextBoxColumn"].Value;
+
+                if (trangThaiPhong.Equals("Đang Thuê"))
+                {
+                    MessageBox.Show("Phòng đang cho thuê, hãy chọn phòng khác!", "Thông báo");
+                }
+                else
+                {
+                    int giaPhong = (int)dgvPhong.CurrentRow.Cells["GiaToaA"].Value;
+                    string tenPhong = (string)dgvPhong.CurrentRow.Cells["tenPhongDataGridViewTextBoxColumn"].Value;
+                    int idPhong = Convert.ToInt32(txtIdphong.Text);
+                    frmThuePhong f = new frmThuePhong(idNV, giaPhong, tenPhong, idPhong);
+                    f.ShowDialog();
+                }
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.CurrentRow == null)
+            {
+                MessageBox.Show("Bạn chưa chọn phòng để thuê", "Thông báo");
+            }
+            else
+            {
+                string trangThaiPhong = (string)dataGridView3.CurrentRow.Cells["dataGridViewTextBoxColumn3"].Value;
+
+                if (trangThaiPhong.Equals("Đang Thuê"))
+                {
+                    MessageBox.Show("Phòng đang cho thuê, hãy chọn phòng khác!", "Thông báo");
+                }
+                else
+                {
+                    int giaPhong = (int)dataGridView3.CurrentRow.Cells["GiaToaB"].Value;
+                    string tenPhong = (string)dataGridView3.CurrentRow.Cells["dataGridViewTextBoxColumn2"].Value;
+                    int idPhong = Convert.ToInt32(textBox8.Text);
+                    frmThuePhong f = new frmThuePhong(idNV, giaPhong, tenPhong, idPhong);
+                    f.ShowDialog();
+                }
+
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            ReloadDgvPhong();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ReloadDgvPhong();
+        }
     }
 }
