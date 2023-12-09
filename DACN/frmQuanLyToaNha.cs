@@ -415,5 +415,65 @@ namespace DACN
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+
+        private void btnthemphong_Click(object sender, EventArgs e)
+        {
+            if (txtIdphong.Text.Equals("")
+                    || txtTenphong.Text.Equals("")
+                    || txtGia.Text.Equals("")
+                    || txtTrangthai.Text.Equals("")
+                    || cmbTenCSHTP.Text.Equals("")
+                    || cmbTenTang.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin phòng cần thêm", "Cảnh báo");
+            }
+            else
+            {
+                int maPhongCanThem = Convert.ToInt32(txtIdphong.Text);
+                string tenPhong = txtTenphong.Text;
+                int giaThue = Convert.ToInt32(txtGia.Text);
+                string trangThai = txtTrangthai.Text;
+                int maCSVCP = Convert.ToInt32(cmbTenCSHTP.SelectedValue);
+                int maTang = Convert.ToInt32(cmbTenTang.SelectedValue);
+
+                bool isAdded = true;
+                foreach (DataGridViewRow row in dgvPhong.Rows)
+                {
+                    int maPhong = Convert.ToInt32(row.Cells["maPhongDataGridViewTextBoxColumn"].Value);
+
+
+                    if (maPhong == maPhongCanThem)
+
+                    {
+                        isAdded = false;
+                        
+                    }
+                }
+                if (isAdded)
+                {
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        Phong phong = new Phong();
+                        {
+                            phong.MaPhong = maPhongCanThem;
+                            phong.TenPhong = tenPhong;
+                            phong.Gia = giaThue;
+                            phong.TrangThaiPhong = trangThai;
+                            phong.idCosohatangphong = maCSVCP;
+                            phong.idTang = maTang;
+
+                            db.Phongs.Add(phong);
+                            db.SaveChanges();
+
+                            ReloadDgvPhong();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã phòng đã tồn tại, hãy chọn mã phòng khác!", "Cảnh báo");
+                }
+            }
+        }
     }
 }

@@ -499,6 +499,7 @@
             this.btnthemphong.TabIndex = 22;
             this.btnthemphong.Text = "Thêm";
             this.btnthemphong.UseVisualStyleBackColor = false;
+            this.btnthemphong.Click += new System.EventHandler(this.btnthemphong_Click);
             // 
             // panel1
             // 
