@@ -113,7 +113,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ptPhong = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnXoa01 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -183,14 +183,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1215, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1215, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // thôngTinNhânViênToolStripMenuItem
             // 
             this.thôngTinNhânViênToolStripMenuItem.Name = "thôngTinNhânViênToolStripMenuItem";
-            this.thôngTinNhânViênToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.thôngTinNhânViênToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
             this.thôngTinNhânViênToolStripMenuItem.Text = "Menu";
             this.thôngTinNhânViênToolStripMenuItem.Click += new System.EventHandler(this.thôngTinNhânViênToolStripMenuItem_Click);
             // 
@@ -199,7 +199,7 @@
             this.QLKH.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3});
             this.QLKH.Name = "QLKH";
-            this.QLKH.Size = new System.Drawing.Size(115, 24);
+            this.QLKH.Size = new System.Drawing.Size(115, 26);
             this.QLKH.Text = "Quản lý khách";
             this.QLKH.Click += new System.EventHandler(this.QLKH_Click);
             // 
@@ -212,14 +212,14 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(86, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(86, 26);
             this.toolStripMenuItem2.Text = "Thống Kê";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // hệThốngToolStripMenuItem
             // 
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.hệThốngToolStripMenuItem.Text = "Hệ Thống";
             // 
             // thôngTinCáNhânToolStripMenuItem
@@ -228,7 +228,7 @@
             this.tmiTenNhanVien,
             this.đổiMậtKhẩuToolStripMenuItem});
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông Tin Cá Nhân";
             // 
             // tmiTenNhanVien
@@ -247,7 +247,7 @@
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -980,7 +980,7 @@
             // ptPhong
             // 
             this.ptPhong.Controls.Add(this.button7);
-            this.ptPhong.Controls.Add(this.button3);
+            this.ptPhong.Controls.Add(this.btnXoa01);
             this.ptPhong.Controls.Add(this.button4);
             this.ptPhong.Controls.Add(this.button5);
             this.ptPhong.Controls.Add(this.panel2);
@@ -1004,16 +1004,17 @@
             this.button7.Text = "Thuê Phòng";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnXoa01
             // 
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(772, 169);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 41);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnXoa01.BackColor = System.Drawing.Color.Red;
+            this.btnXoa01.Location = new System.Drawing.Point(772, 169);
+            this.btnXoa01.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXoa01.Name = "btnXoa01";
+            this.btnXoa01.Size = new System.Drawing.Size(108, 41);
+            this.btnXoa01.TabIndex = 28;
+            this.btnXoa01.Text = "Xóa";
+            this.btnXoa01.UseVisualStyleBackColor = false;
+            this.btnXoa01.Click += new System.EventHandler(this.btnXoa01_Click);
             // 
             // button4
             // 
@@ -1037,6 +1038,7 @@
             this.button5.TabIndex = 27;
             this.button5.Text = "Thêm";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel2
             // 
@@ -1395,7 +1397,7 @@
         private System.Windows.Forms.TextBox txtIdphong;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnXoa01;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel2;
