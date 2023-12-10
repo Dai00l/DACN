@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,144 +24,196 @@ namespace DACN
         {
             this.idNV = idNhanVien;
             InitializeComponent();
-            load_data();
+            ReloadBangNhanVien();
+            //load_data();
+            LoadChucVu();
         }
 
-        private int GetSelectedRow(string nhanVienId)
+        public void ReloadBangNhanVien()
         {
-            for (int i = 0; i < dgvNhanVien.Rows.Count; i++)
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
             {
-                if (dgvNhanVien.Rows[i].Cells[0].Value.ToString() == nhanVienId)
+                if (conn.State == ConnectionState.Closed)
                 {
-                    return i;
+                    conn.Open();
                 }
+                SqlCommand cmd1 = new SqlCommand("select nv.IDNVien, nv.HoTen, nv.DiaChi, nv.Email, nv.GioiTinh, nv.SoDienThoai, nv.NgayVaoLam, nv.Luong, cv.TenChucVu\r\nfrom Nhanvien nv \r\ninner join ChucVu cv on nv.IDChucVu = cv.ID", conn);
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataTable dt = new DataTable();
+                da.SelectCommand = cmd1;
+                dt.Clear();
+                da.Fill(dt);
+                dgvNhanVien.DataSource = dt;
             }
-            return -1;
         }
 
-        private void InsertUpdate(int selectedRow)
-        {
-           
-            dgvNhanVien.Rows[selectedRow].Cells[0].Value = txtIDNv.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[1].Value = txtName.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[2].Value = txtAddress.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[3].Value = txtEmail.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[4].Value = txtGioitinh.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[8].Value = txtSDT.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[5].Value = dtpNgayvaolam.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[6].Value = txtLuong.Text;
-            dgvNhanVien.Rows[selectedRow].Cells[7].Value = txtChucvu.Text;
-            
-        }
-
-
-
-        public void load_data()
-        {
-            var lstNhanVien = db.Nhanviens.ToList();
-            dgvNhanVien.DataSource = null;
-            dgvNhanVien.Rows.Clear();
-
-
-
-
-            foreach (var item in lstNhanVien)
-            {
-                int index = dgvNhanVien.Rows.Add();
-                dgvNhanVien.Rows[index].Cells[0].Value = item.IDNVien;
-
-                dgvNhanVien.Rows[index].Cells[1].Value = item.HoTen;
-                dgvNhanVien.Rows[index].Cells[2].Value = item.DiaChi;
-                dgvNhanVien.Rows[index].Cells[3].Value = item.Email;
-                // dgvNhanVien.Rows[index].Cells[].Value = item.NgaySinh.Value.ToShortDateString();
-                if (item.GioiTinh == "1") // So sánh với chuỗi "1"
-                {
-                    dgvNhanVien.Rows[index].Cells[4].Value = "Nam";
-                }
-                else
-                {
-                    dgvNhanVien.Rows[index].Cells[4].Value = "Nữ";
-                }
-
-                dgvNhanVien.Rows[index].Cells[5].Value = item.SoDienThoai;
-                dgvNhanVien.Rows[index].Cells[8].Value = item.IDChucVu;
-                dgvNhanVien.Rows[index].Cells[7].Value = item.Luong;
-                dgvNhanVien.Rows[index].Cells[6].Value = item.NgayVaoLam.Value.ToShortDateString();
-                // dgvNhanVien.Rows[index].Cells[1].Value = item.TaiKhoan;
-            }
-            dgvNhanVien.DataSource = lstNhanVien;
-        }
-
-        private void XoaNv(string hoTen, string eMail, string gioiTinh, string sDt, string diaChi, int idChucVu, DateTime ngayVaolam, string idNv,string luong)
+        public void LoadChucVu()
         {
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
-                // Tìm nhân viên trong cơ sở dữ liệu
-                var nv = db.Nhanviens.FirstOrDefault(n => n.IDNVien == idNv);
+                var listChucVu = db.ChucVus;
 
-                if (nv != null)
+                txtChucvu.DataSource = listChucVu.ToList();
+                txtChucvu.DisplayMember = "TenChucVu"; 
+                txtChucvu.ValueMember = "ID";
+            }
+        }
+
+        //private int GetSelectedRow(string nhanVienId)
+        //{
+        //    for (int i = 0; i < dgvNhanVien.Rows.Count; i++)
+        //    {
+        //        if (dgvNhanVien.Rows[i].Cells[0].Value.ToString() == nhanVienId)
+        //        {
+        //            return i;
+        //        }
+        //    }
+        //    return -1;
+        //}
+
+        //private void InsertUpdate(int selectedRow)
+        //{
+           
+        //    dgvNhanVien.Rows[selectedRow].Cells[0].Value = txtIDNv.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[1].Value = txtName.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[2].Value = txtAddress.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[3].Value = txtEmail.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[4].Value = txtGioitinh.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[8].Value = txtSDT.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[5].Value = dtpNgayvaolam.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[6].Value = txtLuong.Text;
+        //    dgvNhanVien.Rows[selectedRow].Cells[7].Value = txtChucvu.Text;
+            
+        //}
+
+
+
+        //public void load_data()
+        //{
+        //    var lstNhanVien = db.Nhanviens.ToList();
+        //    dgvNhanVien.DataSource = null;
+        //    dgvNhanVien.Rows.Clear();
+
+
+
+
+        //    foreach (var item in lstNhanVien)
+        //    {
+        //        int index = dgvNhanVien.Rows.Add();
+        //        dgvNhanVien.Rows[index].Cells[0].Value = item.IDNVien;
+
+        //        dgvNhanVien.Rows[index].Cells[1].Value = item.HoTen;
+        //        dgvNhanVien.Rows[index].Cells[2].Value = item.DiaChi;
+        //        dgvNhanVien.Rows[index].Cells[3].Value = item.Email;
+        //        // dgvNhanVien.Rows[index].Cells[].Value = item.NgaySinh.Value.ToShortDateString();
+        //        if (item.GioiTinh == "1") // So sánh với chuỗi "1"
+        //        {
+        //            dgvNhanVien.Rows[index].Cells[4].Value = "Nam";
+        //        }
+        //        else
+        //        {
+        //            dgvNhanVien.Rows[index].Cells[4].Value = "Nữ";
+        //        }
+
+        //        dgvNhanVien.Rows[index].Cells[5].Value = item.SoDienThoai;
+        //        dgvNhanVien.Rows[index].Cells[8].Value = item.IDChucVu;
+        //        dgvNhanVien.Rows[index].Cells[7].Value = item.Luong;
+        //        dgvNhanVien.Rows[index].Cells[6].Value = item.NgayVaoLam.Value.ToShortDateString();
+        //        // dgvNhanVien.Rows[index].Cells[1].Value = item.TaiKhoan;
+        //    }
+        //    dgvNhanVien.DataSource = lstNhanVien;
+        //}
+
+        private void XoaNv(string idNv)
+        {
+            try
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
                 {
-                    // Cập nhật ràng buộc khóa ngoại trong bảng NguoiDung
-                    var nguoiDungList = db.NguoiDungs.Where(nd => nd.idNhanVien == idNv).ToList();
-                    foreach (var nguoiDung in nguoiDungList)
+                    // Tìm nhân viên trong cơ sở dữ liệu
+                    var nv = db.Nhanviens.FirstOrDefault(n => n.IDNVien == idNv);
+                    var nd = db.NguoiDungs.FirstOrDefault(n=> n.idNhanVien == idNv);
+
+                    if (nv != null)
                     {
-                        nguoiDung.idNhanVien = null; // hoặc gán giá trị khác không tham chiếu đến nhân viên
-                    }
+                        // Cập nhật ràng buộc khóa ngoại trong bảng NguoiDung
+                        var nguoiDungList = db.NguoiDungs.Where(a => a.idNhanVien == idNv).ToList();
+                        foreach (var nguoiDung in nguoiDungList)
+                        {
+                            nguoiDung.idNhanVien = null; // hoặc gán giá trị khác không tham chiếu đến nhân viên
+                        }
 
-                    // Xóa nhân viên
-                    db.Nhanviens.Remove(nv);
-                    db.SaveChanges();
-                    load_data();
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy nhân viên để xóa.");
+                        // Xóa nhân viên
+                        db.Nhanviens.Remove(nv);
+                        db.NguoiDungs.Remove(nd);
+                        db.SaveChanges();
+                        //load_data();
+                        // Thông báo thành công
+                        MessageBox.Show("Xóa nhân viên thành công");
+                        ReloadBangNhanVien();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy nhân viên để xóa.");
+                    }
                 }
             }
+            catch (Exception ex) {
+                MessageBox.Show("Không thể xóa nhân viên!" + ex.Message, "Lỗi");
+            }
+            
         }
 
         private void CapNhatNv(string hoTen, string eMail, string gioiTinh, string sDt, string diaChi, int idChucVu, DateTime ngayVaolam, string idNv, string luong)
         {
-            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            try
             {
-                // Tìm nhân viên trong cơ sở dữ liệu
-                var nv = db.Nhanviens.FirstOrDefault(n => n.IDNVien == idNv);
-
-                if (nv != null)
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
                 {
-                    // Cập nhật thông tin nhân viên
-                    nv.HoTen = hoTen;
-                    nv.Email = eMail;
-                    nv.GioiTinh = gioiTinh;
-                    nv.SoDienThoai = sDt;
-                    nv.DiaChi = diaChi;
-                    nv.IDChucVu = idChucVu;
-                    nv.NgayVaoLam = ngayVaolam;
-                    nv.Luong = Convert.ToDecimal(luong);
+                    // Tìm nhân viên trong cơ sở dữ liệu
+                    var nv = db.Nhanviens.FirstOrDefault(n => n.IDNVien == idNv);
 
-                    // Lưu thay đổi vào cơ sở dữ liệu
-                    
-                    db.SaveChanges();
-                    load_data();
+                    if (nv != null)
+                    {
+                        // Cập nhật thông tin nhân viên
+                        nv.HoTen = hoTen;
+                        nv.Email = eMail;
+                        nv.GioiTinh = gioiTinh;
+                        nv.SoDienThoai = sDt;
+                        nv.DiaChi = diaChi;
+                        nv.IDChucVu = idChucVu;
+                        nv.NgayVaoLam = ngayVaolam;
+                        nv.Luong = Convert.ToDecimal(luong);
 
-                    // Thông báo thành công
-                    int selectedRow = GetSelectedRow(txtIDNv.Text);
-                    InsertUpdate(selectedRow);
-                    MessageBox.Show("Cập nhật nhân viên thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy nhân viên để cập nhật.");
+                        // Lưu thay đổi vào cơ sở dữ liệu
+
+                        db.SaveChanges();
+                        //load_data();
+
+                        // Thông báo thành công
+                        //int selectedRow = GetSelectedRow(txtIDNv.Text);
+                        //InsertUpdate(selectedRow);
+                        MessageBox.Show("Cập nhật nhân viên thành công");
+                        ReloadBangNhanVien();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy nhân viên để cập nhật.");
+                    }
                 }
             }
+            catch (Exception ex) {
+                MessageBox.Show("Lỗi: "+ex.Message, "Lỗi");
+            }
+            
         }
 
-        public partial class NguoiDung
-        {
-            // Các thuộc tính khác
+        //public partial class NguoiDung
+        //{
+        //    // Các thuộc tính khác
 
-            public int isActive { get; set; } // Thêm thuộc tính isActive
-        }
+        //    public int isActive { get; set; } // Thêm thuộc tính isActive
+        //}
 
 
         private void label6_Click(object sender, EventArgs e)
@@ -181,8 +235,101 @@ namespace DACN
 
         private void button11_Click(object sender, EventArgs e)
         {
-            frmThemNhanVien f = new frmThemNhanVien();
-            f.ShowDialog();
+            try
+            {
+                if (txtName.Text.Equals("")
+                    || txtEmail.Text.Equals("")
+                    || txtLuong.Text.Equals("")
+                    || txtGioitinh.Text.Equals("")
+                    || txtSDT.Text.Equals("")
+                    || txtAddress.Text.Equals("")
+                    || txtChucvu.Text.Equals("")
+                    || dtpNgayvaolam.Text.Equals("")
+                    || txtIDNv.Text.Equals("")
+                    || txtMatKhau.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin nhân viên cần thêm", "Cảnh báo");
+                }
+                else
+                {
+                    string tenNV = txtName.Text;
+                    string email = txtEmail.Text;
+                    double luong = Convert.ToDouble(txtLuong.Text);
+                    string gioiTinh = txtGioitinh.Text;
+                    string sdt = txtSDT.Text;
+                    string diaChi = txtAddress.Text;
+                    int maCV = Convert.ToInt32(txtChucvu.SelectedValue);
+                    DateTime ngayVaoLam = dtpNgayvaolam.Value;
+                    string maNVCanThem = txtIDNv.Text;
+                    string matKhau = txtMatKhau.Text;
+
+                    bool isAdded = true;
+                    foreach (DataGridViewRow row in dgvNhanVien.Rows)
+                    {
+                        string maPhong = (string)row.Cells["idEmployee"].Value;
+
+
+                        if (maPhong == maNVCanThem)
+
+                        {
+                            isAdded = false;
+
+                        }
+                    }
+                    if (isAdded)
+                    {
+                        using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                        {
+                            Nhanvien nv = new Nhanvien();
+                            {
+                                nv.HoTen = tenNV;
+                                nv.Email = email;
+                                nv.Luong = (decimal?)luong;
+                                nv.GioiTinh = gioiTinh;
+                                nv.SoDienThoai = sdt;
+                                nv.DiaChi = diaChi;
+                                nv.IDChucVu = maCV;
+                                nv.NgayVaoLam = ngayVaoLam;
+                                nv.IDNVien = maNVCanThem;
+
+                                db.Nhanviens.Add(nv);
+                                db.SaveChanges();
+
+                                ReloadBangNhanVien();
+                            }
+
+                            NguoiDung nguoiDung = new NguoiDung();
+                            {
+                                // Lấy thời gian hiện tại
+                                DateTime now = DateTime.Now;
+
+                                // Chuyển đổi thành chuỗi với định dạng mong muốn (VD: yyyymmddhhmmss)
+                                string randomString = now.ToString("yyyyMMddHHmmss");
+
+                                // Hiển thị chuỗi ngẫu nhiên
+                                // Console.WriteLine(randomString);
+                                nguoiDung.ID = randomString;
+                                nguoiDung.idNhanVien = maNVCanThem;
+                                nguoiDung.Matkhau = matKhau;
+
+                                db.NguoiDungs.Add(nguoiDung);
+                                db.SaveChanges();
+                            }
+                            MessageBox.Show("Thêm nhân viên thành công", "Thông báo");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mã nhân viên đã tồn tại, hãy chọn mã khác!", "Cảnh báo");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            //frmThemNhanVien f = new frmThemNhanVien();
+            //f.ShowDialog();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -211,13 +358,7 @@ namespace DACN
 
         private void btnXoaNv_Click(object sender, EventArgs e)
         {
-            string hoTen = txtName.Text;
-            string eMail = txtEmail.Text;
-            string gioiTinh = txtGioitinh.Text;
-            string sDt = txtSDT.Text;
-            string diaChi = txtAddress.Text;
-            string luong = txtLuong.Text;
-            DateTime ngayVaolam = dtpNgayvaolam.Value;
+            
             string idNv = txtIDNv.Text;
 
             // Lấy IDChucVu từ combobox hoặc từ nguồn dữ liệu khác
@@ -225,17 +366,20 @@ namespace DACN
 
             // Kiểm tra thông tin có hợp lệ không
 
-            if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi))
+            if (txtIDNv.Text.Equals(""))
             {
-                MessageBox.Show("Vui lòng chọn đầy đủ thông tin");
+                MessageBox.Show("Vui lòng chọn nhân viên cần xóa");
                 return;
             }
+            else
+            {
+                // Thêm nhân viên vào cơ sở dữ liệu
+                XoaNv(idNv);
+            }
 
-            // Thêm nhân viên vào cơ sở dữ liệu
-            XoaNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
+            
 
-            // Thông báo thành công
-            MessageBox.Show("Xóa nhân viên thành công");
+            
 
             // Đóng form (tùy theo yêu cầu của bạn)
             //this.Close();
@@ -299,35 +443,61 @@ namespace DACN
 
         private void btnCapnhat_Click(object sender, EventArgs e)
         {
-            DateTime ngayVaolam = dtpNgayvaolam.Value;
-            string hoTen = txtName.Text;
-            string eMail = txtEmail.Text;
-            string gioiTinh = txtGioitinh.Text;
-            string sDt = txtSDT.Text;
-            string diaChi = txtAddress.Text;
-            string luong = txtLuong.Text;
-            string idNv = txtIDNv.Text;
-
-            // Lấy IDChucVu từ combobox hoặc từ nguồn dữ liệu khác
-            int idChucVu = GetSelectedChucVuID(); // Hàm này cần được triển khai
-
-            // Kiểm tra thông tin có hợp lệ không
-            if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi))
+            try
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
-                return;
+                DateTime ngayVaolam = dtpNgayvaolam.Value;
+                string hoTen = txtName.Text;
+                string eMail = txtEmail.Text;
+                string gioiTinh = txtGioitinh.Text;
+                string sDt = txtSDT.Text;
+                string diaChi = txtAddress.Text;
+                string luong = txtLuong.Text;
+                string idNv = txtIDNv.Text;
+
+                // Lấy IDChucVu từ combobox hoặc từ nguồn dữ liệu khác
+                int idChucVu = Convert.ToInt32(txtChucvu.SelectedValue); // Hàm này cần được triển khai
+
+                // Kiểm tra thông tin có hợp lệ không
+                if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                    return;
+                }
+
+                // Cập nhật nhân viên trong cơ sở dữ liệu
+                CapNhatNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
             }
-
-            // Cập nhật nhân viên trong cơ sở dữ liệu
-            CapNhatNv(hoTen, eMail, gioiTinh, sDt, diaChi, idChucVu, ngayVaolam, idNv, luong);
-
-            dgvNhanVien.Refresh();
-           
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi");
+            }
         }
 
         private void txtGioitinh_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dgvNhanVien.CurrentRow.Index;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dgvNhanVien.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                // Hiển thị giá trị của ô trong TextBox tương ứng
+                txtIDNv.Text = dgvNhanVien.Rows[e.RowIndex].Cells["idEmployee"].Value?.ToString();
+                txtName.Text = dgvNhanVien.Rows[e.RowIndex].Cells["nameEmployee"].Value?.ToString();
+                txtAddress.Text = dgvNhanVien.Rows[e.RowIndex].Cells["addressEmployee"].Value?.ToString();
+                txtEmail.Text = dgvNhanVien.Rows[e.RowIndex].Cells["emailEmployee"].Value?.ToString();
+                txtGioitinh.Text = dgvNhanVien.Rows[e.RowIndex].Cells["genderEmployee"].Value?.ToString();
+                txtSDT.Text = dgvNhanVien.Rows[e.RowIndex].Cells["phoneEmployee"].Value?.ToString();
+                dtpNgayvaolam.Text = dgvNhanVien.Rows[e.RowIndex].Cells["dateStart"].Value?.ToString();
+                txtLuong.Text = dgvNhanVien.Rows[e.RowIndex].Cells["salary"].Value?.ToString();
+                txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["postitionEmployee"].Value?.ToString();
+            }
         }
     }
 }

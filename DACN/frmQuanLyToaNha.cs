@@ -576,7 +576,7 @@ namespace DACN
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thực thi xóa: " + ex.Message, "Lỗi");
+                MessageBox.Show("Lỗi khi thực thi xóa", "Lỗi");
             }
         }
 
@@ -605,7 +605,7 @@ namespace DACN
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thực thi xóa: " + ex.Message, "Lỗi");
+                MessageBox.Show("Lỗi khi thực thi xóa", "Lỗi");
             }
         }
 

@@ -50,7 +50,7 @@ namespace DACN
                 db.SaveChanges();
                 // Gọi hàm nạp dữ liệu từ cơ sở dữ liệu của frmQuanly
                 frmQuanly quanLyForm = Application.OpenForms.OfType<frmQuanly>().FirstOrDefault();
-                quanLyForm?.load_data();
+                //quanLyForm?.load_data();
 
 
             }
