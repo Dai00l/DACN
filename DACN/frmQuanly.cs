@@ -159,7 +159,7 @@ namespace DACN
                 }
             }
             catch (Exception ex) {
-                MessageBox.Show("Không thể xóa nhân viên!" + ex.Message, "Lỗi");
+                MessageBox.Show("Không thể xóa nhân viên!", "Lỗi");
             }
             
         }
@@ -405,7 +405,7 @@ namespace DACN
                 txtSDT.Text = dgvNhanVien.Rows[e.RowIndex].Cells["phoneEmployee"].Value?.ToString();
                 dtpNgayvaolam.Text = dgvNhanVien.Rows[e.RowIndex].Cells["dateStart"].Value?.ToString();
                 txtLuong.Text = dgvNhanVien.Rows[e.RowIndex].Cells["salary"].Value?.ToString();         
-                txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["postitionEmployee"].Value?.ToString();
+                txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["TenChucVu"].Value?.ToString();
             }
 
 
@@ -496,8 +496,42 @@ namespace DACN
                 txtSDT.Text = dgvNhanVien.Rows[e.RowIndex].Cells["phoneEmployee"].Value?.ToString();
                 dtpNgayvaolam.Text = dgvNhanVien.Rows[e.RowIndex].Cells["dateStart"].Value?.ToString();
                 txtLuong.Text = dgvNhanVien.Rows[e.RowIndex].Cells["salary"].Value?.ToString();
-                txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["postitionEmployee"].Value?.ToString();
+                txtChucvu.Text = dgvNhanVien.Rows[e.RowIndex].Cells["TenChucVu"].Value?.ToString();
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string tenNV = txtName.Text;
+                string email = txtEmail.Text;
+                string luong = txtLuong.Text;
+                string gioiTinh = txtGioitinh.Text;
+                string sdt = txtSDT.Text;
+                string diaChi = txtAddress.Text;
+                string tenCV = txtChucvu.Text;
+                DateTime ngayVaoLam = dtpNgayvaolam.Value;
+                string maNV = txtIDNv.Text;
+
+                ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities();
+                var nguonDuLieu = db.Nhanviens;
+
+                decimal luongreal = Convert.ToDecimal(luong);
+
+                var ketQuaTimKiem = nguonDuLieu.Where(t =>
+                    (t.HoTen.Contains(tenNV) || t.Email.Contains(email) || t.Luong == luongreal
+                    || t.GioiTinh.Contains(gioiTinh) || t.SoDienThoai.Contains(sdt) || t.DiaChi.Contains(diaChi)
+                    || t.IDNVien.Contains(maNV) || t.ChucVu.TenChucVu.Equals(tenCV) || t.NgayVaoLam.Value == ngayVaoLam)
+                ).ToList();
+
+                dgvNhanVien.DataSource = ketQuaTimKiem;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Lỗi!", "Lỗi");
+            }
+            
         }
     }
 }

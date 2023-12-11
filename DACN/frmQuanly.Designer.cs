@@ -39,6 +39,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbNhansu = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtChucvu = new System.Windows.Forms.ComboBox();
+            this.txtGioitinh = new System.Windows.Forms.ComboBox();
             this.txtLuong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpNgayvaolam = new System.Windows.Forms.DateTimePicker();
@@ -61,9 +65,16 @@
             this.btnthemnv = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
+            this.idEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhanvienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toaNhaChoThue999DataSet2 = new DACN.ToaNhaChoThue999DataSet2();
             this.tbBangluong = new System.Windows.Forms.TabPage();
@@ -91,19 +102,6 @@
             this.toaNhaChoThue88888DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nhanvienTableAdapter = new DACN.ToaNhaChoThue999DataSet2TableAdapters.NhanvienTableAdapter();
             this.dVTableAdapter = new DACN.ToaNhaChoThue999DataSet4_DichVuTableAdapters.DVTableAdapter();
-            this.idEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postitionEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtGioitinh = new System.Windows.Forms.ComboBox();
-            this.txtChucvu = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbNhansu.SuspendLayout();
@@ -134,7 +132,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1220, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1220, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -142,33 +140,33 @@
             // tổngQuanToolStripMenuItem
             // 
             this.tổngQuanToolStripMenuItem.Name = "tổngQuanToolStripMenuItem";
-            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
+            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.tổngQuanToolStripMenuItem.Text = "Tổng quan";
             // 
             // quảnLýNhânViênToolStripMenuItem
             // 
             this.quảnLýNhânViênToolStripMenuItem.Name = "quảnLýNhânViênToolStripMenuItem";
-            this.quảnLýNhânViênToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.quảnLýNhânViênToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.quảnLýNhânViênToolStripMenuItem.Text = "Quản lý nhân viên";
             // 
             // thốngKêBáoCáoToolStripMenuItem
             // 
             this.thốngKêBáoCáoToolStripMenuItem.Name = "thốngKêBáoCáoToolStripMenuItem";
-            this.thốngKêBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.thốngKêBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.thốngKêBáoCáoToolStripMenuItem.Text = "Thống kê báo cáo";
             this.thốngKêBáoCáoToolStripMenuItem.Click += new System.EventHandler(this.thốngKêBáoCáoToolStripMenuItem_Click);
             // 
             // quảnLýThuêToolStripMenuItem
             // 
             this.quảnLýThuêToolStripMenuItem.Name = "quảnLýThuêToolStripMenuItem";
-            this.quảnLýThuêToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.quảnLýThuêToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.quảnLýThuêToolStripMenuItem.Text = "Quản lý thuê phòng";
             this.quảnLýThuêToolStripMenuItem.Click += new System.EventHandler(this.quảnLýThuêToolStripMenuItem_Click);
             // 
             // dịchVụToolStripMenuItem
             // 
             this.dịchVụToolStripMenuItem.Name = "dịchVụToolStripMenuItem";
-            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
+            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.dịchVụToolStripMenuItem.Text = "Dịch vụ";
             // 
             // tabControl1
@@ -193,8 +191,6 @@
             this.tbNhansu.Controls.Add(this.btnthemnv);
             this.tbNhansu.Controls.Add(this.pictureBox4);
             this.tbNhansu.Controls.Add(this.button8);
-            this.tbNhansu.Controls.Add(this.comboBox3);
-            this.tbNhansu.Controls.Add(this.label6);
             this.tbNhansu.Controls.Add(this.dgvNhanVien);
             this.tbNhansu.Location = new System.Drawing.Point(4, 29);
             this.tbNhansu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -234,6 +230,46 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1041, 254);
             this.panel3.TabIndex = 23;
+            // 
+            // txtMatKhau
+            // 
+            this.txtMatKhau.Location = new System.Drawing.Point(159, 216);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
+            this.txtMatKhau.Size = new System.Drawing.Size(269, 26);
+            this.txtMatKhau.TabIndex = 153;
+            this.txtMatKhau.UseSystemPasswordChar = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(52, 219);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 20);
+            this.label15.TabIndex = 152;
+            this.label15.Text = "Mật khẩu:";
+            // 
+            // txtChucvu
+            // 
+            this.txtChucvu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtChucvu.FormattingEnabled = true;
+            this.txtChucvu.Location = new System.Drawing.Point(661, 66);
+            this.txtChucvu.Name = "txtChucvu";
+            this.txtChucvu.Size = new System.Drawing.Size(212, 28);
+            this.txtChucvu.TabIndex = 151;
+            // 
+            // txtGioitinh
+            // 
+            this.txtGioitinh.FormattingEnabled = true;
+            this.txtGioitinh.Items.AddRange(new object[] {
+            "Nam\t",
+            "Nữ",
+            "Khác"});
+            this.txtGioitinh.Location = new System.Drawing.Point(159, 142);
+            this.txtGioitinh.Name = "txtGioitinh";
+            this.txtGioitinh.Size = new System.Drawing.Size(121, 28);
+            this.txtGioitinh.TabIndex = 150;
             // 
             // txtLuong
             // 
@@ -321,7 +357,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(269, 26);
             this.txtName.TabIndex = 132;
-            this.txtName.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -406,7 +441,7 @@
             // btnCapnhat
             // 
             this.btnCapnhat.BackColor = System.Drawing.Color.Cyan;
-            this.btnCapnhat.Location = new System.Drawing.Point(1073, 308);
+            this.btnCapnhat.Location = new System.Drawing.Point(1073, 353);
             this.btnCapnhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapnhat.Name = "btnCapnhat";
             this.btnCapnhat.Size = new System.Drawing.Size(108, 38);
@@ -418,7 +453,7 @@
             // btnthemnv
             // 
             this.btnthemnv.BackColor = System.Drawing.Color.Lime;
-            this.btnthemnv.Location = new System.Drawing.Point(1073, 375);
+            this.btnthemnv.Location = new System.Drawing.Point(1072, 400);
             this.btnthemnv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnthemnv.Name = "btnthemnv";
             this.btnthemnv.Size = new System.Drawing.Size(108, 38);
@@ -442,34 +477,14 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Tomato;
-            this.button8.Location = new System.Drawing.Point(425, 21);
+            this.button8.Location = new System.Drawing.Point(1064, 313);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(117, 31);
             this.button8.TabIndex = 22;
             this.button8.Text = "Tìm";
             this.button8.UseVisualStyleBackColor = false;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(280, 22);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 28);
-            this.comboBox3.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(196, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Tìm";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // dgvNhanVien
             // 
@@ -484,7 +499,7 @@
             this.phoneEmployee,
             this.dateStart,
             this.salary,
-            this.postitionEmployee});
+            this.TenChucVu});
             this.dgvNhanVien.DataSource = this.nhanvienBindingSource;
             this.dgvNhanVien.Location = new System.Drawing.Point(5, 54);
             this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -496,6 +511,78 @@
             this.dgvNhanVien.TabIndex = 18;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             this.dgvNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
+            // 
+            // idEmployee
+            // 
+            this.idEmployee.DataPropertyName = "IDNVien";
+            this.idEmployee.HeaderText = "Mã nhân viên";
+            this.idEmployee.MinimumWidth = 6;
+            this.idEmployee.Name = "idEmployee";
+            this.idEmployee.Width = 125;
+            // 
+            // nameEmployee
+            // 
+            this.nameEmployee.DataPropertyName = "HoTen";
+            this.nameEmployee.HeaderText = "Tên";
+            this.nameEmployee.MinimumWidth = 6;
+            this.nameEmployee.Name = "nameEmployee";
+            this.nameEmployee.Width = 125;
+            // 
+            // addressEmployee
+            // 
+            this.addressEmployee.DataPropertyName = "DiaChi";
+            this.addressEmployee.HeaderText = "Địa chỉ";
+            this.addressEmployee.MinimumWidth = 6;
+            this.addressEmployee.Name = "addressEmployee";
+            this.addressEmployee.Width = 125;
+            // 
+            // emailEmployee
+            // 
+            this.emailEmployee.DataPropertyName = "Email";
+            this.emailEmployee.HeaderText = "Email";
+            this.emailEmployee.MinimumWidth = 6;
+            this.emailEmployee.Name = "emailEmployee";
+            this.emailEmployee.Width = 125;
+            // 
+            // genderEmployee
+            // 
+            this.genderEmployee.DataPropertyName = "GioiTinh";
+            this.genderEmployee.HeaderText = "Giới tính";
+            this.genderEmployee.MinimumWidth = 6;
+            this.genderEmployee.Name = "genderEmployee";
+            this.genderEmployee.Width = 125;
+            // 
+            // phoneEmployee
+            // 
+            this.phoneEmployee.DataPropertyName = "SoDienThoai";
+            this.phoneEmployee.HeaderText = "SDT";
+            this.phoneEmployee.MinimumWidth = 6;
+            this.phoneEmployee.Name = "phoneEmployee";
+            this.phoneEmployee.Width = 125;
+            // 
+            // dateStart
+            // 
+            this.dateStart.DataPropertyName = "NgayVaoLam";
+            this.dateStart.HeaderText = "Ngày vào làm";
+            this.dateStart.MinimumWidth = 6;
+            this.dateStart.Name = "dateStart";
+            this.dateStart.Width = 125;
+            // 
+            // salary
+            // 
+            this.salary.DataPropertyName = "Luong";
+            this.salary.HeaderText = "Lương";
+            this.salary.MinimumWidth = 6;
+            this.salary.Name = "salary";
+            this.salary.Width = 125;
+            // 
+            // TenChucVu
+            // 
+            this.TenChucVu.DataPropertyName = "TenChucVu";
+            this.TenChucVu.HeaderText = "Tên chức vụ";
+            this.TenChucVu.MinimumWidth = 6;
+            this.TenChucVu.Name = "TenChucVu";
+            this.TenChucVu.Width = 125;
             // 
             // nhanvienBindingSource
             // 
@@ -740,118 +827,6 @@
             // 
             this.dVTableAdapter.ClearBeforeFill = true;
             // 
-            // idEmployee
-            // 
-            this.idEmployee.DataPropertyName = "IDNVien";
-            this.idEmployee.HeaderText = "Mã nhân viên";
-            this.idEmployee.MinimumWidth = 6;
-            this.idEmployee.Name = "idEmployee";
-            this.idEmployee.Width = 125;
-            // 
-            // nameEmployee
-            // 
-            this.nameEmployee.DataPropertyName = "HoTen";
-            this.nameEmployee.HeaderText = "Tên";
-            this.nameEmployee.MinimumWidth = 6;
-            this.nameEmployee.Name = "nameEmployee";
-            this.nameEmployee.Width = 125;
-            // 
-            // addressEmployee
-            // 
-            this.addressEmployee.DataPropertyName = "DiaChi";
-            this.addressEmployee.HeaderText = "Địa chỉ";
-            this.addressEmployee.MinimumWidth = 6;
-            this.addressEmployee.Name = "addressEmployee";
-            this.addressEmployee.Width = 125;
-            // 
-            // emailEmployee
-            // 
-            this.emailEmployee.DataPropertyName = "Email";
-            this.emailEmployee.HeaderText = "Email";
-            this.emailEmployee.MinimumWidth = 6;
-            this.emailEmployee.Name = "emailEmployee";
-            this.emailEmployee.Width = 125;
-            // 
-            // genderEmployee
-            // 
-            this.genderEmployee.DataPropertyName = "GioiTinh";
-            this.genderEmployee.HeaderText = "Giới tính";
-            this.genderEmployee.MinimumWidth = 6;
-            this.genderEmployee.Name = "genderEmployee";
-            this.genderEmployee.Width = 125;
-            // 
-            // phoneEmployee
-            // 
-            this.phoneEmployee.DataPropertyName = "SoDienThoai";
-            this.phoneEmployee.HeaderText = "SDT";
-            this.phoneEmployee.MinimumWidth = 6;
-            this.phoneEmployee.Name = "phoneEmployee";
-            this.phoneEmployee.Width = 125;
-            // 
-            // dateStart
-            // 
-            this.dateStart.DataPropertyName = "NgayVaoLam";
-            this.dateStart.HeaderText = "Ngày vào làm";
-            this.dateStart.MinimumWidth = 6;
-            this.dateStart.Name = "dateStart";
-            this.dateStart.Width = 125;
-            // 
-            // salary
-            // 
-            this.salary.DataPropertyName = "Luong";
-            this.salary.HeaderText = "Lương";
-            this.salary.MinimumWidth = 6;
-            this.salary.Name = "salary";
-            this.salary.Width = 125;
-            // 
-            // postitionEmployee
-            // 
-            this.postitionEmployee.DataPropertyName = "TenChucVu";
-            this.postitionEmployee.HeaderText = "Chức vụ";
-            this.postitionEmployee.MinimumWidth = 6;
-            this.postitionEmployee.Name = "postitionEmployee";
-            this.postitionEmployee.Width = 125;
-            // 
-            // txtGioitinh
-            // 
-            this.txtGioitinh.FormattingEnabled = true;
-            this.txtGioitinh.Items.AddRange(new object[] {
-            "Nam\t",
-            "Nữ",
-            "Khác"});
-            this.txtGioitinh.Location = new System.Drawing.Point(159, 142);
-            this.txtGioitinh.Name = "txtGioitinh";
-            this.txtGioitinh.Size = new System.Drawing.Size(121, 28);
-            this.txtGioitinh.TabIndex = 150;
-            // 
-            // txtChucvu
-            // 
-            this.txtChucvu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtChucvu.FormattingEnabled = true;
-            this.txtChucvu.Location = new System.Drawing.Point(661, 66);
-            this.txtChucvu.Name = "txtChucvu";
-            this.txtChucvu.Size = new System.Drawing.Size(212, 28);
-            this.txtChucvu.TabIndex = 151;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(52, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(82, 20);
-            this.label15.TabIndex = 152;
-            this.label15.Text = "Mật khẩu:";
-            // 
-            // txtMatKhau
-            // 
-            this.txtMatKhau.Location = new System.Drawing.Point(159, 216);
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(269, 26);
-            this.txtMatKhau.TabIndex = 153;
-            this.txtMatKhau.UseSystemPasswordChar = true;
-            // 
             // frmQuanly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -872,7 +847,6 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tbNhansu.ResumeLayout(false);
-            this.tbNhansu.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -910,8 +884,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXoaNv;
         private System.Windows.Forms.Button btnthemnv;
         private System.Windows.Forms.DataGridView dgvNhanVien;
@@ -956,6 +928,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn maDVDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenDVDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn giaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postitionEmployee;
+        private System.Windows.Forms.ComboBox txtGioitinh;
+        private System.Windows.Forms.ComboBox txtChucvu;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.DataGridViewTextBoxColumn idEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressEmployee;
@@ -964,10 +941,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn salary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn postitionEmployee;
-        private System.Windows.Forms.ComboBox txtGioitinh;
-        private System.Windows.Forms.ComboBox txtChucvu;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtMatKhau;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenChucVu;
     }
 }
