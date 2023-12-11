@@ -78,15 +78,15 @@ namespace DACN
 
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
-                var t = db.NguoiDungs.Where(p => p.ID.Equals(id) && p.Matkhau.Equals(pass));
+                var t = db.NguoiDungs.Where(p => p.idNhanVien.Equals(id) && p.Matkhau.Equals(pass));
 
 
 
                 NguoiDung n = t.Count() == 1? t.Single():null;
                 if ( n != null   )
                 {
-                    Nhanvien nv = db.Nhanviens.Where(p=> n.ID.Equals(p.IDNVien)).Single();
-                    Machucvu = (int) nv.ChucVu.MaChucVu; ///ROLL MA CHUC VU
+                    Nhanvien nv = db.Nhanviens.Where(p=> p.IDNVien.Equals(id)).Single();
+                    Machucvu = (int) nv.IDChucVu; ///ROLL MA CHUC VU
                     Cons.Cons.LoginNhanVien = nv;
                 }
                 else
