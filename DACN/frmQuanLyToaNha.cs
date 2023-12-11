@@ -44,6 +44,38 @@ namespace DACN
             dataGridView3.DataSource = dt;
         }
 
+        public void ReloadTangA()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select t.MaTang, t.TenTang, t.TrangThaiTang, ct.TenCSVCT\r\nfrom Tang t left join CoSoHaTangTang ct on t.idCosohatangtang = ct.MaCSVCT\r\nwhere t.MaToa = 1", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dtgvTang.DataSource = dt;
+        }
+
+        public void ReloadTangB()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select t.MaTang, t.TenTang, t.TrangThaiTang, ct.TenCSVCT\r\nfrom Tang t left join CoSoHaTangTang ct on t.idCosohatangtang = ct.MaCSVCT\r\nwhere t.MaToa = 2", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dataGridView2.DataSource = dt;
+        }
+
         private void thôngTinNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -81,10 +113,12 @@ namespace DACN
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet1.CoSoHaTangTang' table. You can move, or remove it, as needed.
             this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
             // TODO: This line of code loads data into the 'toaNhaChoThue999DataSet.Tang' table. You can move, or remove it, as needed.
-            this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
+            //this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
             // Binding bd = new Binding("Text", Cons.Cons.LoginNhanVien, "Ten", true,DataSourceUpdateMode.OnPropertyChanged);
 
             ReloadDgvPhong();
+            ReloadTangA();
+            ReloadTangB();
 
             //SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
             //if (conn.State == ConnectionState.Closed)
@@ -123,6 +157,16 @@ namespace DACN
                 textBox4.DataSource = listTenTang.ToList();
                 textBox4.DisplayMember = "TenTang"; // Tên trường chứa tên
                 textBox4.ValueMember = "MaTang"; // Tên trường chứa ID
+
+                var listTenCSHTT = db.CoSoHaTangTangs;
+
+                cmbTenCSHTTA.DataSource = listTenCSHTT.ToList();
+                cmbTenCSHTTA.DisplayMember = "TenCSVCT";
+                cmbTenCSHTTA.ValueMember = "MaCSVCT";
+
+                comboBox3.DataSource = listTenCSHTT.ToList();
+                comboBox3.DisplayMember = "TenCSVCT";
+                comboBox3.ValueMember = "MaCSVCT";
             }
 
 
@@ -190,6 +234,8 @@ namespace DACN
                     // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
                     textBox2.Text = dtgvTang.Rows[e.RowIndex].Cells["tenTangDataGridViewTextBoxColumn"].Value?.ToString();
                     comboBox1.Text = dtgvTang.Rows[e.RowIndex].Cells["trangThaiTangDataGridViewTextBoxColumn"].Value?.ToString();
+                    cmbTenCSHTTA.Text = dtgvTang.Rows[e.RowIndex].Cells["TenCSVCTA"].Value?.ToString();
+                    txtMaTangA.Text = dtgvTang.Rows[e.RowIndex].Cells["maTangDataGridViewTextBoxColumn"].Value?.ToString();
                 }
                 else
                 {
@@ -225,23 +271,31 @@ namespace DACN
 
         private void btnSuatang_Click(object sender, EventArgs e)
         {
-            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            try
             {
-                int maTangCanSua = (int)dtgvTang.CurrentRow.Cells["maTangDataGridViewTextBoxColumn"].Value;
-                var nguonDuLieu = db.Tangs;
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maTangCanSua = (int)dtgvTang.CurrentRow.Cells["maTangDataGridViewTextBoxColumn"].Value;
+                    var nguonDuLieu = db.Tangs;
 
-                Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
+                    Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
 
-                tangCanSua.TenTang = textBox2.Text;
-                tangCanSua.TrangThaiTang = comboBox1.SelectedItem?.ToString();
+                    tangCanSua.TenTang = textBox2.Text;
+                    tangCanSua.TrangThaiTang = comboBox1.SelectedItem?.ToString();
+                    tangCanSua.idCosohatangtang = (int?)cmbTenCSHTTA.SelectedValue;
 
-                // Cập nhật thông tin vào cơ sở dữ liệu
-                db.Entry(tangCanSua).State = EntityState.Modified;
-                db.SaveChanges();
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(tangCanSua).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                dtgvTang.DataSource = nguonDuLieu.ToList();
+                    ReloadTangA();
+                }
+                dtgvTang.Refresh();
             }
-            dtgvTang.Refresh();
+            catch (Exception ex) {
+                MessageBox.Show("Lỗi", "Lỗi");
+            }
+            
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -256,6 +310,8 @@ namespace DACN
                     // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
                     textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn7"].Value?.ToString();
                     comboBox2.Text = dataGridView2.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn8"].Value?.ToString();
+                    comboBox3.Text = dataGridView2.Rows[e.RowIndex].Cells["TenCSVCTB"].Value?.ToString();
+                    txtMaTangB.Text = dataGridView2.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn6"].Value?.ToString();
                 }
                 else
                 {
@@ -290,23 +346,32 @@ namespace DACN
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            try
             {
-                int maTangCanSua = (int)dataGridView2.CurrentRow.Cells["dataGridViewTextBoxColumn6"].Value;
-                var nguonDuLieu = db.Tangs;
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maTangCanSua = (int)dataGridView2.CurrentRow.Cells["dataGridViewTextBoxColumn6"].Value;
+                    var nguonDuLieu = db.Tangs;
 
-                Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
+                    Tang tangCanSua = nguonDuLieu.Single(t => t.MaTang == maTangCanSua);
 
-                tangCanSua.TenTang = textBox3.Text;
-                tangCanSua.TrangThaiTang = comboBox2.SelectedItem?.ToString();
+                    tangCanSua.TenTang = textBox3.Text;
+                    tangCanSua.TrangThaiTang = comboBox2.SelectedItem?.ToString();
+                    tangCanSua.idCosohatangtang = (int?)comboBox3.SelectedValue;
 
-                // Cập nhật thông tin vào cơ sở dữ liệu
-                db.Entry(tangCanSua).State = EntityState.Modified;
-                db.SaveChanges();
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(tangCanSua).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                dataGridView2.DataSource = nguonDuLieu.ToList();
+                    ReloadTangB();
+                }
+                dataGridView2.Refresh();
             }
-            dataGridView2.Refresh();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi", "lỗi");
+            }
+            
         }
 
         private void dgvPhong_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -669,6 +734,180 @@ namespace DACN
         private void button6_Click(object sender, EventArgs e)
         {
             ReloadDgvPhong();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaTangA.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập mã phòng", "Thông báo");
+                }
+                else
+                {
+                    int maTangCanThem = Convert.ToInt32(txtMaTangA.Text);
+                    bool isAdded = true;
+                    foreach (DataGridViewRow row in dtgvTang.Rows)
+                    {
+                        int maTang = Convert.ToInt32(row.Cells["maTangDataGridViewTextBoxColumn"].Value);
+
+
+                        if (maTang == maTangCanThem)
+
+                        {
+                            isAdded = false;
+
+                        }
+                    }
+                    if (isAdded)
+                    {
+                        using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                        {
+                            Tang t = new Tang();
+                            {
+                                t.MaTang = maTangCanThem;
+                                t.TenTang = textBox2.Text;
+                                t.TrangThaiTang = comboBox1.Text;
+                                t.idCosohatangtang = (int?)cmbTenCSHTTA.SelectedValue;
+                                t.MaToa = 1;
+
+                                db.Tangs.Add(t);
+                                db.SaveChanges();
+
+                                ReloadTangA();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mã tầng đã tồn tại, hãy chọn mã phòng khác!", "Cảnh báo");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm tầng!", "Thông báo");
+            }
+            
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaTangB.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập mã phòng", "Thông báo");
+                }
+                else
+                {
+                    int maTangCanThem = Convert.ToInt32(txtMaTangB.Text);
+                    bool isAdded = true;
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+                        int maTang = Convert.ToInt32(row.Cells["dataGridViewTextBoxColumn6"].Value);
+
+
+                        if (maTang == maTangCanThem)
+
+                        {
+                            isAdded = false;
+
+                        }
+                    }
+                    if (isAdded)
+                    {
+                        using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                        {
+                            Tang t = new Tang();
+                            {
+                                t.MaTang = maTangCanThem;
+                                t.TenTang = textBox3.Text;
+                                t.TrangThaiTang = comboBox2.Text;
+                                t.idCosohatangtang = (int?)comboBox3.SelectedValue;
+                                t.MaToa = 2;
+
+                                db.Tangs.Add(t);
+                                db.SaveChanges();
+
+                                ReloadTangB();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mã tầng đã tồn tại, hãy chọn mã phòng khác!", "Cảnh báo");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm tầng!", "Thông báo");
+            }
+        }
+
+        private void btnXoaTangA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int? maTangCanXoa = (int)dtgvTang.CurrentRow.Cells["maTangDataGridViewTextBoxColumn"].Value;
+                if (maTangCanXoa == null)
+                {
+                    MessageBox.Show("Vui lòng chọn tầng cần xóa trong bảng", "Thông báo");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa tầng " + maTangCanXoa + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                        {
+                            var t = db.Tangs.FirstOrDefault(a => a.MaTang == maTangCanXoa);
+                            db.Tangs.Remove(t);
+                            db.SaveChanges();
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            ReloadTangA();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi khi xóa!", "Thông báo");
+            }
+            
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int? maTangCanXoa = (int)dataGridView2.CurrentRow.Cells["dataGridViewTextBoxColumn6"].Value;
+                if (maTangCanXoa == null)
+                {
+                    MessageBox.Show("Vui lòng chọn tầng cần xóa trong bảng", "Thông báo");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa tầng " + maTangCanXoa + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                        {
+                            var t = db.Tangs.FirstOrDefault(a => a.MaTang == maTangCanXoa);
+                            db.Tangs.Remove(t);
+                            db.SaveChanges();
+                            MessageBox.Show("Xóa thành công", "Thông báo");
+                            ReloadTangB();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi khi xóa!", "Thông báo");
+            }
         }
     }
 }

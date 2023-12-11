@@ -25,11 +25,13 @@ namespace DACN
         public string TenTang { get; set; }
         public string TrangThaiTang { get; set; }
         public Nullable<int> idCosohatangtang { get; set; }
+        public Nullable<int> MaToa { get; set; }
     
         public virtual CoSoHaTangTang CoSoHaTangTang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Phong> Phongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToaNha> ToaNhas { get; set; }
+        public virtual ToaNha ToaNha { get; set; }
     }
 }

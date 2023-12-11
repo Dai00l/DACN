@@ -145,6 +145,7 @@
     <NavigationProperty Name="Tang" Relationship="Self.FK__Phong__idTang__3F466844" FromRole="Phong" ToRole="Tang" />
     <NavigationProperty Name="ThuePhongs" Relationship="Self.FK__ThuePhong__idKha__656C112C" FromRole="Phong" ToRole="ThuePhong" />
     <Property Name="Gia" Type="Int32" />
+    <Property Name="MaKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Tang">
     <Key>
@@ -157,6 +158,8 @@
     <NavigationProperty Name="CoSoHaTangTang" Relationship="Self.FK__Tang__idCosohata__3B75D760" FromRole="Tang" ToRole="CoSoHaTangTang" />
     <NavigationProperty Name="Phongs" Relationship="Self.FK__Phong__idTang__3F466844" FromRole="Tang" ToRole="Phong" />
     <NavigationProperty Name="ToaNhas" Relationship="Self.FK__ToaNha__idTang__47DBAE45" FromRole="Tang" ToRole="ToaNha" />
+    <Property Name="MaToa" Type="Int32" />
+    <NavigationProperty Name="ToaNha" Relationship="ToaNhaChoThue999Model.FK_Tang_ToaNha" FromRole="Tang" ToRole="ToaNha" />
   </EntityType>
   <EntityType Name="ThanhToanPhongTheoThang">
     <Key>
@@ -200,6 +203,7 @@
     <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="idTang" Type="Int32" />
     <NavigationProperty Name="Tang" Relationship="Self.FK__ToaNha__idTang__47DBAE45" FromRole="ToaNha" ToRole="Tang" />
+    <NavigationProperty Name="Tangs" Relationship="ToaNhaChoThue999Model.FK_Tang_ToaNha" FromRole="ToaNha" ToRole="Tang" />
   </EntityType>
   <Association Name="FK__Chi__idKhachHang__5EBF139D">
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
@@ -508,6 +512,10 @@
       <End Role="ToaNha" EntitySet="ToaNhas" />
     </AssociationSet>
     <EntitySet Name="sysdiagrams" EntityType="ToaNhaChoThue999Model.sysdiagram" />
+    <AssociationSet Name="FK_Tang_ToaNha" Association="ToaNhaChoThue999Model.FK_Tang_ToaNha">
+      <End Role="ToaNha" EntitySet="ToaNhas" />
+      <End Role="Tang" EntitySet="Tangs" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="sysdiagram">
     <Key>
@@ -519,4 +527,16 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <Association Name="FK_Tang_ToaNha">
+    <End Type="ToaNhaChoThue999Model.ToaNha" Role="ToaNha" Multiplicity="0..1" />
+    <End Type="ToaNhaChoThue999Model.Tang" Role="Tang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToaNha">
+        <PropertyRef Name="MaToaNha" />
+      </Principal>
+      <Dependent Role="Tang">
+        <PropertyRef Name="MaToa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -123,6 +123,7 @@
     <EntitySetMapping Name="Phongs">
       <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Phong">
         <MappingFragment StoreEntitySet="Phong">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
           <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
@@ -135,6 +136,7 @@
     <EntitySetMapping Name="Tangs">
       <EntityTypeMapping TypeName="ToaNhaChoThue999Model.Tang">
         <MappingFragment StoreEntitySet="Tang">
+          <ScalarProperty Name="MaToa" ColumnName="MaToa" />
           <ScalarProperty Name="MaTang" ColumnName="MaTang" />
           <ScalarProperty Name="TenTang" ColumnName="TenTang" />
           <ScalarProperty Name="TrangThaiTang" ColumnName="TrangThaiTang" />

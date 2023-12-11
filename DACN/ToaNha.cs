@@ -14,6 +14,12 @@ namespace DACN
     
     public partial class ToaNha
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ToaNha()
+        {
+            this.Tangs = new HashSet<Tang>();
+        }
+    
         public int MaToaNha { get; set; }
         public string TenToaNha { get; set; }
         public string DiaChi { get; set; }
@@ -22,5 +28,7 @@ namespace DACN
         public Nullable<int> idTang { get; set; }
     
         public virtual Tang Tang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tang> Tangs { get; set; }
     }
 }

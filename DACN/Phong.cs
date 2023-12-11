@@ -27,6 +27,7 @@ namespace DACN
         public Nullable<int> idCosohatangphong { get; set; }
         public Nullable<int> idTang { get; set; }
         public Nullable<int> Gia { get; set; }
+        public string MaKH { get; set; }
     
         public virtual CoSoHaTangPhong CoSoHaTangPhong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
