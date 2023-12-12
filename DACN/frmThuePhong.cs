@@ -79,6 +79,7 @@ namespace DACN
                 var nguonDuLieu = db.Phongs;
                 Phong updatingPhong = nguonDuLieu.Single(t => t.MaPhong == idPhong);
                 updatingPhong.TrangThaiPhong = "Đang Thuê";
+                updatingPhong.MaKH = idKH;
                 db.Entry(updatingPhong).State = EntityState.Modified;
                 db.SaveChanges();
             }

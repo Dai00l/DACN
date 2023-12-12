@@ -24,23 +24,35 @@ namespace DACN
            // LoadPhong(dtgvTang);
         }
 
-        public void ReloadDgvPhong()
+        public void ReloadDgvPhongA()
         {
             SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
             }
-            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cp.TenCSVCP, t.TenTang, p.Gia\r\n" +
-                "from Phong p \r\n" +
-                "left join CoSoHaTangPhong cp on p.idCosohatangphong = cp.MaCSVCP\r\n" +
-                "left join Tang t on p.idTang = t.MaTang", conn);
+            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cshtp.TenCSVCP, t.TenTang, p.Gia, kh.HoTen\r\nfrom Phong p \r\nleft join CoSoHaTangPhong cshtp on p.idCosohatangphong = cshtp.MaCSVCP\r\ninner join Tang t on p.idTang = t.MaTang\r\nleft join KHACHHANG kh on p.MaKH = kh.IDKH\r\nwhere t.MaToa = 1", conn);
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             da.SelectCommand = cmd1;
             dt.Clear();
             da.Fill(dt);
             dgvPhong.DataSource = dt;
+        }
+
+        public void ReloadDgvPhongB()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select p.MaPhong, p.TenPhong, p.TrangThaiPhong, cshtp.TenCSVCP, t.TenTang, p.Gia, kh.HoTen\r\nfrom Phong p \r\nleft join CoSoHaTangPhong cshtp on p.idCosohatangphong = cshtp.MaCSVCP\r\ninner join Tang t on p.idTang = t.MaTang\r\nleft join KHACHHANG kh on p.MaKH = kh.IDKH\r\nwhere t.MaToa = 2", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
             dataGridView3.DataSource = dt;
         }
 
@@ -116,7 +128,8 @@ namespace DACN
             //this.tangTableAdapter.Fill(this.toaNhaChoThue999DataSet.Tang);
             // Binding bd = new Binding("Text", Cons.Cons.LoginNhanVien, "Ten", true,DataSourceUpdateMode.OnPropertyChanged);
 
-            ReloadDgvPhong();
+            ReloadDgvPhongA();
+            ReloadDgvPhongB();
             ReloadTangA();
             ReloadTangB();
 
@@ -140,13 +153,14 @@ namespace DACN
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
             {
                 var listTenCSHTP = db.CoSoHaTangPhongs;
-                var listTenTang = db.Tangs;
+                var listTenTangA = db.Tangs.Where(a => a.MaToa == 1);
+                var listTenTangB = db.Tangs.Where(a => a.MaToa == 2);
 
                 cmbTenCSHTP.DataSource = listTenCSHTP.ToList();
                 cmbTenCSHTP.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
                 cmbTenCSHTP.ValueMember = "MaCSVCP"; // Tên trường chứa ID
 
-                cmbTenTang.DataSource = listTenTang.ToList();
+                cmbTenTang.DataSource = listTenTangA.ToList();
                 cmbTenTang.DisplayMember = "TenTang"; // Tên trường chứa tên
                 cmbTenTang.ValueMember = "MaTang"; // Tên trường chứa ID
 
@@ -154,7 +168,7 @@ namespace DACN
                 textBox5.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
                 textBox5.ValueMember = "MaCSVCP"; // Tên trường chứa ID
 
-                textBox4.DataSource = listTenTang.ToList();
+                textBox4.DataSource = listTenTangB.ToList();
                 textBox4.DisplayMember = "TenTang"; // Tên trường chứa tên
                 textBox4.ValueMember = "MaTang"; // Tên trường chứa ID
 
@@ -430,6 +444,10 @@ namespace DACN
                     updatingPhong.TrangThaiPhong = txtTrangthai.Text;
                     updatingPhong.idCosohatangphong = Convert.ToInt32(cmbTenCSHTP.SelectedValue);
                     updatingPhong.idTang = Convert.ToInt32(cmbTenTang.SelectedValue);
+                    if (txtTrangthai.Text.Equals("Trống"))
+                    {
+                        updatingPhong.MaKH = null;
+                    }
 
                     // Cập nhật thông tin vào cơ sở dữ liệu
                     db.Entry(updatingPhong).State = EntityState.Modified;
@@ -437,7 +455,7 @@ namespace DACN
 
                     dgvPhong.Refresh();
 
-                    ReloadDgvPhong();
+                    ReloadDgvPhongA();
                 }
             }
             catch (Exception ex)
@@ -465,6 +483,10 @@ namespace DACN
                     updatingPhong.TrangThaiPhong = textBox6.Text;
                     updatingPhong.idCosohatangphong = Convert.ToInt32(textBox5.SelectedValue);
                     updatingPhong.idTang = Convert.ToInt32(textBox4.SelectedValue);
+                    if (textBox6.Text.Equals("Trống"))
+                    {
+                        updatingPhong.MaKH = null;
+                    }
 
                     // Cập nhật thông tin vào cơ sở dữ liệu
                     db.Entry(updatingPhong).State = EntityState.Modified;
@@ -472,7 +494,7 @@ namespace DACN
 
                     dataGridView3.Refresh();
 
-                    ReloadDgvPhong();
+                    ReloadDgvPhongB();
                 }
             }
             catch (Exception ex)
@@ -532,7 +554,7 @@ namespace DACN
                                 db.Phongs.Add(phong);
                                 db.SaveChanges();
 
-                                ReloadDgvPhong();
+                                ReloadDgvPhongA();
                             }
                         }
                     }
@@ -569,7 +591,7 @@ namespace DACN
                     int giaThue = Convert.ToInt32(txtGiaPhong.Text);
                     string trangThai = textBox6.Text;
                     int maCSVCP = Convert.ToInt32(textBox5.SelectedValue);
-                    int maTang = Convert.ToInt32(textBox5.SelectedValue);
+                    int maTang = Convert.ToInt32(textBox4.SelectedValue);
 
                     bool isAdded = true;
                     foreach (DataGridViewRow row in dataGridView3.Rows)
@@ -600,7 +622,7 @@ namespace DACN
                                 db.Phongs.Add(phong);
                                 db.SaveChanges();
 
-                                ReloadDgvPhong();
+                                ReloadDgvPhongB();
                             }
                         }
                     }
@@ -635,7 +657,7 @@ namespace DACN
                         var p = db.Phongs.FirstOrDefault(a => a.MaPhong == maPhongCanXoa);
                         db.Phongs.Remove(p);
                         db.SaveChanges();
-                        ReloadDgvPhong();
+                        ReloadDgvPhongA();
                     }
                 }
             }
@@ -664,7 +686,7 @@ namespace DACN
                         var p = db.Phongs.FirstOrDefault(a => a.MaPhong == maPhongCanXoa);
                         db.Phongs.Remove(p);
                         db.SaveChanges();
-                        ReloadDgvPhong();
+                        ReloadDgvPhongB();
                     }
                 }
             }
@@ -728,12 +750,12 @@ namespace DACN
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            ReloadDgvPhong();
+            ReloadDgvPhongB();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            ReloadDgvPhong();
+            ReloadDgvPhongA();
         }
 
         private void button11_Click(object sender, EventArgs e)
