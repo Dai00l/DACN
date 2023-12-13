@@ -111,7 +111,23 @@
             this.MaCSVCTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenCSVCTBB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maCSVCTDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenCSVCTDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ptHatangphongB = new System.Windows.Forms.TabPage();
+            this.dgvHTPB = new System.Windows.Forms.DataGridView();
+            this.MaCSVCPB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenCSVCPB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaCSVCPB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtGiaCSVCPB = new System.Windows.Forms.TextBox();
+            this.txtTenCSVCPB = new System.Windows.Forms.TextBox();
+            this.txtMaCSVCPB = new System.Windows.Forms.TextBox();
+            this.btnCapNhatCSVCPB = new System.Windows.Forms.Button();
+            this.btnXoaCSVCPB = new System.Windows.Forms.Button();
+            this.btnThemCSVCPB = new System.Windows.Forms.Button();
             this.tpThongtintoaB = new System.Windows.Forms.TabPage();
             this.ToaA = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -176,13 +192,23 @@
             this.tenCSVCTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpCosohatangphong = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtGiaCSVCPA = new System.Windows.Forms.TextBox();
+            this.txtTenCSVCPA = new System.Windows.Forms.TextBox();
+            this.txtMaCSVCPA = new System.Windows.Forms.TextBox();
+            this.btnCapNhatCSVCPA = new System.Windows.Forms.Button();
+            this.btnXoaCSVCPA = new System.Windows.Forms.Button();
+            this.btnThemCSVCPA = new System.Windows.Forms.Button();
+            this.dgvHTPA = new System.Windows.Forms.DataGridView();
+            this.MaCSVCPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenCSVCPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaCSVCPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpThongTin = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.maCSVCTDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenCSVCTDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toaNhaChoThue999DataSet)).BeginInit();
@@ -199,6 +225,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.btnThemCSHTTB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSHTB)).BeginInit();
+            this.ptHatangphongB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHTPB)).BeginInit();
             this.ToaA.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tpTang.SuspendLayout();
@@ -208,6 +236,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             this.tpCosohatang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSHTA)).BeginInit();
+            this.tpCosohatangphong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHTPA)).BeginInit();
             this.tpThongTin.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -975,8 +1005,39 @@
             this.GiaTB.MinimumWidth = 6;
             this.GiaTB.Name = "GiaTB";
             // 
+            // maCSVCTDataGridViewTextBoxColumn1
+            // 
+            this.maCSVCTDataGridViewTextBoxColumn1.DataPropertyName = "MaCSVCT";
+            this.maCSVCTDataGridViewTextBoxColumn1.HeaderText = "MaCSVCT";
+            this.maCSVCTDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.maCSVCTDataGridViewTextBoxColumn1.Name = "maCSVCTDataGridViewTextBoxColumn1";
+            // 
+            // tenCSVCTDataGridViewTextBoxColumn1
+            // 
+            this.tenCSVCTDataGridViewTextBoxColumn1.DataPropertyName = "TenCSVCT";
+            this.tenCSVCTDataGridViewTextBoxColumn1.HeaderText = "TenCSVCT";
+            this.tenCSVCTDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.tenCSVCTDataGridViewTextBoxColumn1.Name = "tenCSVCTDataGridViewTextBoxColumn1";
+            // 
+            // giaDataGridViewTextBoxColumn1
+            // 
+            this.giaDataGridViewTextBoxColumn1.DataPropertyName = "Gia";
+            this.giaDataGridViewTextBoxColumn1.HeaderText = "Gia";
+            this.giaDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.giaDataGridViewTextBoxColumn1.Name = "giaDataGridViewTextBoxColumn1";
+            // 
             // ptHatangphongB
             // 
+            this.ptHatangphongB.Controls.Add(this.dgvHTPB);
+            this.ptHatangphongB.Controls.Add(this.label30);
+            this.ptHatangphongB.Controls.Add(this.label31);
+            this.ptHatangphongB.Controls.Add(this.label32);
+            this.ptHatangphongB.Controls.Add(this.txtGiaCSVCPB);
+            this.ptHatangphongB.Controls.Add(this.txtTenCSVCPB);
+            this.ptHatangphongB.Controls.Add(this.txtMaCSVCPB);
+            this.ptHatangphongB.Controls.Add(this.btnCapNhatCSVCPB);
+            this.ptHatangphongB.Controls.Add(this.btnXoaCSVCPB);
+            this.ptHatangphongB.Controls.Add(this.btnThemCSVCPB);
             this.ptHatangphongB.Location = new System.Drawing.Point(4, 25);
             this.ptHatangphongB.Margin = new System.Windows.Forms.Padding(4);
             this.ptHatangphongB.Name = "ptHatangphongB";
@@ -984,6 +1045,123 @@
             this.ptHatangphongB.TabIndex = 3;
             this.ptHatangphongB.Text = "Hạ tầng phòng";
             this.ptHatangphongB.UseVisualStyleBackColor = true;
+            // 
+            // dgvHTPB
+            // 
+            this.dgvHTPB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHTPB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHTPB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaCSVCPB,
+            this.TenCSVCPB,
+            this.GiaCSVCPB});
+            this.dgvHTPB.Location = new System.Drawing.Point(3, 3);
+            this.dgvHTPB.Name = "dgvHTPB";
+            this.dgvHTPB.RowHeadersWidth = 51;
+            this.dgvHTPB.RowTemplate.Height = 24;
+            this.dgvHTPB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHTPB.Size = new System.Drawing.Size(930, 315);
+            this.dgvHTPB.TabIndex = 28;
+            this.dgvHTPB.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHTPB_CellClick);
+            // 
+            // MaCSVCPB
+            // 
+            this.MaCSVCPB.DataPropertyName = "MaCSVCP";
+            this.MaCSVCPB.HeaderText = "Mã Cơ Sở Vật Chất Phòng";
+            this.MaCSVCPB.MinimumWidth = 6;
+            this.MaCSVCPB.Name = "MaCSVCPB";
+            // 
+            // TenCSVCPB
+            // 
+            this.TenCSVCPB.DataPropertyName = "TenCSVCP";
+            this.TenCSVCPB.HeaderText = "Tên Cơ Sở Vật Chất Phòng";
+            this.TenCSVCPB.MinimumWidth = 6;
+            this.TenCSVCPB.Name = "TenCSVCPB";
+            // 
+            // GiaCSVCPB
+            // 
+            this.GiaCSVCPB.DataPropertyName = "Gia";
+            this.GiaCSVCPB.HeaderText = "Giá";
+            this.GiaCSVCPB.MinimumWidth = 6;
+            this.GiaCSVCPB.Name = "GiaCSVCPB";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(490, 402);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(28, 16);
+            this.label30.TabIndex = 27;
+            this.label30.Text = "Giá";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(439, 377);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(79, 16);
+            this.label31.TabIndex = 26;
+            this.label31.Text = "Tên CSVCP";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(444, 349);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(74, 16);
+            this.label32.TabIndex = 25;
+            this.label32.Text = "Mã CSVCP";
+            // 
+            // txtGiaCSVCPB
+            // 
+            this.txtGiaCSVCPB.Location = new System.Drawing.Point(524, 399);
+            this.txtGiaCSVCPB.Name = "txtGiaCSVCPB";
+            this.txtGiaCSVCPB.Size = new System.Drawing.Size(241, 22);
+            this.txtGiaCSVCPB.TabIndex = 24;
+            // 
+            // txtTenCSVCPB
+            // 
+            this.txtTenCSVCPB.Location = new System.Drawing.Point(524, 371);
+            this.txtTenCSVCPB.Name = "txtTenCSVCPB";
+            this.txtTenCSVCPB.Size = new System.Drawing.Size(241, 22);
+            this.txtTenCSVCPB.TabIndex = 23;
+            // 
+            // txtMaCSVCPB
+            // 
+            this.txtMaCSVCPB.Location = new System.Drawing.Point(524, 343);
+            this.txtMaCSVCPB.Name = "txtMaCSVCPB";
+            this.txtMaCSVCPB.ReadOnly = true;
+            this.txtMaCSVCPB.Size = new System.Drawing.Size(241, 22);
+            this.txtMaCSVCPB.TabIndex = 22;
+            // 
+            // btnCapNhatCSVCPB
+            // 
+            this.btnCapNhatCSVCPB.Location = new System.Drawing.Point(148, 344);
+            this.btnCapNhatCSVCPB.Name = "btnCapNhatCSVCPB";
+            this.btnCapNhatCSVCPB.Size = new System.Drawing.Size(91, 38);
+            this.btnCapNhatCSVCPB.TabIndex = 21;
+            this.btnCapNhatCSVCPB.Text = "Cập nhật";
+            this.btnCapNhatCSVCPB.UseVisualStyleBackColor = true;
+            this.btnCapNhatCSVCPB.Click += new System.EventHandler(this.btnCapNhatCSVCPB_Click);
+            // 
+            // btnXoaCSVCPB
+            // 
+            this.btnXoaCSVCPB.Location = new System.Drawing.Point(245, 344);
+            this.btnXoaCSVCPB.Name = "btnXoaCSVCPB";
+            this.btnXoaCSVCPB.Size = new System.Drawing.Size(91, 38);
+            this.btnXoaCSVCPB.TabIndex = 20;
+            this.btnXoaCSVCPB.Text = "Xóa";
+            this.btnXoaCSVCPB.UseVisualStyleBackColor = true;
+            this.btnXoaCSVCPB.Click += new System.EventHandler(this.btnXoaCSVCPB_Click);
+            // 
+            // btnThemCSVCPB
+            // 
+            this.btnThemCSVCPB.Location = new System.Drawing.Point(51, 344);
+            this.btnThemCSVCPB.Name = "btnThemCSVCPB";
+            this.btnThemCSVCPB.Size = new System.Drawing.Size(91, 38);
+            this.btnThemCSVCPB.TabIndex = 19;
+            this.btnThemCSVCPB.Text = "Thêm";
+            this.btnThemCSVCPB.UseVisualStyleBackColor = true;
+            this.btnThemCSVCPB.Click += new System.EventHandler(this.btnThemCSVCPB_Click);
             // 
             // tpThongtintoaB
             // 
@@ -1651,6 +1829,16 @@
             // 
             // tpCosohatangphong
             // 
+            this.tpCosohatangphong.Controls.Add(this.label27);
+            this.tpCosohatangphong.Controls.Add(this.label28);
+            this.tpCosohatangphong.Controls.Add(this.label29);
+            this.tpCosohatangphong.Controls.Add(this.txtGiaCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.txtTenCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.txtMaCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.btnCapNhatCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.btnXoaCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.btnThemCSVCPA);
+            this.tpCosohatangphong.Controls.Add(this.dgvHTPA);
             this.tpCosohatangphong.Location = new System.Drawing.Point(4, 25);
             this.tpCosohatangphong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpCosohatangphong.Name = "tpCosohatangphong";
@@ -1658,6 +1846,123 @@
             this.tpCosohatangphong.TabIndex = 4;
             this.tpCosohatangphong.Text = "Hạ Tầng Phòng";
             this.tpCosohatangphong.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(497, 403);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(28, 16);
+            this.label27.TabIndex = 27;
+            this.label27.Text = "Giá";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(446, 378);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(79, 16);
+            this.label28.TabIndex = 26;
+            this.label28.Text = "Tên CSVCP";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(451, 350);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(74, 16);
+            this.label29.TabIndex = 25;
+            this.label29.Text = "Mã CSVCP";
+            // 
+            // txtGiaCSVCPA
+            // 
+            this.txtGiaCSVCPA.Location = new System.Drawing.Point(531, 400);
+            this.txtGiaCSVCPA.Name = "txtGiaCSVCPA";
+            this.txtGiaCSVCPA.Size = new System.Drawing.Size(241, 22);
+            this.txtGiaCSVCPA.TabIndex = 24;
+            // 
+            // txtTenCSVCPA
+            // 
+            this.txtTenCSVCPA.Location = new System.Drawing.Point(531, 372);
+            this.txtTenCSVCPA.Name = "txtTenCSVCPA";
+            this.txtTenCSVCPA.Size = new System.Drawing.Size(241, 22);
+            this.txtTenCSVCPA.TabIndex = 23;
+            // 
+            // txtMaCSVCPA
+            // 
+            this.txtMaCSVCPA.Location = new System.Drawing.Point(531, 344);
+            this.txtMaCSVCPA.Name = "txtMaCSVCPA";
+            this.txtMaCSVCPA.ReadOnly = true;
+            this.txtMaCSVCPA.Size = new System.Drawing.Size(241, 22);
+            this.txtMaCSVCPA.TabIndex = 22;
+            // 
+            // btnCapNhatCSVCPA
+            // 
+            this.btnCapNhatCSVCPA.Location = new System.Drawing.Point(155, 345);
+            this.btnCapNhatCSVCPA.Name = "btnCapNhatCSVCPA";
+            this.btnCapNhatCSVCPA.Size = new System.Drawing.Size(91, 38);
+            this.btnCapNhatCSVCPA.TabIndex = 21;
+            this.btnCapNhatCSVCPA.Text = "Cập nhật";
+            this.btnCapNhatCSVCPA.UseVisualStyleBackColor = true;
+            this.btnCapNhatCSVCPA.Click += new System.EventHandler(this.btnCapNhatCSVCPA_Click);
+            // 
+            // btnXoaCSVCPA
+            // 
+            this.btnXoaCSVCPA.Location = new System.Drawing.Point(252, 345);
+            this.btnXoaCSVCPA.Name = "btnXoaCSVCPA";
+            this.btnXoaCSVCPA.Size = new System.Drawing.Size(91, 38);
+            this.btnXoaCSVCPA.TabIndex = 20;
+            this.btnXoaCSVCPA.Text = "Xóa";
+            this.btnXoaCSVCPA.UseVisualStyleBackColor = true;
+            this.btnXoaCSVCPA.Click += new System.EventHandler(this.btnXoaCSVCPA_Click);
+            // 
+            // btnThemCSVCPA
+            // 
+            this.btnThemCSVCPA.Location = new System.Drawing.Point(58, 345);
+            this.btnThemCSVCPA.Name = "btnThemCSVCPA";
+            this.btnThemCSVCPA.Size = new System.Drawing.Size(91, 38);
+            this.btnThemCSVCPA.TabIndex = 19;
+            this.btnThemCSVCPA.Text = "Thêm";
+            this.btnThemCSVCPA.UseVisualStyleBackColor = true;
+            this.btnThemCSVCPA.Click += new System.EventHandler(this.btnThemCSVCPA_Click);
+            // 
+            // dgvHTPA
+            // 
+            this.dgvHTPA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHTPA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHTPA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaCSVCPA,
+            this.TenCSVCPA,
+            this.GiaCSVCPA});
+            this.dgvHTPA.Location = new System.Drawing.Point(3, 3);
+            this.dgvHTPA.Name = "dgvHTPA";
+            this.dgvHTPA.RowHeadersWidth = 51;
+            this.dgvHTPA.RowTemplate.Height = 24;
+            this.dgvHTPA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHTPA.Size = new System.Drawing.Size(931, 307);
+            this.dgvHTPA.TabIndex = 0;
+            this.dgvHTPA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHTPA_CellClick);
+            // 
+            // MaCSVCPA
+            // 
+            this.MaCSVCPA.DataPropertyName = "MaCSVCP";
+            this.MaCSVCPA.HeaderText = "Mã Cơ Sở Vật Chất Phòng";
+            this.MaCSVCPA.MinimumWidth = 6;
+            this.MaCSVCPA.Name = "MaCSVCPA";
+            // 
+            // TenCSVCPA
+            // 
+            this.TenCSVCPA.DataPropertyName = "TenCSVCP";
+            this.TenCSVCPA.HeaderText = "Tên Cơ Sở Vật Chất Phòng";
+            this.TenCSVCPA.MinimumWidth = 6;
+            this.TenCSVCPA.Name = "TenCSVCPA";
+            // 
+            // GiaCSVCPA
+            // 
+            this.GiaCSVCPA.DataPropertyName = "Gia";
+            this.GiaCSVCPA.HeaderText = "Giá";
+            this.GiaCSVCPA.MinimumWidth = 6;
+            this.GiaCSVCPA.Name = "GiaCSVCPA";
             // 
             // tpThongTin
             // 
@@ -1701,27 +2006,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1111, 666);
             this.tabControl1.TabIndex = 1;
             // 
-            // maCSVCTDataGridViewTextBoxColumn1
-            // 
-            this.maCSVCTDataGridViewTextBoxColumn1.DataPropertyName = "MaCSVCT";
-            this.maCSVCTDataGridViewTextBoxColumn1.HeaderText = "MaCSVCT";
-            this.maCSVCTDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.maCSVCTDataGridViewTextBoxColumn1.Name = "maCSVCTDataGridViewTextBoxColumn1";
-            // 
-            // tenCSVCTDataGridViewTextBoxColumn1
-            // 
-            this.tenCSVCTDataGridViewTextBoxColumn1.DataPropertyName = "TenCSVCT";
-            this.tenCSVCTDataGridViewTextBoxColumn1.HeaderText = "TenCSVCT";
-            this.tenCSVCTDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.tenCSVCTDataGridViewTextBoxColumn1.Name = "tenCSVCTDataGridViewTextBoxColumn1";
-            // 
-            // giaDataGridViewTextBoxColumn1
-            // 
-            this.giaDataGridViewTextBoxColumn1.DataPropertyName = "Gia";
-            this.giaDataGridViewTextBoxColumn1.HeaderText = "Gia";
-            this.giaDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.giaDataGridViewTextBoxColumn1.Name = "giaDataGridViewTextBoxColumn1";
-            // 
             // frmQuanLyToaNha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1758,6 +2042,9 @@
             this.btnThemCSHTTB.ResumeLayout(false);
             this.btnThemCSHTTB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSHTB)).EndInit();
+            this.ptHatangphongB.ResumeLayout(false);
+            this.ptHatangphongB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHTPB)).EndInit();
             this.ToaA.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tpTang.ResumeLayout(false);
@@ -1770,6 +2057,9 @@
             this.tpCosohatang.ResumeLayout(false);
             this.tpCosohatang.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSHTA)).EndInit();
+            this.tpCosohatangphong.ResumeLayout(false);
+            this.tpCosohatangphong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHTPA)).EndInit();
             this.tpThongTin.ResumeLayout(false);
             this.tpThongTin.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1943,5 +2233,31 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn maCSVCTDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenCSVCTDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn giaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dgvHTPB;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtGiaCSVCPB;
+        private System.Windows.Forms.TextBox txtTenCSVCPB;
+        private System.Windows.Forms.TextBox txtMaCSVCPB;
+        private System.Windows.Forms.Button btnCapNhatCSVCPB;
+        private System.Windows.Forms.Button btnXoaCSVCPB;
+        private System.Windows.Forms.Button btnThemCSVCPB;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtGiaCSVCPA;
+        private System.Windows.Forms.TextBox txtTenCSVCPA;
+        private System.Windows.Forms.TextBox txtMaCSVCPA;
+        private System.Windows.Forms.Button btnCapNhatCSVCPA;
+        private System.Windows.Forms.Button btnXoaCSVCPA;
+        private System.Windows.Forms.Button btnThemCSVCPA;
+        private System.Windows.Forms.DataGridView dgvHTPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCSVCPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenCSVCPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaCSVCPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaCSVCPB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenCSVCPB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaCSVCPB;
     }
 }
