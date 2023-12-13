@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="MaChi" />
     </Key>
-    <Property Name="MaChi" Type="int" Nullable="false" />
+    <Property Name="MaChi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoTien" Type="money" />
     <Property Name="NoiDung" Type="nvarchar" MaxLength="1000" />
     <Property Name="idNhanVien" Type="nvarchar" MaxLength="20" />
@@ -22,7 +22,7 @@
     <Key>
       <PropertyRef Name="MaCSVCP" />
     </Key>
-    <Property Name="MaCSVCP" Type="int" Nullable="false" />
+    <Property Name="MaCSVCP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenCSVCP" Type="nvarchar" MaxLength="50" />
     <Property Name="Gia" Type="money" />
   </EntityType>
@@ -30,7 +30,7 @@
     <Key>
       <PropertyRef Name="MaCSVCT" />
     </Key>
-    <Property Name="MaCSVCT" Type="int" Nullable="false" />
+    <Property Name="MaCSVCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenCSVCT" Type="nvarchar" MaxLength="50" />
     <Property Name="Gia" Type="money" />
   </EntityType>

@@ -88,6 +88,22 @@ namespace DACN
             dataGridView2.DataSource = dt;
         }
 
+        public void LoadDgvCSHTTB()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select * from CoSoHaTangTang", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dgvCSHTB.DataSource = dt;
+        }
+
         private void thôngTinNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -181,6 +197,8 @@ namespace DACN
                 comboBox3.DataSource = listTenCSHTT.ToList();
                 comboBox3.DisplayMember = "TenCSVCT";
                 comboBox3.ValueMember = "MaCSVCT";
+
+                LoadDgvCSHTTB();
             }
 
 
@@ -188,6 +206,8 @@ namespace DACN
 
 
             }
+
+        
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -764,7 +784,7 @@ namespace DACN
             {
                 if (txtMaTangA.Text.Equals(""))
                 {
-                    MessageBox.Show("Vui lòng nhập mã phòng", "Thông báo");
+                    MessageBox.Show("Vui lòng nhập mã tầng", "Thông báo");
                 }
                 else
                 {
@@ -820,7 +840,7 @@ namespace DACN
             {
                 if (txtMaTangB.Text.Equals(""))
                 {
-                    MessageBox.Show("Vui lòng nhập mã phòng", "Thông báo");
+                    MessageBox.Show("Vui lòng nhập mã tầng", "Thông báo");
                 }
                 else
                 {
@@ -929,6 +949,239 @@ namespace DACN
             catch
             {
                 MessageBox.Show("Lỗi khi xóa!", "Thông báo");
+            }
+        }
+
+        private void dgvCSHTA_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dgvCSHTA.Rows.Count)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dgvCSHTA.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                if (cellValue != null)
+                {
+                    // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
+                    txtMaCSVCTA.Text = dgvCSHTA.Rows[e.RowIndex].Cells["maCSVCTDataGridViewTextBoxColumn"].Value?.ToString();
+                    txtTenCSVCTA.Text = dgvCSHTA.Rows[e.RowIndex].Cells["tenCSVCTDataGridViewTextBoxColumn"].Value?.ToString();
+                    txtGiaCSVCTA.Text = dgvCSHTA.Rows[e.RowIndex].Cells["giaDataGridViewTextBoxColumn"].Value?.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá trị ô không hợp lệ.");
+                }
+            }
+        }
+
+        private void dgvCSHTB_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dgvCSHTB.Rows.Count)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dgvCSHTB.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                if (cellValue != null)
+                {
+                    // Hiển thị giá trị của ô trong TextBox và ComboBox tương ứng
+                    txtMaCSVCTB.Text = dgvCSHTB.Rows[e.RowIndex].Cells["MaCSVCTB"].Value?.ToString();
+                    txtTenCSVCTB.Text = dgvCSHTB.Rows[e.RowIndex].Cells["TenCSVCTBB"].Value?.ToString();
+                    txtGiaCSVCTB.Text = dgvCSHTB.Rows[e.RowIndex].Cells["GiaTB"].Value?.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá trị ô không hợp lệ.");
+                }
+            }
+        }
+
+        private void btnThemCSHTTA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtTenCSVCTA.Text.Equals("") || txtGiaCSVCTA.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin cần thêm", "Cảnh báo");
+                }
+                else
+                {
+                    string tenCSVCT = txtTenCSVCTA.Text;
+                    decimal giaCSVCT = Decimal.Parse(txtGiaCSVCTA.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        CoSoHaTangTang cshtt  = new CoSoHaTangTang();
+                        {
+                            cshtt.TenCSVCT = tenCSVCT;
+                            cshtt.Gia = giaCSVCT;
+
+                            db.CoSoHaTangTangs.Add(cshtt);
+                            db.SaveChanges();
+
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtTenCSVCTB.Text.Equals("") || txtGiaCSVCTB.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin cần thêm", "Cảnh báo");
+                }
+                else
+                {
+                    string tenCSVCT = txtTenCSVCTB.Text;
+                    decimal giaCSVCT = Decimal.Parse(txtGiaCSVCTB.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        CoSoHaTangTang cshtt = new CoSoHaTangTang();
+                        {
+                            cshtt.TenCSVCT = tenCSVCT;
+                            cshtt.Gia = giaCSVCT;
+
+                            db.CoSoHaTangTangs.Add(cshtt);
+                            db.SaveChanges();
+
+                            MessageBox.Show("Thêm thành công!", "Thông báo");
+                            LoadDgvCSHTTB();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        private void btnSuaCSHTTA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maCSHTT = (int)dgvCSHTA.CurrentRow.Cells["maCSVCTDataGridViewTextBoxColumn"].Value;
+                    var nguonDuLieu = db.CoSoHaTangTangs;
+
+                   CoSoHaTangTang updatingTang = nguonDuLieu.Single(t => t.MaCSVCT == maCSHTT);
+
+                    updatingTang.TenCSVCT = txtTenCSVCTA.Text;
+                    updatingTang.Gia = Decimal.Parse(txtGiaCSVCTA.Text);
+
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(updatingTang).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                    this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        private void btnSuaCSHTTB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                {
+                    int maCSHTT = (int)dgvCSHTB.CurrentRow.Cells["MaCSVCTB"].Value;
+                    var nguonDuLieu = db.CoSoHaTangTangs;
+
+                    CoSoHaTangTang updatingTang = nguonDuLieu.Single(t => t.MaCSVCT == maCSHTT);
+
+                    updatingTang.TenCSVCT = txtTenCSVCTB.Text;
+                    updatingTang.Gia = Decimal.Parse(txtGiaCSVCTB.Text);
+
+                    // Cập nhật thông tin vào cơ sở dữ liệu
+                    db.Entry(updatingTang).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo");
+                    LoadDgvCSHTTB();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        private void btnXoaCSHTTA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaCSVCTA.Text.Equals(""))
+                {
+                    {
+                        MessageBox.Show("Hãy chọn mã cơ sở hạ tầng tầng cần xóa", "Lưu ý");
+                    }
+                }
+                else
+                {
+                    int maTangCanXoa = Convert.ToInt32(txtMaCSVCTA.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var c = db.CoSoHaTangTangs.FirstOrDefault(a => a.MaCSVCT == maTangCanXoa);
+                        db.CoSoHaTangTangs.Remove(c);
+                        db.SaveChanges();
+                        ReloadDgvPhongA();
+
+                        MessageBox.Show("Xóa thành công!", "Thông báo");
+                        this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thực thi xóa", "Lỗi");
+            }
+        }
+
+        private void btnXoaCSHTTB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaCSVCTB.Text.Equals(""))
+                {
+                    {
+                        MessageBox.Show("Hãy chọn mã cơ sở hạ tầng tầng cần xóa", "Lưu ý");
+                    }
+                }
+                else
+                {
+                    int maTangCanXoa = Convert.ToInt32(txtMaCSVCTB.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var c = db.CoSoHaTangTangs.FirstOrDefault(a => a.MaCSVCT == maTangCanXoa);
+                        db.CoSoHaTangTangs.Remove(c);
+                        db.SaveChanges();
+                        ReloadDgvPhongA();
+
+                        MessageBox.Show("Xóa thành công!", "Thông báo");
+                        LoadDgvCSHTTB();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thực thi xóa", "Lỗi");
             }
         }
     }
