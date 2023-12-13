@@ -90,9 +90,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.maDVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenDVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +99,9 @@
             this.toaNhaChoThue88888DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nhanvienTableAdapter = new DACN.ToaNhaChoThue999DataSet2TableAdapters.NhanvienTableAdapter();
             this.dVTableAdapter = new DACN.ToaNhaChoThue999DataSet4_DichVuTableAdapters.DVTableAdapter();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbNhansu.SuspendLayout();
@@ -729,48 +729,16 @@
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button6);
-            this.panel2.Location = new System.Drawing.Point(453, 121);
+            this.panel2.Location = new System.Drawing.Point(1002, 121);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(724, 368);
+            this.panel2.Size = new System.Drawing.Size(175, 368);
             this.panel2.TabIndex = 24;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Yellow;
-            this.button4.Location = new System.Drawing.Point(427, 107);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 43);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Sửa";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(427, 62);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(124, 41);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Xóa";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Lime;
-            this.button6.Location = new System.Drawing.Point(427, 20);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(124, 37);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Thêm";
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maDVDataGridViewTextBoxColumn,
@@ -782,7 +750,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(426, 368);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(975, 368);
             this.dataGridView1.TabIndex = 23;
             // 
             // maDVDataGridViewTextBoxColumn
@@ -791,7 +760,6 @@
             this.maDVDataGridViewTextBoxColumn.HeaderText = "MaDV";
             this.maDVDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.maDVDataGridViewTextBoxColumn.Name = "maDVDataGridViewTextBoxColumn";
-            this.maDVDataGridViewTextBoxColumn.Width = 125;
             // 
             // tenDVDataGridViewTextBoxColumn
             // 
@@ -799,7 +767,6 @@
             this.tenDVDataGridViewTextBoxColumn.HeaderText = "TenDV";
             this.tenDVDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tenDVDataGridViewTextBoxColumn.Name = "tenDVDataGridViewTextBoxColumn";
-            this.tenDVDataGridViewTextBoxColumn.Width = 125;
             // 
             // giaDataGridViewTextBoxColumn
             // 
@@ -807,7 +774,6 @@
             this.giaDataGridViewTextBoxColumn.HeaderText = "Gia";
             this.giaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.giaDataGridViewTextBoxColumn.Name = "giaDataGridViewTextBoxColumn";
-            this.giaDataGridViewTextBoxColumn.Width = 125;
             // 
             // dVBindingSource
             // 
@@ -826,6 +792,39 @@
             // dVTableAdapter
             // 
             this.dVTableAdapter.ClearBeforeFill = true;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Yellow;
+            this.button4.Location = new System.Drawing.Point(30, 101);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(124, 43);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Sửa";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Red;
+            this.button5.Location = new System.Drawing.Point(30, 56);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(124, 41);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Xóa";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Lime;
+            this.button6.Location = new System.Drawing.Point(30, 14);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(124, 37);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Thêm";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // frmQuanly
             // 
@@ -894,9 +893,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource toaNhaChoThue88888DataSetBindingSource;
         private System.Windows.Forms.ToolStripMenuItem tổngQuanToolStripMenuItem;
@@ -942,5 +938,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn salary;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenChucVu;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

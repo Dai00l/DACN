@@ -217,6 +217,16 @@ namespace DACN
                 comboBox3.ValueMember = "MaCSVCT";
 
                 LoadDgvCSHTTB();
+
+                var toaNhaA = db.ToaNhas.Where(x => x.MaToaNha == 1).FirstOrDefault();
+                lblToaNhaA.Text ="Tên tòa nhà: "+toaNhaA.TenToaNha;
+                lblDiaChiA.Text ="Địa chỉ: " +toaNhaA.DiaChi;
+                lblNamXayDungA.Text = "Năm xây dựng: " + toaNhaA.NamXayDung;
+
+                var toaNhaB = db.ToaNhas.Where(x => x.MaToaNha == 2).FirstOrDefault();
+                lblToaNhaB.Text = "Tên tòa nhà: " + toaNhaB.TenToaNha;
+                lblDiaChiB.Text = "Địa chỉ: " + toaNhaB.DiaChi;
+                lblNamXayDungB.Text = "Năm xây dựng: " + toaNhaB.NamXayDung;
             }
 
 
@@ -1428,6 +1438,58 @@ namespace DACN
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi thực thi xóa", "Lỗi");
+            }
+        }
+
+        private void tabControl2_Click(object sender, EventArgs e)
+        {
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            {
+                var listTenCSHTP = db.CoSoHaTangPhongs;
+                var listTenTangA = db.Tangs.Where(a => a.MaToa == 1);
+                var listTenTangB = db.Tangs.Where(a => a.MaToa == 2);
+
+                cmbTenCSHTP.DataSource = listTenCSHTP.ToList();
+                cmbTenCSHTP.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
+                cmbTenCSHTP.ValueMember = "MaCSVCP"; // Tên trường chứa ID
+
+                cmbTenTang.DataSource = listTenTangA.ToList();
+                cmbTenTang.DisplayMember = "TenTang"; // Tên trường chứa tên
+                cmbTenTang.ValueMember = "MaTang"; // Tên trường chứa ID
+
+                textBox5.DataSource = listTenCSHTP.ToList();
+                textBox5.DisplayMember = "TenCSVCP"; // Tên trường chứa tên
+                textBox5.ValueMember = "MaCSVCP"; // Tên trường chứa ID
+
+                textBox4.DataSource = listTenTangB.ToList();
+                textBox4.DisplayMember = "TenTang"; // Tên trường chứa tên
+                textBox4.ValueMember = "MaTang"; // Tên trường chứa ID
+
+                var listTenCSHTT = db.CoSoHaTangTangs;
+
+                cmbTenCSHTTA.DataSource = listTenCSHTT.ToList();
+                cmbTenCSHTTA.DisplayMember = "TenCSVCT";
+                cmbTenCSHTTA.ValueMember = "MaCSVCT";
+
+                comboBox3.DataSource = listTenCSHTT.ToList();
+                comboBox3.DisplayMember = "TenCSVCT";
+                comboBox3.ValueMember = "MaCSVCT";
+
+                LoadDgvCSHTTB();
+
+                var toaNhaA = db.ToaNhas.Where(x => x.MaToaNha == 1).FirstOrDefault();
+                lblToaNhaA.Text = "Tên tòa nhà: " + toaNhaA.TenToaNha;
+                lblDiaChiA.Text = "Địa chỉ: " + toaNhaA.DiaChi;
+                lblNamXayDungA.Text = "Năm xây dựng: " + toaNhaA.NamXayDung;
+
+                var toaNhaB = db.ToaNhas.Where(x => x.MaToaNha == 2).FirstOrDefault();
+                lblToaNhaB.Text = "Tên tòa nhà: " + toaNhaB.TenToaNha;
+                lblDiaChiB.Text = "Địa chỉ: " + toaNhaB.DiaChi;
+                lblNamXayDungB.Text = "Năm xây dựng: " + toaNhaB.NamXayDung;
+
+                this.coSoHaTangTangTableAdapter.Fill(this.toaNhaChoThue999DataSet1.CoSoHaTangTang);
+                LoadDgvCSHTTB();
+                LoadCSVCP();
             }
         }
     }
