@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="MaDV" />
           </Key>
-          <Property Name="MaDV" Type="int" Nullable="false" />
+          <Property Name="MaDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDV" Type="nvarchar" MaxLength="50" />
           <Property Name="Gia" Type="money" />
         </EntityType>

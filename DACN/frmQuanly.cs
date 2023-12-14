@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DACN.Cons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Document.NET;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -30,6 +32,7 @@ namespace DACN
             LoadChiNV();
             LoadChucVu();
             LoadNhanVien();
+            LoadDV();
         }
 
         public void ReloadBangNhanVien()
@@ -64,6 +67,22 @@ namespace DACN
             dt.Clear();
             da.Fill(dt);
             dgvChiLuongNV.DataSource = dt;
+        }
+
+        public void LoadDV()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select * from DV", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
 
         public void LoadChucVu()
@@ -600,6 +619,129 @@ namespace DACN
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi thêm!", "Lỗi");
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dataGridView1.CurrentRow.Index;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị của ô đã nhấp
+                object cellValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                // Hiển thị giá trị của ô trong TextBox tương ứng
+                txtMaDV.Text = dataGridView1.Rows[e.RowIndex].Cells["MaDV"].Value?.ToString();
+                txtTenDV.Text = dataGridView1.Rows[e.RowIndex].Cells["TenDV"].Value?.ToString();
+                txtGiaDV.Text = dataGridView1.Rows[e.RowIndex].Cells["GiaDV"].Value?.ToString();
+
+            }
+        }
+
+        private void btnThemDV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtTenDV.Text.Equals("") || txtGiaDV.Text.Equals("")) 
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin dịch vụ cần thêm", "Cảnh báo");
+                }
+                else
+                {
+                    string tenDV = txtTenDV.Text;
+                    decimal giaDV = Convert.ToDecimal(txtGiaDV.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        DV dv = new DV();
+                        {
+                            dv.TenDV = tenDV;
+                            dv.Gia = giaDV;
+
+                            db.DVs.Add(dv);
+                            db.SaveChanges();
+                        }
+                    }
+
+                    MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo");
+                    LoadDV();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm", "Lỗi");
+            }
+        }
+
+        private void btnXoaDV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaDV.Text.Equals(""))
+                {
+                    MessageBox.Show("Hãy chọn mã dịch vụ cần xóa!", "Thông báo");
+                }
+                else
+                {
+                    int maDVCanXoa = Convert.ToInt32(txtMaDV.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var dv = db.DVs.FirstOrDefault(d => d.MaDV == maDVCanXoa);
+
+                        db.DVs.Remove(dv);
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Xóa dịch vụ thành công", "Thông báo");
+                    LoadDV();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi khi xóa", "Lỗi");
+            }
+        }
+
+        private void btnSuaDV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaDV.Text.Equals("") || txtTenDV.Text.Equals("") || txtGiaDV.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin cần cập nhật", "Thông báo");
+                }
+                else
+                {
+                    int maDVCanCapNhat = Convert.ToInt32(txtMaDV.Text);
+                    string tenDV = txtTenDV.Text;
+                    decimal giaDV = Convert.ToDecimal(txtGiaDV.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        var dv = db.DVs.FirstOrDefault(n => n.MaDV == maDVCanCapNhat);
+
+                        if (dv != null)
+                        {
+                            dv.TenDV = tenDV;
+                            dv.Gia = giaDV;
+                            
+                            db.SaveChanges();
+                            
+                            MessageBox.Show("Cập nhật dịch vụ thành công!", "Thông báo");
+                            LoadDV();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy dịch vụ để cập nhật", "Thông báo");
+                        }
+                    }
+                }
+                
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi khi sửa!", "Thông báo");
             }
         }
     }
