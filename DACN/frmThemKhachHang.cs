@@ -27,36 +27,36 @@ namespace DACN
         }
         private void ThemKh(string hoTen, string eMail, string gioiTinh, string sDt, string diaChi, DateTime ngaydangky, string idKh )
         {
-
-            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
-            {
-                KHACHHANG kh = new KHACHHANG();
+            try {
+                using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
                 {
-                    kh.HoTen = hoTen;
-                    kh.Email = eMail;
-                    kh.GioiTinh = gioiTinh;
-                    kh.SoDienThoai = sDt;
-                    kh.DiaChi = diaChi;
-                    kh.NgayDangKy= ngaydangky;
-                    kh.IDKH = idKh;
+                    KHACHHANG kh = new KHACHHANG();
+                    {
+                        kh.HoTen = hoTen;
+                        kh.Email = eMail;
+                        kh.GioiTinh = gioiTinh;
+                        kh.SoDienThoai = sDt;
+                        kh.DiaChi = diaChi;
+                        kh.NgayDangKy = ngaydangky;
+                        kh.IDKH = idKh;
 
-                    
 
+
+                    }
+                    //db.Nhanviens.Add(nv);
+                    db.KHACHHANGs.Add(kh);
+                    db.SaveChanges();
+                    MessageBox.Show("Thêm Thành Công", "Thông báo");
+                    // Gọi hàm nạp dữ liệu từ cơ sở dữ liệu của frmQuanly
+                    //frmQuanly quanLyForm = Application.OpenForms.OfType<frmQuanly>().FirstOrDefault();
+                    // quanLyForm?.load_data();
+                    frmQuanlykhachhang quanlykhachhang = Application.OpenForms.OfType<frmQuanlykhachhang>().FirstOrDefault();
+                    quanlykhachhang.load_data2();
                 }
-                //db.Nhanviens.Add(nv);
-                db.KHACHHANGs.Add( kh );
-                db.SaveChanges();
-                // Gọi hàm nạp dữ liệu từ cơ sở dữ liệu của frmQuanly
-                //frmQuanly quanLyForm = Application.OpenForms.OfType<frmQuanly>().FirstOrDefault();
-               // quanLyForm?.load_data();
-               frmQuanlykhachhang quanlykhachhang= Application.OpenForms.OfType<frmQuanlykhachhang>().FirstOrDefault();
-                quanlykhachhang.load_data2();
             }
-
-
-
-
-
+            catch (Exception ex) {
+                MessageBox.Show("Lỗi khi thêm khách hàng", "Thông báo");
+            }
         }
 
 
@@ -89,7 +89,7 @@ namespace DACN
             ThemKh(hoTen, eMail, gioiTinh, sDt, diaChi,  ngaydangky, idKh );
 
             // Thông báo thành công
-            MessageBox.Show("Thêm nhân viên thành công");
+            //MessageBox.Show("Thêm nhân viên thành công");
 
             // Đóng form (tùy theo yêu cầu của bạn)
             this.Close();

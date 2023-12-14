@@ -51,11 +51,13 @@ namespace DACN
             }
             else
             {
+             
                 using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
                 {
+                    
                     //MessageBox.Show("Id của nhân viên hiện tại: ", ID);
                     var nv = db.NguoiDungs.FirstOrDefault(n => n.idNhanVien == ID);
-                    if (nv != null)
+                    if (nv.Matkhau.Equals(matKhauCu))
                     {
                         nv.Matkhau = matKhauMoi;
                         db.SaveChanges();
