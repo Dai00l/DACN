@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DACN
 {
@@ -26,7 +27,9 @@ namespace DACN
             InitializeComponent();
             ReloadBangNhanVien();
             //load_data();
+            LoadChiNV();
             LoadChucVu();
+            LoadNhanVien();
         }
 
         public void ReloadBangNhanVien()
@@ -47,6 +50,22 @@ namespace DACN
             }
         }
 
+        public void LoadChiNV()
+        {
+            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand cmd1 = new SqlCommand("select c.MaChi, c.NoiDung, nv.HoTen, c.SoTien from Chi c inner join Nhanvien nv on  c.idNhanVien = nv.IDNVien", conn);
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da.SelectCommand = cmd1;
+            dt.Clear();
+            da.Fill(dt);
+            dgvChiLuongNV.DataSource = dt;
+        }
+
         public void LoadChucVu()
         {
             using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
@@ -56,6 +75,18 @@ namespace DACN
                 txtChucvu.DataSource = listChucVu.ToList();
                 txtChucvu.DisplayMember = "TenChucVu"; 
                 txtChucvu.ValueMember = "ID";
+            }
+        }
+
+        public void LoadNhanVien()
+        {
+            using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+            {
+                var listNhanVien = db.Nhanviens;
+
+                cmbNV.DataSource = listNhanVien.ToList();
+                cmbNV.DisplayMember = "HoTen";
+                cmbNV.ValueMember = "IDNVien";
             }
         }
 
@@ -532,6 +563,44 @@ namespace DACN
                 MessageBox.Show("Lỗi!", "Lỗi");
             }
             
+        }
+
+        private void btnXN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbNV.Text.Equals("") || rtbNoiDung.Text.Equals("") || txtSoTien.Text.Equals(""))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Cảnh báo");
+                }
+                else
+                {
+                    string maNhanVien = (string)cmbNV.SelectedValue;
+                    string noiDung = rtbNoiDung.Text;
+                    decimal soTien = Convert.ToDecimal(txtSoTien.Text);
+
+                    using (ToaNhaChoThue999Entities db = new ToaNhaChoThue999Entities())
+                    {
+                        Chi chi = new Chi();
+                        {
+                            chi.idNhanVien = maNhanVien;
+                            chi.NoiDung = noiDung;
+                            chi.SoTien = soTien;
+
+                            db.Chis.Add(chi);
+                            db.SaveChanges();
+                        } 
+
+                        MessageBox.Show("Thêm thành công", "Thông báo");
+                        LoadChiNV();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm!", "Lỗi");
+            }
         }
     }
 }
