@@ -26,7 +26,7 @@ namespace DACN
 
         public void ReloadDgvPhongA()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -42,7 +42,7 @@ namespace DACN
 
         public void ReloadDgvPhongB()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -58,7 +58,7 @@ namespace DACN
 
         public void ReloadTangA()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -74,7 +74,7 @@ namespace DACN
 
         public void ReloadTangB()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -90,7 +90,7 @@ namespace DACN
 
         public void LoadDgvCSHTTB()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -106,7 +106,7 @@ namespace DACN
 
         public void LoadCSVCP()
         {
-            SqlConnection conn = new SqlConnection("data source =DESKTOP-IOFB5UG\\SQLEXPRESS; initial catalog=ToaNhaChoThue999; integrated security=true");
+            SqlConnection conn = new SqlConnection("data source =localhost\\MSSQLSERVER06; initial catalog=ToaNhaChoThue999; integrated security=true");
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
