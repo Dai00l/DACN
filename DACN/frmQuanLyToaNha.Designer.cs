@@ -380,11 +380,11 @@
             // 
             this.ToaB.BackColor = System.Drawing.Color.CadetBlue;
             this.ToaB.Controls.Add(this.tabControl3);
-            this.ToaB.Location = new System.Drawing.Point(4, 22);
+            this.ToaB.Location = new System.Drawing.Point(4, 27);
             this.ToaB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ToaB.Name = "ToaB";
             this.ToaB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ToaB.Size = new System.Drawing.Size(825, 515);
+            this.ToaB.Size = new System.Drawing.Size(825, 510);
             this.ToaB.TabIndex = 1;
             this.ToaB.Text = "Tòa B";
             // 
@@ -417,10 +417,10 @@
             this.ptTang.Controls.Add(this.button2);
             this.ptTang.Controls.Add(this.textBox3);
             this.ptTang.Controls.Add(this.label5);
-            this.ptTang.Location = new System.Drawing.Point(4, 22);
+            this.ptTang.Location = new System.Drawing.Point(4, 27);
             this.ptTang.Name = "ptTang";
             this.ptTang.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.ptTang.Size = new System.Drawing.Size(700, 479);
+            this.ptTang.Size = new System.Drawing.Size(824, 479);
             this.ptTang.TabIndex = 0;
             this.ptTang.Text = "Tầng";
             // 
@@ -430,15 +430,15 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Đầy",
             "Trống"});
-            this.comboBox3.Location = new System.Drawing.Point(138, 349);
+            this.comboBox3.Location = new System.Drawing.Point(215, 365);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 26);
+            this.comboBox3.Size = new System.Drawing.Size(156, 26);
             this.comboBox3.TabIndex = 25;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(5, 351);
+            this.label20.Location = new System.Drawing.Point(58, 370);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(141, 18);
@@ -447,36 +447,38 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(265, 395);
+            this.button9.BackColor = System.Drawing.Color.Red;
+            this.button9.Location = new System.Drawing.Point(296, 407);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(75, 33);
             this.button9.TabIndex = 19;
             this.button9.Text = "Xóa";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(103, 395);
+            this.button8.BackColor = System.Drawing.Color.Lime;
+            this.button8.Location = new System.Drawing.Point(134, 407);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(75, 33);
             this.button8.TabIndex = 18;
             this.button8.Text = "Thêm";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // txtMaTangB
             // 
-            this.txtMaTangB.Location = new System.Drawing.Point(138, 316);
+            this.txtMaTangB.Location = new System.Drawing.Point(215, 326);
             this.txtMaTangB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaTangB.Name = "txtMaTangB";
-            this.txtMaTangB.Size = new System.Drawing.Size(76, 25);
+            this.txtMaTangB.Size = new System.Drawing.Size(156, 25);
             this.txtMaTangB.TabIndex = 17;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(50, 321);
+            this.label18.Location = new System.Drawing.Point(58, 329);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(63, 18);
@@ -533,7 +535,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 283);
+            this.label4.Location = new System.Drawing.Point(59, 289);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 14;
@@ -545,42 +547,44 @@
             this.comboBox2.Items.AddRange(new object[] {
             "Đầy",
             "Trống"});
-            this.comboBox2.Location = new System.Drawing.Point(138, 282);
+            this.comboBox2.Location = new System.Drawing.Point(215, 286);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 26);
+            this.comboBox2.Size = new System.Drawing.Size(156, 26);
             this.comboBox2.TabIndex = 13;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(184, 395);
+            this.button1.BackColor = System.Drawing.Color.Cyan;
+            this.button1.Location = new System.Drawing.Point(215, 407);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 12;
             this.button1.Text = "Cập nhật";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(22, 395);
+            this.button2.BackColor = System.Drawing.Color.Orange;
+            this.button2.Location = new System.Drawing.Point(53, 407);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 11;
             this.button2.Text = "Tìm";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(138, 256);
+            this.textBox3.Location = new System.Drawing.Point(215, 245);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 25);
+            this.textBox3.Size = new System.Drawing.Size(156, 25);
             this.textBox3.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 256);
+            this.label5.Location = new System.Drawing.Point(59, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 9;
@@ -590,10 +594,10 @@
             // 
             this.ptPhong.Controls.Add(this.panel2);
             this.ptPhong.Controls.Add(this.dataGridView3);
-            this.ptPhong.Location = new System.Drawing.Point(4, 22);
+            this.ptPhong.Location = new System.Drawing.Point(4, 27);
             this.ptPhong.Name = "ptPhong";
             this.ptPhong.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.ptPhong.Size = new System.Drawing.Size(817, 484);
+            this.ptPhong.Size = new System.Drawing.Size(824, 479);
             this.ptPhong.TabIndex = 1;
             this.ptPhong.Text = "Phòng";
             this.ptPhong.UseVisualStyleBackColor = true;
@@ -883,9 +887,9 @@
             this.btnThemCSHTTB.Controls.Add(this.btnXoaCSHTTB);
             this.btnThemCSHTTB.Controls.Add(this.button13);
             this.btnThemCSHTTB.Controls.Add(this.dgvCSHTB);
-            this.btnThemCSHTTB.Location = new System.Drawing.Point(4, 22);
+            this.btnThemCSHTTB.Location = new System.Drawing.Point(4, 27);
             this.btnThemCSHTTB.Name = "btnThemCSHTTB";
-            this.btnThemCSHTTB.Size = new System.Drawing.Size(817, 484);
+            this.btnThemCSHTTB.Size = new System.Drawing.Size(824, 479);
             this.btnThemCSHTTB.TabIndex = 2;
             this.btnThemCSHTTB.Text = "Cơ sở hạ tầng";
             // 
@@ -1058,9 +1062,9 @@
             this.ptHatangphongB.Controls.Add(this.btnCapNhatCSVCPB);
             this.ptHatangphongB.Controls.Add(this.btnXoaCSVCPB);
             this.ptHatangphongB.Controls.Add(this.btnThemCSVCPB);
-            this.ptHatangphongB.Location = new System.Drawing.Point(4, 22);
+            this.ptHatangphongB.Location = new System.Drawing.Point(4, 27);
             this.ptHatangphongB.Name = "ptHatangphongB";
-            this.ptHatangphongB.Size = new System.Drawing.Size(817, 484);
+            this.ptHatangphongB.Size = new System.Drawing.Size(824, 479);
             this.ptHatangphongB.TabIndex = 3;
             this.ptHatangphongB.Text = "Hạ tầng phòng";
             // 
@@ -1205,7 +1209,7 @@
             this.tpThongtintoaB.Name = "tpThongtintoaB";
             this.tpThongtintoaB.Size = new System.Drawing.Size(824, 479);
             this.tpThongtintoaB.TabIndex = 4;
-            this.tpThongtintoaB.Text = "Thông tin ";
+            this.tpThongtintoaB.Text = "Thông tin tòa";
             this.tpThongtintoaB.UseVisualStyleBackColor = true;
             // 
             // lblDiaChiB
@@ -1291,11 +1295,11 @@
             this.tpTang.Controls.Add(this.textBox2);
             this.tpTang.Controls.Add(this.label2);
             this.tpTang.Controls.Add(this.dtgvTang);
-            this.tpTang.Location = new System.Drawing.Point(4, 22);
+            this.tpTang.Location = new System.Drawing.Point(4, 27);
             this.tpTang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpTang.Name = "tpTang";
             this.tpTang.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tpTang.Size = new System.Drawing.Size(825, 493);
+            this.tpTang.Size = new System.Drawing.Size(825, 488);
             this.tpTang.TabIndex = 1;
             this.tpTang.Text = "Tầng";
             this.tpTang.Click += new System.EventHandler(this.tpQuanlyphong_Click);
@@ -1306,15 +1310,15 @@
             this.cmbTenCSHTTA.Items.AddRange(new object[] {
             "Đầy",
             "Trống"});
-            this.cmbTenCSHTTA.Location = new System.Drawing.Point(137, 321);
+            this.cmbTenCSHTTA.Location = new System.Drawing.Point(220, 362);
             this.cmbTenCSHTTA.Name = "cmbTenCSHTTA";
-            this.cmbTenCSHTTA.Size = new System.Drawing.Size(121, 26);
+            this.cmbTenCSHTTA.Size = new System.Drawing.Size(156, 26);
             this.cmbTenCSHTTA.TabIndex = 23;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 323);
+            this.label19.Location = new System.Drawing.Point(61, 365);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(141, 18);
@@ -1323,36 +1327,38 @@
             // 
             // btnXoaTangA
             // 
-            this.btnXoaTangA.Location = new System.Drawing.Point(255, 356);
+            this.btnXoaTangA.BackColor = System.Drawing.Color.Red;
+            this.btnXoaTangA.Location = new System.Drawing.Point(301, 398);
             this.btnXoaTangA.Name = "btnXoaTangA";
-            this.btnXoaTangA.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaTangA.Size = new System.Drawing.Size(75, 33);
             this.btnXoaTangA.TabIndex = 21;
             this.btnXoaTangA.Text = "Xóa";
-            this.btnXoaTangA.UseVisualStyleBackColor = true;
+            this.btnXoaTangA.UseVisualStyleBackColor = false;
             this.btnXoaTangA.Click += new System.EventHandler(this.btnXoaTangA_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(93, 356);
+            this.button11.BackColor = System.Drawing.Color.Lime;
+            this.button11.Location = new System.Drawing.Point(139, 398);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.Size = new System.Drawing.Size(75, 33);
             this.button11.TabIndex = 20;
             this.button11.Text = "Thêm";
-            this.button11.UseVisualStyleBackColor = true;
+            this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // txtMaTangA
             // 
-            this.txtMaTangA.Location = new System.Drawing.Point(137, 290);
+            this.txtMaTangA.Location = new System.Drawing.Point(220, 323);
             this.txtMaTangA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaTangA.Name = "txtMaTangA";
-            this.txtMaTangA.Size = new System.Drawing.Size(76, 25);
+            this.txtMaTangA.Size = new System.Drawing.Size(156, 25);
             this.txtMaTangA.TabIndex = 9;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(50, 295);
+            this.label17.Location = new System.Drawing.Point(61, 326);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 18);
@@ -1362,7 +1368,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 266);
+            this.label3.Location = new System.Drawing.Point(62, 291);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 18);
             this.label3.TabIndex = 7;
@@ -1374,42 +1380,44 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Đầy",
             "Trống"});
-            this.comboBox1.Location = new System.Drawing.Point(137, 265);
+            this.comboBox1.Location = new System.Drawing.Point(220, 283);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 26);
+            this.comboBox1.Size = new System.Drawing.Size(156, 26);
             this.comboBox1.TabIndex = 6;
             // 
             // btnSuatang
             // 
-            this.btnSuatang.Location = new System.Drawing.Point(174, 356);
+            this.btnSuatang.BackColor = System.Drawing.Color.Cyan;
+            this.btnSuatang.Location = new System.Drawing.Point(220, 398);
             this.btnSuatang.Name = "btnSuatang";
-            this.btnSuatang.Size = new System.Drawing.Size(75, 23);
+            this.btnSuatang.Size = new System.Drawing.Size(75, 33);
             this.btnSuatang.TabIndex = 5;
             this.btnSuatang.Text = "Cập nhật";
-            this.btnSuatang.UseVisualStyleBackColor = true;
+            this.btnSuatang.UseVisualStyleBackColor = false;
             this.btnSuatang.Click += new System.EventHandler(this.btnSuatang_Click);
             // 
             // btnTimtang
             // 
-            this.btnTimtang.Location = new System.Drawing.Point(12, 356);
+            this.btnTimtang.BackColor = System.Drawing.Color.Orange;
+            this.btnTimtang.Location = new System.Drawing.Point(58, 398);
             this.btnTimtang.Name = "btnTimtang";
-            this.btnTimtang.Size = new System.Drawing.Size(75, 23);
+            this.btnTimtang.Size = new System.Drawing.Size(75, 33);
             this.btnTimtang.TabIndex = 4;
             this.btnTimtang.Text = "Tìm";
-            this.btnTimtang.UseVisualStyleBackColor = true;
+            this.btnTimtang.UseVisualStyleBackColor = false;
             this.btnTimtang.Click += new System.EventHandler(this.btnTimtang_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(137, 239);
+            this.textBox2.Location = new System.Drawing.Point(220, 242);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
+            this.textBox2.Size = new System.Drawing.Size(156, 25);
             this.textBox2.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 239);
+            this.label2.Location = new System.Drawing.Point(61, 249);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 18);
             this.label2.TabIndex = 2;
